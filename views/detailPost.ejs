@@ -315,7 +315,7 @@
     <% if (comments && comments.length > 0) { %>
         <% comments.forEach(comment => { %>
             <div class="comment">
-                <p><%= comment.author %>
+                <p><%= comment.nickname %>
                     <% if (comment.user_code == userId) { %>
                         (본인)
                     <% } %>
@@ -335,9 +335,9 @@
                 <% if (comment.children && comment.children.length > 0) { %>
                     <% comment.children.forEach(childComment => { %>
                         <div class="comment reply-form">
-                            <p><%= childComment.author %>
+                            <p><%= childComment.nickname %>
                                 <% if (childComment.user_code == userId) { %>
-                                    (작성자)
+                                    (본인)
                                 <% } %>
                                 &nbsp<%= childComment.created_at %>
                             </p>
