@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="CSS Design Awards" />
+    <meta name="referrer" content="origin-when-cross-origin" />
+    <title>About CSS Design Awards - International Web Awards For Solo Designers, Studios &amp; Agencies</title>
+    <meta name="description" content="The CSS Design Awards honors and recognizes the best solo web designers, studios and agencies around the world for holistic web design that balances creativity, functionality and usability into a seamless user experience. " />
+    <meta name="keywords" content="css web design awards, css, cssda, gallery, showcase, promote, css awards, css gallery, css galleries, web award, web design award, website awards, css design" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-194x194.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="/images/favicons/android-chrome-192x192.png" sizes="192x192">
+    <link rel="shortcut icon" href="/images/favicons/favicon.ico">
+
+    <link rel="stylesheet" href="/css/style-main.min.css" type="text/css" media="all">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="/css/vendor/jcf.css" type="text/css" media="all">
+
+</head>
+
+<body>
+<div id="page">
+    <header class="main">
+
+        <nav class="header__main-wrapper">
+            <div class="flex-grid">
+                <a href="/mainPage" class="header__site-logo">
+                    <img  src="/imgs/logo.svg" alt="CSS Design Awards">
+                </a>
+            </div>
+            <div class="flex-grid text-center mobile-hidden">
+                <div class="header__fade-slider">
+                    <div class="header__fade-slider__slide active">
+                        <a href="mainPage">
+                            <img src="/imgs/content/2024/readymag.svg" width="500" height="150" alt="Readymag">
+
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="flex-grid text-right">
+                <div class="header__side-elements">
+                    <a href="#" class="menu-hamburger" data-modal-open="header-main-menu"></a>
+                    <% if (loggedInUserNickName) { %>
+                        <a href="#" class="cust-btn mobile-hidden"><%= loggedInUserNickName %> member</a>
+                        <a href="/logout" class="cust-btn mobile-hidden">LOGOUT</a>
+                    <% } else { %>
+                        <a href="/login" class="cust-btn mobile-hidden">LOGIN</a>
+                    <% } %>
+                </div>
+            </div>
+        </nav>
+        <div data-modal="header-main-menu" class="modal header-modal-menu">
+            <div class="modal__hide-scroll">
+                <div class="container">
+                    <div class="modal__content">
+
+                        <nav class="header__main-menu">
+                            <div class="header__main-menu__wrapper">
+                                <button class="modal__close">X</button>
+                                <!--                                *** link -->
+                                <ul class="header__main-menu__list">
+                                    <li><a href="/mainPage" class="cust-btn">Home</a></li>
+                                    <li><a href="/mapPage" class="cust-btn">Top 100 mountain</a></li>
+                                    <li><a href="/boarder_boardMain" class="cust-btn">Alloola Board</a></li>
+                                    <li><a href="/ej_boardMain" class="cust-btn">Community Board</a></li>
+                                    <li><a href="/" class="cust-btn">Shop</a></li>
+                                    <!--                                    <li><a href="/judges" class="cust-btn">Judges</a></li>-->
+                                    <!--                                    <li><a href="/blog" class="cust-btn">Blog</a></li>-->
+                                    <!--                                    <li><a href="/contact" class="cust-btn">Contact</a></li>-->
+                                    <!--                                    <li><a href="/terms" class="cust-btn">Terms / Privacy</a></li>-->
+                                </ul>
+                                <ul class="header__main-menu__add-on">
+                                    <!--                                    <li><a href="/submit" class="cust-btn special-button">SUBMIT</a></li>-->
+                                    <li><a href="/login" target="_blank">Login</a></li>
+                                    <li><a href="/signUp" target="_blank">SignUp</a></li>
+
+
+
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <div class="about">
+        <div class="container" style="width:100%">
+
+            <div class="about__wrapper" >
+
+                <div class="about__content text-left" style="width:100%; max-width:80%; display:flex; justify-content: space-between;">
+                    <div style="width: 50%;  justify-content: space-between">
+                        <table>
+                            <thead>
+                            <tr>
+                        <ul class="about__list" style="display: inline-block" >
+
+                        <% for(let i = 0; i < totalPosts.length; i++){ %>
+                            <%if(i % 7 === 0){%>
+                        </tr><tr>
+
+                            <%}%>
+
+                            <th>
+                            <li class="about__list__item" style="list-style-type:none">
+                                <a href="/mapPage?location=<%=totalPosts[i]%>" class="about__modal-trigger" ><%=totalPosts[i]%></a>
+                            </li>
+                            </th>
+
+                        <%}%>
+                        </ul>
+                            </tr>
+                            </thead>
+                        </table>
+                        <div style="background-color:ivory; border-radius:5px; margin:5px; margin-top:30px; padding:10px; border:1px solid saddlebrown;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <% for(let i = 0; i < mountName.length; i++){ %>
+                                    <%if(i % 7 === 0){%>
+                                </tr><tr>
+                                    <%}%>
+                                    <td>
+                                        <li class="about__list__item" style="list-style-type:none">
+                                            <a href="#/<%=mountName[i][1]%>" class="about__modal-trigger" id="<%=mountName[i][1]%>" data-modal-open="about-cssda"><%=mountName[i][0]%></a>
+                                        </li>
+                                    </td>
+                                    <%}%>
+                                </tr>
+                            </thead>
+                        </table>
+
+
+                        </div>
+                        <div style="margin-top:80px"></div>
+                        <div class=" home-projects__more-button text-center">
+                            <% if (currentPage > 1) { %>
+                                <a href="/mapPage/?page=<%= currentPage - 1 %>"></a>
+                            <% } %>
+                            <% for (let i = startPage; i <= endPage; i++) { %>
+                                <% if (i === currentPage) { %>
+                                    <span class="current-page" style="margin:20px"><%= i %></span>
+                                <% } else { %>
+                                    <a href="/mapPage?page=<%= i %>" style="margin:20px" class="cust-btn"><%= i %></a>
+                                <% } %>
+                            <% } %>
+
+                            <% if ((totalPages - currentPage + 1) > maxPageNumber) { %>
+                                <a href="/mapPage?page=<%= currentPage + 1 %>">다음</a>
+                            <% } %>
+                        </div>
+
+                    </div>
+                    <div id="data" style="display: none"><%= mountName %></div>
+
+
+                    <div style="width: 50%">
+
+                        <div id="map" style="width:90%;height:500px; "></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <script>
+
+
+        // for(let i = 0; mountName1.length; i++){
+        //     // console.log(mountName1[i][1]);
+        // }
+    </script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79f28a197b27ed1280bff7aaf5f8539f"></script>
+   <script type="text/javascript" src="/js/hello.js"></script>
+    <script>
+        async function detailMap(mount_code){
+            const mountCode = mount_code;
+            console.log("여기도 들어오니?");
+            const response = await fetch(`detailMountMap?mountcode=${mountCode}`);
+
+            const data = await response.json();
+            console.log("json:::",data);
+
+
+
+        }
+
+        //
+        const mountName1 = '<%=mountName%>';
+        const mountXY = mountName1.split(',');
+        const mountXYarray = [];
+        for(let i = 0; i < mountXY.length; i=i+4 ){
+            mountXYarray.push([mountXY[i],mountXY[i+2],mountXY[i+3]]);
+        }
+        console.log("mountName :"+mountXYarray[4]);
+
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+            mapOption = {
+                center: new kakao.maps.LatLng(37.5729, 126.9794), // 지도의 중심좌표
+                level: 14 // 지도의 확대 레벨
+            };
+
+        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+
+        // 마커를 표시할 위치와 title 객체 배열입니다
+
+        var positions = [
+
+        ];
+
+        for(let i = 0; i < mountXYarray.length; i++){
+            positions.push({content: mountXYarray[i][0], title: mountXYarray[i][0], latlng: new kakao.maps.LatLng(mountXYarray[i][1],mountXYarray[i][2])});
+        }
+
+
+
+        // 마커 이미지의 이미지 주소입니다
+        var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+        for (var i = 0; i < positions.length; i ++) {
+
+            // 마커 이미지의 이미지 크기 입니다
+            var imageSize = new kakao.maps.Size(24, 35);
+
+            // 마커 이미지를 생성합니다
+            var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+            // 마커를 생성합니다
+            var marker = new kakao.maps.Marker({
+                map: map, // 마커를 표시할 지도
+                position: positions[i].latlng, // 마커를 표시할 위치
+                title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                image : markerImage // 마커 이미지
+            });
+        }
+    </script>
+    <!-- /.about -->
+    <div class="page-modals">
+        <div data-modal="about-cssda" class="modal ">
+            <div class="modal__hide-scroll">
+                <div class="container">
+                    <div class="modal__content">
+                        <button class="modal__close">X</button>
+                        <!-- /.modal__close -->
+                        <div class="container">
+
+                        <div id="mapName" class="about-modal text-left">
+                            <h2 class="modal__title">About CSS Design Awards</h2>
+
+                            <div id="mapDetail" class="about-modal__content">
+                                <p>Founded in 2009 and launched in 2010, CSSDA is an international web design and development award platform that honors and showcases freelance designers, studios and agencies for work that pushes the boundaries of UI, UX and innovative development. </p>
+                                <p>Backed by an international panel of expert judges, winners are rewarded with official certificates, prestigious trophies and recognition from industry leaders along with tens of thousands of daily visitors to the CSSDA site.</p>
+                            </div>
+                            <!-- /.about-modal__content -->
+                        </div>
+                            <label for="files">파일 첨부:</label><br>
+                            <!-- mulriple: 여러개의 파일 선택  -->
+                            <input type="file" id="files" name="files" multiple><br>
+                        </div>
+                        <!-- /.faq -->
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+            </div>
+        </div>
+        <!-- /.modal -->
+
+        <!-- /.modal -->
+    </div>
+    <footer class="main light">
+        <div class="flex-grid">CSS DESIGN AWARDS &copy; 2009 - 2024</div>
+        <div class="flex-grid text-center mobile-top">
+            <ul class="social-icons">
+                <li><a href="https://www.facebook.com/CSSDesignAwards/" target="_blank" style="background-image: url(/imgs/social-icons/facebook.svg);"><img src="/imgs/social-icons/facebook.svg" alt="facebook"></a></li>
+                <li><a href="https://twitter.com/cssdesignawards" target="_blank" style="background-image: url(/imgs/social-icons/twitter.svg);"><img src="/imgs/social-icons/twitter.svg" alt="twitter"></a></li>
+                <li><a href="https://www.instagram.com/cssdesignaward/" target="_blank" style="background-image: url(/imgs/social-icons/instagram.svg);"><img src="/imgs/social-icons/instagram.svg" alt="instagram"></a></li>
+                <li><a href="https://www.linkedin.com/in/cssda/" target="_blank" style="background-image: url(/imgs/social-icons/linkedin.svg);"><img src="/imgs/social-icons/linkedin.svg" alt="linkedin"></a></li>
+            </ul>
+        </div>
+        <div class="flex-grid text-right mobile-hidden">BE INSPIRED. BE INSPIRING.</div>
+    </footer>
+</div>
+
+<div id="scripts">
+    <script type="text/javascript" src="/js/vendor/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/js/vendor/jcf.js"></script>
+    <script type="text/javascript" src="/js/vendor/jcf.select.js"></script>
+    <script type="text/javascript" src="/js/vendor/jcf.checkbox.js"></script>
+    <script type="text/javascript" src="/js/vendor/jcf.file.js"></script>
+    <script type="text/javascript" src="/js/script.min.js"></script>
+</div>
+
+</body>
+
+</html>

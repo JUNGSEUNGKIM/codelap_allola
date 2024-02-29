@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="CSS Design Awards" />
+  <meta name="referrer" content="origin-when-cross-origin" />
+
+  <title>Contact CSSDA</title>
+  <meta name="description" content="The CSSDA crew are happy to reply if you need to make contact about submissions, web awards, advertising or any issues that need reporting. " />
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="/images/favicons/android-chrome-192x192.png" sizes="192x192">
+  <link rel="shortcut icon" href="/images/favicons/favicon.ico">
+
+  <link rel="stylesheet" href="/css/style-main.min.css" type="text/css" media="all">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,800" rel="stylesheet">
+  <link rel="stylesheet" href="/css/vendor/jcf.css" type="text/css" media="all">
+
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<body>
+<div id="page">
+  <header class="main">
+
+    <nav class="header__main-wrapper">
+      <div class="flex-grid">
+        <a href="#" class="header__site-logo">
+          <img  src="/imgs/logo.svg" alt="CSS Design Awards">
+        </a>
+      </div>
+      <div class="flex-grid text-center mobile-hidden">
+        <div class="header__fade-slider">
+          <div class="header__fade-slider__slide active">
+            <a href="#">
+              <img src="/imgs/content/2024/readymag.svg" width="500" height="150" alt="Readymag">
+            </a>
+          </div>
+
+        </div>
+      </div>
+      <div class="flex-grid text-right">
+        <div class="header__side-elements">
+          <a href="#" class="menu-hamburger" data-modal-open="header-main-menu"></a>
+
+        </div>
+      </div>
+    </nav>
+    <div data-modal="header-main-menu" class="modal header-modal-menu">
+      <div class="modal__hide-scroll">
+        <div class="container">
+          <div class="modal__content">
+
+            <nav class="header__main-menu">
+              <div class="header__main-menu__wrapper">
+                <button class="modal__close">X</button>
+                <!--                                *** link -->
+                <ul class="header__main-menu__list">
+                  <li><a href="/" class="cust-btn">Home</a></li>
+                  <li><a href="/" class="cust-btn">Top 100 mountain</a></li>
+                  <li><a href="/" class="cust-btn">Alloola Board</a></li>
+                  <li><a href="/" class="cust-btn">Shop</a></li>
+                  <!--                                    <li><a href="/judges" class="cust-btn">Judges</a></li>-->
+                  <!--                                    <li><a href="/blog" class="cust-btn">Blog</a></li>-->
+                  <!--                                    <li><a href="/contact" class="cust-btn">Contact</a></li>-->
+                  <!--                                    <li><a href="/terms" class="cust-btn">Terms / Privacy</a></li>-->
+                </ul>
+                <ul class="header__main-menu__add-on">
+                  <!--                                    <li><a href="/submit" class="cust-btn special-button">SUBMIT</a></li>-->
+                  <li><a href="/jpanel" target="_blank">Login</a></li>
+                  <li><a href="/jpanel" target="_blank">SignUp</a></li>
+
+
+
+                </ul>
+              </div>
+            </nav>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+      </div>
+    </div>
+
+  </header>
+
+  <form action="/signUp" method="post" class="form-default form-contact">
+    <div class="form-contact__wrapper">
+      <h1 class="form-default__title">Sign Up Page</h1>
+      <input name="id" type="text" id="id" maxlength="50" required placeholder="INPUT ID *"  />
+      <input name="password" type="password" id="password" maxlength="50" required placeholder="INPUT PASSWORD*"  />
+      <input name="password_check" type="password" id="password_check" maxlength="50" required placeholder="INPUT PASSWORD*"  />
+      <input name="gender" type="text" id="gender" maxlength="50" required placeholder="GENDER *"  />
+      <input name="name" type="text" id="name" maxlength="100"  required placeholder="YOUR NAME *"  />
+      <label>YOUR BIRTH</label>
+      <input type="date" name="birth" id="birth" maxlength="100" placeholder="YOUR BIRTH" style="padding-bottom: 30px"  />
+      <input type="text" name="nickname" id="nickname" maxlength="100" placeholder="YOUR NICKNAME"  />
+
+
+
+      <input name="submit" type="submit" value="Sign UP" />
+
+    </div>
+  </form>
+
+  <div class="page-modals">
+  </div>
+  <footer class="main light">
+    <div class="flex-grid"></div>
+    <div class="flex-grid text-center mobile-top">
+      <ul class="social-icons">
+        <li><a href="https://www.facebook.com/CSSDesignAwards/" target="_blank" style="background-image: url(/imgs/social-icons/facebook.svg);"><img src="/imgs/social-icons/facebook.svg" alt="facebook"></a></li>
+        <li><a href="https://twitter.com/cssdesignawards" target="_blank" style="background-image: url(/imgs/social-icons/twitter.svg);"><img src="/imgs/social-icons/twitter.svg" alt="twitter"></a></li>
+        <li><a href="https://www.instagram.com/cssdesignaward/" target="_blank" style="background-image: url(/imgs/social-icons/instagram.svg);"><img src="/imgs/social-icons/instagram.svg" alt="instagram"></a></li>
+        <li><a href="https://www.linkedin.com/in/cssda/" target="_blank" style="background-image: url(/imgs/social-icons/linkedin.svg);"><img src="/imgs/social-icons/linkedin.svg" alt="linkedin"></a></li>
+      </ul>
+    </div>
+    <div class="flex-grid text-right mobile-hidden"></div>
+  </footer>
+</div>
+
+<div id="scripts">
+  <script type="text/javascript" src="/js/vendor/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/js/vendor/jcf.js"></script>
+  <script type="text/javascript" src="/js/vendor/jcf.select.js"></script>
+  <script type="text/javascript" src="/js/vendor/jcf.checkbox.js"></script>
+  <script type="text/javascript" src="/js/vendor/jcf.file.js"></script>
+  <script type="text/javascript" src="/js/script.min.js"></script>
+</div>
+
+
+</body>
+
+</html>
+
