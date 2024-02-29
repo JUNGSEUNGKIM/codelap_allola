@@ -14,7 +14,8 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-    const ctx = document.getElementById('myChart');
+
+    const ctx = document.getElementById('myChart').getContext('2d');
 
     const DATA_COUNT = 16;
     const MIN_XY = -150;
@@ -118,6 +119,8 @@
     randomizeButton.addEventListener('click', function() {
         actions[0].handler(chart);
     });
+
+
 </script>
 
 </body>

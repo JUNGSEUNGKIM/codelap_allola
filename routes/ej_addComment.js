@@ -21,12 +21,14 @@ router.post('/', async (req, res) => {
         return res.redirect('/login'); // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
     }
 
+
+
     const boarder_code  = req.body.boarder_code;
     const user_code = req.session.loggedInUserCode;
     const comment_id = req.body.comment_id; // req.body에서 comment_id를 가져옴
     // const { boarder_code , user_code } = req.query;
     const { content } = req.body; // 댓글 내용은 POST 요청의 본문(body)에서 가져와야 합니다.
-
+    // console.comment_id
     let conn;
     try {
         conn = await oracledb.getConnection(dbConfig);

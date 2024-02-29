@@ -70,6 +70,16 @@ app.use('/ej_detailPost', require('./routes/ej_detailPost'));
 app.use('/ej_editPost', require('./routes/ej_editPost'));
 
 
+app.use('/customshop_addComment', require('./routes/customshop_addComment'));
+app.use('/customshop_editComment', require('./routes/customshop_editComment'));
+app.use('/customshop_deleteComment', require('./routes/customshop_deleteComment'));
+app.use('/customshop_boardMain', require('./routes/customshop_boardMain'));
+app.use('/customshop_create', require('./routes/customshop_create'));
+app.use('/customshop_deletePost', require('./routes/customshop_deletePost'));
+app.use('/customshop_detailPost', require('./routes/customshop_detailPost'));
+app.use('/customshop_editPost', require('./routes/customshop_editPost'));
+app.use('/customshop_liks', require('./routes/customshop_liks'));
+
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}/mainPage`);
