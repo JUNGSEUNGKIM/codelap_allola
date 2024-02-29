@@ -21,14 +21,14 @@ router.get('/:boarderCode', async (req, res) => {
 
         // 게시글에 달린 댓글과 답글 삭제
         await conn.execute(
-            `DELETE FROM boarder_comments WHERE boarder_code = :boarderCode OR parent_comment_id IN (SELECT id FROM boarder_comments WHERE boarder_code = :boarderCode)`,
+            `DELETE FROM ej_boarder_comments WHERE boarder_code = :boarderCode OR parent_comment_id IN (SELECT id FROM ej_boarder_comments WHERE boarder_code = :boarderCode)`,
             [boarderCode, boarderCode]
         );
         // 변경 사항 커밋
         await conn.commit();
         // 게시글 삭제
         await conn.execute(
-            `DELETE FROM boarder WHERE boarder_code = :boarderCode`,
+            `DELETE FROM ej_boarder WHERE boarder_code = :boarderCode`,
             [boarderCode]
         );
 

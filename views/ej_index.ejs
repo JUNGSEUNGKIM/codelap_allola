@@ -123,9 +123,9 @@
                         <div class="single-project__thumbnail">
 
                             <% if (posts[i][6] && posts[i][5] !== '') { %>
-                                <% const imageNames = posts[i][5].split(';'); %>
-                                <% const imagePaths = posts[i][6].split(';'); %>
-                                <img src="/uploads/<%= imagePaths[0] %>" alt="<%= imageNames[0] %>" />
+                                <% const FILE_ORIGINAL_NAME = posts[i][5].split(';'); %>
+                                <% const FILE_STORED_NAME = posts[i][6].split(';'); %>
+                                <img src="/uploads/<%= FILE_STORED_NAME[0] %>" alt="<%= FILE_ORIGINAL_NAME[0] %>" />
                              <%}else{%>
                                     <img src="/images/cat.jpg" alt="#" />
 

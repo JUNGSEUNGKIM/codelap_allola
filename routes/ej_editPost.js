@@ -20,7 +20,7 @@ router.get('/:boarderCode', async (req, res) => {
 
         // 게시글 정보 가져오기
         const result = await conn.execute(
-            `SELECT * FROM boarder WHERE boarder_code = :boarderCode`,
+            `SELECT * FROM ej_boarder WHERE boarder_code = :boarderCode`,
             [boarderCode],
             { fetchInfo: { CONTENT: { type: oracledb.STRING } } }
         );
@@ -29,8 +29,8 @@ router.get('/:boarderCode', async (req, res) => {
             id: result.rows[0][0],
             title: result.rows[0][2],
             content: result.rows[0][4],
-            // image_path: result.rows[0][7],
-            // image_name: result.rows[0][8]
+            image_path: result.rows[0][7],
+            image_name: result.rows[0][8]
         };
         console.log(post.id);
 
@@ -63,7 +63,7 @@ router.post('/:boarderCode', async (req, res) => {
 
         // 게시글 수정
         await conn.execute(
-            `UPDATE boarder SET title = :title, content = :content WHERE boarder_code = :boarderCode`,
+            `UPDATE ej_boarder SET title = :title, content = :content WHERE boarder_code = :boarderCode`,
             [title, content, boarderCode]
         );
 

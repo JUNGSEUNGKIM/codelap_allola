@@ -21,7 +21,7 @@ router.get('/:boarderCode', async (req, res) => {
 
         // 조회수 증가 처리
         await conn.execute(
-            `UPDATE boarder SET views = views + 1 WHERE boarder_code = :boarderCode`,
+            `UPDATE ej_boarder SET views = views + 1 WHERE boarder_code = :boarderCode`,
             [boarderCode]
         );
 
@@ -38,7 +38,7 @@ router.get('/:boarderCode', async (req, res) => {
         const postResult = await conn.execute(
             `SELECT b.boarder_code, b.title, u.nickname AS author, b.content, TO_CHAR(b.created_at, 'YYYY-MM-DD') AS created_at, 
                     b.views, b.likes, b.image_name, b.image_path 
-            FROM boarder b
+            FROM ej_boarder b
             JOIN user_table u ON b.user_code = u.user_code
             WHERE b.boarder_code = :boarderCode`,
             [boarderCode],
@@ -48,7 +48,7 @@ router.get('/:boarderCode', async (req, res) => {
         // 댓글 가져오기
         const commentResult = await conn.execute(
             `SELECT bc.id, bc.user_code, bc.content, u.nickname AS author, TO_CHAR(bc.created_at, 'YYYY-MM-DD') AS created_at, bc.parent_comment_id 
-            FROM boarder_comments bc
+            FROM ej_boarder_comments bc
             JOIN user_table u ON bc.user_code = u.user_code
             WHERE bc.boarder_code = :boarderCode
             ORDER BY bc.id`,
@@ -95,7 +95,7 @@ router.get('/:boarderCode', async (req, res) => {
             imageName: postResult.rows[0][7],
             imagePath: postResult.rows[0][8]
         };
-        // console.log(postResult.rows[0][8]);
+        console.log(postResult.rows[0][8]);
 
         // console.log(`post: ${post}, comments: ${comments}`);
         // console.log(`id: ${postResult.rows[0][0]}, content: ${postResult.rows[0][2]},

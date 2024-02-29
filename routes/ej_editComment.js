@@ -14,7 +14,7 @@ router.post('/:commentId', async (req, res) => {
         // 댓글 수정 쿼리 실행
         const connection = await oracledb.getConnection(dbConfig);
         const result = await connection.execute(
-            `UPDATE boarder_comments SET content = :content WHERE id = :commentId`,
+            `UPDATE ej_boarder_comments SET content = :content WHERE id = :commentId`,
             { content, commentId }
         );
         // 삭제 후 상세 페이지로 리다이렉트

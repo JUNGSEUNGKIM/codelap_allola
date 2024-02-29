@@ -15,7 +15,7 @@ router.post('/:id', async (req, res) => {
 
         // 댓글 삭제
         await conn.execute(
-            `DELETE FROM boarder_comments WHERE id = :id OR parent_comment_id = :parent_comment_id`,
+            `DELETE FROM ej_boarder_comments WHERE id = :id OR parent_comment_id = :parent_comment_id`,
             { id: commentId, parent_comment_id: commentId }
         );
 

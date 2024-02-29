@@ -43,13 +43,13 @@ router.post('/',  upload.array('files', 5),async (req, res) => {
 
         // 게시글을 위한 시퀀스에서 새로운 ID 가져오기
         const result = await conn.execute(
-            `SELECT boarder_seq.NEXTVAL FROM DUAL`
+            `SELECT ej_boarder_seq.NEXTVAL FROM DUAL`
         );
         const boarderCode = result.rows[0][0];
 
         // 게시글 삽입
         await conn.execute(
-            `INSERT INTO boarder (boarder_code, user_code, title, content, image_name, image_path) 
+            `INSERT INTO ej_boarder (boarder_code, user_code, title, content, image_name, image_path) 
              VALUES(:boarderCode, :userCode, :title, :content, :image_name, :image_path)`,
             {
                 boarderCode: boarderCode,

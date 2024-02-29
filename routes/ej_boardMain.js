@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     try {
         conn = await oracledb.getConnection(dbConfig);
         let result = await conn.execute(
-            `SELECT COUNT(*) AS total FROM boarder`
+            `SELECT COUNT(*) AS total FROM ej_boarder`
         );
         const totalPosts = result.rows[0];
         console.log("total:"+totalPosts);
@@ -57,12 +57,12 @@ router.get('/', async (req, res) => {
             `
                 SELECT
                     boarder_code,title,author,to_char(created_at,'YYYY-MM-DD'),views, image_name, image_path, likes,
-                    (SELECT COUNT(*) FROM boarder_comments bc WHERE bc.boarder_code = b.boarder_code) AS comments_count
+                    (SELECT COUNT(*) FROM ej_boarder_comments bc WHERE bc.boarder_code = b.boarder_code) AS comments_count
                 FROM (
                          SELECT
                              b.boarder_code, b.title, u.nickname AS author, b.created_at, b.image_name, b.image_path, b.views, b.likes,
                              ROW_NUMBER() OVER (${orderByClause}) AS rn
-                         FROM boarder b
+                         FROM ej_boarder b
                                   JOIN user_table u ON b.user_code = u.user_code
                          WHERE 1=1
                              ${searchCondition}

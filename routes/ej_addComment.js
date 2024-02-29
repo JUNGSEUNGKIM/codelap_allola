@@ -33,8 +33,8 @@ router.post('/', async (req, res) => {
 
         // 댓글 추가
         await conn.execute(
-            `INSERT INTO boarder_comments (id, boarder_code, user_code, content, parent_comment_id) 
-             VALUES (boarder_comments_seq.nextval, :boarder_code, :user_code, :content, :parent_id)`,
+            `INSERT INTO ej_boarder_comments (id, boarder_code, user_code, content, parent_comment_id) 
+             VALUES (ej_boarder_comments_seq.nextval, :boarder_code, :user_code, :content, :parent_id)`,
             [boarder_code, user_code, content, comment_id]
         );
 
