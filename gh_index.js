@@ -15,7 +15,7 @@ const port = 3000;
 
 
 app.set('view engine', 'ejs');
-const WEB_SERVER_HOME = 'c:\\JSKim_ago\\Util\\nginx-1.24.0\\nginx-1.24.0\\html';
+const WEB_SERVER_HOME = 'c:\\GHRho\\Util\\nginx-1.24.0\\html';
 
 
 app.use('/', express.static(WEB_SERVER_HOME+ '/'));
