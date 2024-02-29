@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="CSS Design Awards" />
+        <meta name="referrer" content="origin-when-cross-origin" />
+
+        <title>CSS Design Awards - Website Awards - Best Web Design Inspiration - CSS Awards</title>
+        <meta name="description" content="CSS Design Awards. Be inspired, Be inspiring. Submit your website to the world's best CSS awards for a chance to win Site of the Day, UI awards UX awards and more from a panel of 200+ international web designers and developers." />
+        <meta name="keywords" content="best website awards, web design awards, web design inspiration, css awards, css winner, UI design, UX design" />
+
+        <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon-180x180.png">
+        <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="/images/favicons/favicon-194x194.png" sizes="194x194">
+        <link rel="icon" type="image/png" href="/images/favicons/android-chrome-192x192.png" sizes="192x192">
+        <link rel="shortcut icon" href="/images/favicons/favicon.ico">
+
+        <link rel="stylesheet" href="/css/style-main.min.css" type="text/css" media="all">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,800" rel="stylesheet">
+        <link rel="stylesheet" href="/css/vendor/jcf.css" type="text/css" media="all">
+    <title> :: NEW POST :: </title>
+    <style>
+        /* 전체 페이지를 가운데 정렬 */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* 상단부터 정렬 */
+            height: 100vh;
+            margin: 0;
+            padding-top: 80px; /* 상단 여백 추가 */
+        }
+
+        /* 폼 요소 스타일 */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #202121;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            align-self: flex-end;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #515252;
+        }
+
+        .back-button {
+            padding: 10px 20px;
+            background-color: #ddd;
+            color: #000;
+            border: 1px solid #888;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .back-button:hover {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<!--<div id="page">-->
+<header class="main">
+
+    <nav class="header__main-wrapper">
+        <div class="flex-grid">
+            <a href="/mainPage" class="header__site-logo">
+                <img  src="/imgs/logo.svg" alt="CSS Design Awards">
+            </a>
+        </div>
+        <div class="flex-grid text-center mobile-hidden">
+            <div class="header__fade-slider">
+                <div class="header__fade-slider__slide active">
+                    <a href="mainPage">
+                        <img src="/imgs/content/2024/readymag.svg" width="500" height="150" alt="Readymag">
+
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <div class="flex-grid text-right">
+            <div class="header__side-elements">
+                <a href="#" class="menu-hamburger" data-modal-open="header-main-menu"></a>
+                <% if (userRealName) { %>
+                    <a href="#" class="cust-btn mobile-hidden"><%= userRealName %> member</a>
+                    <a href="/logout" class="cust-btn mobile-hidden">LOGOUT</a>
+                <% } else { %>
+                    <a href="/login" class="cust-btn mobile-hidden">LOGIN</a>
+                <% } %>
+            </div>
+        </div>
+    </nav>
+    <div data-modal="header-main-menu" class="modal header-modal-menu">
+        <div class="modal__hide-scroll">
+            <div class="container">
+                <div class="modal__content">
+
+                    <nav class="header__main-menu">
+                        <div class="header__main-menu__wrapper">
+                            <button class="modal__close">X</button>
+                            <!--                                *** link -->
+                            <ul class="header__main-menu__list">
+                                <li><a href="/mainPage" class="cust-btn">Home</a></li>
+                                <li><a href="/mapPage" class="cust-btn">Top 100 mountain</a></li>
+                                <li><a href="/boarder_boardMain" class="cust-btn">Alloola Board</a></li>
+                                <li><a href="/ej_boardMain" class="cust-btn">Community Board</a></li>
+                                <li><a href="/customshop_boardMain" class="cust-btn">Shop</a></li>
+                                <!--                                    <li><a href="/judges" class="cust-btn">Judges</a></li>-->
+                                <!--                                    <li><a href="/blog" class="cust-btn">Blog</a></li>-->
+                                <!--                                    <li><a href="/contact" class="cust-btn">Contact</a></li>-->
+                                <!--                                    <li><a href="/terms" class="cust-btn">Terms / Privacy</a></li>-->
+                            </ul>
+                            <ul class="header__main-menu__add-on">
+                                <!--                                    <li><a href="/submit" class="cust-btn special-button">SUBMIT</a></li>-->
+                                <li><a href="/login" target="_blank">Login</a></li>
+                                <li><a href="/signUp" target="_blank">SignUp</a></li>
+
+
+
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+        </div>
+    </div>
+
+</header>
+    <div style="height: 500px; margin-top: 50px"></div>
+<!-- 작성 폼 -->
+<form action="/customshop_create" method="post" enctype="multipart/form-data" >
+    <label for="title">제목:</label><br>
+    <input type="text" id="title" name="title"><br>
+    <!-- 파일 업로드 인풋 추가 -->
+    <label for="files">파일 첨부:</label><br>
+    <!-- mulriple: 여러개의 파일 선택  -->
+    <input type="file" id="files" name="files" multiple><br>
+    <label for="content">가격:</label><br>
+    <input type="text" id="title" name="price"><br>
+    <label for="content">내용:</label><br>
+    <textarea id="content" name="content" rows="24" cols="50"></textarea><br>
+    <input type="submit" value="작성하기">
+</form>
+<div style="margin-bottom: 5px"></div>
+<!-- 이전 페이지로 돌아가기 버튼 -->
+<div class="center">
+    <a href="/customshop_boardMain?id=<%= userId %> &name=<%= userRealName %>" class="button" style="font-weight: bold">>back to Board</a>
+<!--</div>-->
+<!--    <footer class="main light">-->
+<!--        <div class="flex-grid">CSS DESIGN AWARDS &copy; 2009 - 2024</div>-->
+<!--        <div class="flex-grid text-center mobile-top">-->
+<!--            <ul class="social-icons">-->
+<!--                <li><a href="https://www.facebook.com/CSSDesignAwards/" target="_blank" style="background-image: url(/imgs/social-icons/facebook.svg);"><img src="/imgs/social-icons/facebook.svg" alt="facebook"></a></li>-->
+<!--                <li><a href="https://twitter.com/cssdesignawards" target="_blank" style="background-image: url(/imgs/social-icons/twitter.svg);"><img src="/imgs/social-icons/twitter.svg" alt="twitter"></a></li>-->
+<!--                <li><a href="https://www.instagram.com/cssdesignaward/" target="_blank" style="background-image: url(/imgs/social-icons/instagram.svg);"><img src="/imgs/social-icons/instagram.svg" alt="instagram"></a></li>-->
+<!--                <li><a href="https://www.linkedin.com/in/cssda/" target="_blank" style="background-image: url(/imgs/social-icons/linkedin.svg);"><img src="/imgs/social-icons/linkedin.svg" alt="linkedin"></a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="flex-grid text-right mobile-hidden">BE INSPIRED. BE INSPIRING.</div>-->
+<!--    </footer>-->
+<!--</div>-->
+</body>
+</html>
