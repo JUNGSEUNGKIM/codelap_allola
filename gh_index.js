@@ -58,7 +58,7 @@ app.use('/boarder_create', require('./routes/boarder_create'));
 app.use('/boarder_deletePost', require('./routes/boarder_deletePost'));
 app.use('/boarder_detailPost', require('./routes/boarder_detailPost'));
 app.use('/boarder_editPost', require('./routes/boarder_editPost'));
-app.use('/chart', require('./routes/chart'));
+app.use('/chart', require('./routes/gh_chart'));
 
 app.use('/ej_addComment', require('./routes/ej_addComment'));
 app.use('/ej_editComment', require('./routes/ej_editComment'));

@@ -58,7 +58,7 @@ app.use('/boarder_create', require('./routes/boarder_create'));
 app.use('/boarder_deletePost', require('./routes/boarder_deletePost'));
 app.use('/boarder_detailPost', require('./routes/boarder_detailPost'));
 app.use('/boarder_editPost', require('./routes/boarder_editPost'));
-app.use('/chart', require('./routes/chart'));
+app.use('/chart', require('./routes/gh_chart'));
 
 
 app.use('/ej_addComment', require('./routes/ej_addComment'));
@@ -69,6 +69,7 @@ app.use('/ej_create', require('./routes/ej_create'));
 app.use('/ej_deletePost', require('./routes/ej_deletePost'));
 app.use('/ej_detailPost', require('./routes/ej_detailPost'));
 app.use('/ej_editPost', require('./routes/ej_editPost'));
+app.use('/ej_chart', require('./routes/ej_chart'));
 
 
 app.use('/customshop_addComment', require('./routes/customshop_addComment'));
