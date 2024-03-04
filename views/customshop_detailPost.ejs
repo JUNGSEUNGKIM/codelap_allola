@@ -266,7 +266,7 @@
 </div>
 <table>
     <tr>
-        <th>제목</th>
+        <th>제품명</th>
         <td class="title"><%= post.title %></td>
     </tr>
     <tr>
@@ -274,7 +274,7 @@
         <td class="author"><%= post.author %></td>
     </tr>
     <tr>
-        <th>게시글 내용</th>
+        <th>제품 설명</th>
         <td class="content" style="word-wrap: break-word;">
         <%= post.content %>
             <% if (post.imagePath && post.imageName !== '') { %>
@@ -286,6 +286,7 @@
                         <% const extension = imageNames[i].split('.').pop(); %>
                         <% if (['jpg', 'jpeg', 'png'].includes(extension)) { %>
                             <li style="text-align: center;">
+<!--                                <li style="text-align: center; top: 0; left: 0;">-->
                                 <img src="/uploads/<%= imagePaths[i] %>" alt="<%= imageNames[i] %>" style="max-width: 100%; height: auto;">
                             </li>
                         <% } %>
@@ -294,29 +295,44 @@
             <% } %>
         </td>
     </tr>
+
+<!--        <th>가격</th>-->
+<!--        <td><%= post.price %></td>-->
+
+        <!-- 나머지 HTML 코드 -->
+
+        <!-- HTML 코드 중간 부분 -->
     <tr>
         <th>가격</th>
-        <td><%= post.price %></td>
+        <td><%= post.price.toLocaleString() %></td>
     </tr>
+
 <!--    <tr>-->
 <!--        <th>조회수</th>-->
 <!--        <td><%= post.views %></td>-->
 <!--    </tr>-->
     <tr>
-        <th>좋아요 수</th>
+        <th>추천</th>
         <td>
-            <%= post.likes %>
-            <div style="text-align: right">
-            <!-- 이미지 태그 추가! -->
-            <img src="C:/insu/utill/nginx-1.24.0/html/imgs/like_img.png" alt="like">
-            <button id="myButton" style="display: none;">좋아요</button>
-            </div>
+           <span> <%= post.likes %> </span>
+<!--            <div style="text-align: left">-->
+<!--            &lt;!&ndash; 이미지 태그 추가! &ndash;&gt;-->
+<!--            <img src="/imgs/like_img.png" alt="like" width="50px" height="50px">-->
+<!--            <button id="likeButton" style="display: none;">좋아요</button>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                    style="display: flex; align-items: center;">-->
+
+<!--            <img src="/imgs/like_img.png" alt="like" width="50px" height="50px">-->
+            <button id="likeButton"><img src="/imgs/like_img.png" alt="like" width="50px" height="50px" style="display: flex"</button>
+<!--            </div>-->
+<!--                                         좋아요 버튼 나중에 다시 수정하기!!!                                                -->
         </td>
     </tr>
 </table>
 
     <script>
-        document.getElementById("myButton").addEventListener("click", async function() {
+        document.getElementById("likeButton").addEventListener("click", async function() {
             // alert("버튼이 클릭되었습니다!");
             // 원하는 동작을 여기에 추가하세요.
 
@@ -327,6 +343,10 @@
             // alert(data);
             // console.log("json:::",data);
         });
+        // function formatPrice(price) {
+        //     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        // }
+
     </script>
 
 
@@ -457,7 +477,8 @@
             }
         });
     });
-</script>
+
+    </script>
 </div>
 </body>
 </html>

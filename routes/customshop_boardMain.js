@@ -56,7 +56,7 @@ router.get('/', async (req, res) => {
             `
                 SELECT
                     boarder_code,title,author,FILE_ORIGINAL_NAME, FILE_STORED_NAME, likes, price,
-                    (SELECT COUNT(*) FROM boarder_comments bc WHERE bc.boarder_code = b.boarder_code) AS comments_count
+                    (SELECT COUNT(*) FROM customshop_comments bc WHERE bc.boarder_code = b.boarder_code) AS comments_count
                 FROM (
                          SELECT
                              b.boarder_code, b.title, u.nickname AS author, b.FILE_ORIGINAL_NAME, b.FILE_STORED_NAME, b.likes, b.price,
