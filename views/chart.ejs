@@ -37,26 +37,33 @@
     <style>
 
         .chart_container {
+            width: 100%;
+            height: 700px;
             flex-direction: row;
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
             align-items: center;
         }
 
         .Chart {
-            /*margin-left: 50px;*/
-            flex-direction: row;
             display: flex;
             justify-content: center;
             align-items: center;
-            top: 50%;
-            left: 50%;
-            transform: translate(70%, 0%);
         }
 
         #myChart1, #myChart2, #myChart3{
-            /*margin-bottom: 150px;*/
+            /*height: 500px;*/
+            /*background-color: rgba(255, 255, 255, 0.5);*/
+            /*border-radius: 10px;*/
+        }
+
+        #Chart1, #Chart2, #Chart3 {
+            height: 500px;
             background-color: rgba(255, 255, 255, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
         }
 
     </style>
@@ -138,7 +145,7 @@
     <div style="height: 100px"></div>
 
     <!-- 차트1: 인기산TOP7 -->
-    <div style="width: 500px;">
+    <div style="width: 500px;" id="Chart1">
         <canvas id="myChart1"class="Chart"></canvas>
     </div>
     <script type="text/javascript" src="/js/utils.js"></script>
@@ -254,8 +261,8 @@
     </script>
 
 
-    <!-- 차트2:신규회원가입(남/녀) -->
-    <div style="width: 500px;">
+    <!-- 차트2:신규회원가입(남/녀) Original -->
+    <div style="width: 500px;"  id="Chart2">
         <canvas id="myChart2" class="Chart"></canvas>
     </div>
 <!--    <script type="text/javascript" src="/js/utils.js"></script>-->
@@ -283,16 +290,16 @@
             data: {
                 datasets: [{
                     label: '여성 회원',
-                    borderColor: "#f68686", // 첫 번째 데이터셋의 선 색상
-                    borderWidth: 2,         // 첫 번째 데이터셋의 선 굵기
-                    pointRadius: 0,         // 데이터 포인트의 반지름 (0으로 설정하면 포인트가 나타나지 않음)
+                    borderColor: "#f68686",
+                    borderWidth: 2,
+                    pointRadius: 0,
                     data: data,
                 },
                     {
                         label: '남성 회원',
-                        borderColor: "#5eb8a7", // 두 번째 데이터셋의 선 색상
-                        borderWidth: 2,         // 두 번째 데이터셋의 선 굵기
-                        pointRadius: 0,         // 데이터 포인트의 반지름
+                        borderColor: "#5eb8a7",
+                        borderWidth: 2,
+                        pointRadius: 0,        // 데이터 포인트의 반지름
                         data: data2,
                     }]
             },
@@ -345,8 +352,9 @@
     </script>
 
 
+
     <!-- 차트3: 계절별 인기산TOP4(봄) -->
-    <div style="width: 500px;">
+    <div style="width: 500px;"  id="Chart3">
         <canvas id="myChart3" class="Chart"></canvas>
     </div>
         <script type="text/javascript" src="/js/utils.js"></script>
@@ -466,9 +474,9 @@
 <!--    </div>-->
     <div class="page-modals">
     </div>
-    <div class="container smsc-button-wrapper">
-        <a class="smsc-button light" href="#">Go to Top</a>
-    </div>
+<!--    <div class="container smsc-button-wrapper">-->
+<!--        <a class="smsc-button light" href="#">Go to Top</a>-->
+<!--    </div>-->
 
     <footer class="main light">
         <div class="flex-grid">CSS DESIGN AWARDS &copy; 2009 - 2024</div>

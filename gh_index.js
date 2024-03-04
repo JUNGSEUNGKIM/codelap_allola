@@ -55,6 +55,7 @@ app.use('/boarder_editComment', require('./routes/boarder_editComment'));
 app.use('/boarder_deleteComment', require('./routes/boarder_deleteComment'));
 app.use('/boarder_boardMain', require('./routes/boarder_boardMain'));
 app.use('/boarder_create', require('./routes/boarder_create'));
+app.use('/board_likes', require('./routes/board_likes'));
 app.use('/boarder_deletePost', require('./routes/boarder_deletePost'));
 app.use('/boarder_detailPost', require('./routes/boarder_detailPost'));
 app.use('/boarder_editPost', require('./routes/boarder_editPost'));
