@@ -41,6 +41,7 @@ router.post('/',  upload.array('files', 5),async (req, res) => {
     try {
         conn = await oracledb.getConnection(dbConfig);
 
+
         // 게시글을 위한 시퀀스에서 새로운 ID 가져오기
         const result = await conn.execute(
             `SELECT boarder_seq.NEXTVAL FROM DUAL`
@@ -55,7 +56,7 @@ router.post('/',  upload.array('files', 5),async (req, res) => {
                 boarderCode: boarderCode,
                 userCode: userId,
                 title: title,
-                content: content,
+                content: contentrep,
                 image_name: files.map(file => file.imageName).join(';'), // 파일의 원본 이름을 세미콜론으로 구분하여 저장
                 image_path: files.map(file => file.imagePath).join(';') // 파일의 변환된 이름을 세미콜론으로 구분하여 저장
             }
