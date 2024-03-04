@@ -35,14 +35,14 @@
     <title> :: NEW POST :: </title>
     <style>
         /* 전체 페이지를 가운데 정렬 */
-        body {
+        .create_form {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* 상단부터 정렬 */
-            height: 100vh;
+            justify-content: flex-start;
+            /*height: 500vh;*/
             margin: 0;
-            padding-top: 80px; /* 상단 여백 추가 */
+            padding-top: 200px;
         }
 
         /* 폼 요소 스타일 */
@@ -50,8 +50,9 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            width: 80%;
-            max-width: 600px;
+            width: 800px;
+            height: 100%;
+            /*max-width: 600px;*/
         }
 
         label {
@@ -80,8 +81,8 @@
             background-color: #515252;
         }
 
-        .back-button {
-            padding: 10px 20px;
+        .button {
+            padding: 5px 10px;
             background-color: #ddd;
             color: #000;
             border: 1px solid #888;
@@ -90,13 +91,12 @@
             margin-bottom: 10px;
         }
 
-        .back-button:hover {
+        .button:hover {
             background-color: #ccc;
         }
     </style>
 </head>
 <body>
-<!--<div id="page">-->
 <header class="main">
 
     <nav class="header__main-wrapper">
@@ -142,7 +142,7 @@
                                 <li><a href="/mapPage" class="cust-btn">Top 100 mountain</a></li>
                                 <li><a href="/boarder_boardMain" class="cust-btn">Alloola Board</a></li>
                                 <li><a href="/ej_boardMain" class="cust-btn">Community Board</a></li>
-                                <li><a href="/" class="cust-btn">Shop</a></li>
+                                <li><a href="/customshop_boardMain" class="cust-btn">Shop</a></li>
                                 <!--                                    <li><a href="/judges" class="cust-btn">Judges</a></li>-->
                                 <!--                                    <li><a href="/blog" class="cust-btn">Blog</a></li>-->
                                 <!--                                    <li><a href="/contact" class="cust-btn">Contact</a></li>-->
@@ -165,7 +165,8 @@
     </div>
 
 </header>
-    <div style="height: 100px"></div>
+<div class="create_form">
+<!--    <div style="height: 100px"></div>-->
 <!-- 작성 폼 -->
 <form action="/boarder_create" method="post" enctype="multipart/form-data" >
     <label for="title">제목:</label><br>
@@ -179,9 +180,11 @@
     <input type="submit" value="작성하기">
 </form>
 
+
 <!-- 이전 페이지로 돌아가기 버튼 -->
-<div class="center">
+<!--<div class="center">-->
     <a href="/boarder_boardMain?id=<%= userId %> &name=<%= userRealName %>" class="button" style="font-weight: bold">>back to Board</a>
+<!--</div>-->
 </div>
     <footer class="main light">
         <div class="flex-grid">CSS DESIGN AWARDS &copy; 2009 - 2024</div>

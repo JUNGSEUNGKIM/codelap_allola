@@ -124,36 +124,7 @@ router.get('/:boarderCode', async (req, res) => {
     }
 });
 
-// router.post('/like/:boarderCode', async (req, res) => {
-//     const boarderCode = req.params.boarderCode;
-//
-//     try {
-//         // // 데이터베이스 연결
-//         const connection = await oracledb.getConnection(dbConfig);
-//         //
-//         // // 게시물에 대한 좋아요 수를 증가시키는 로직
-//         const result = await connection.execute(
-//             `UPDATE boarder SET likes = likes + 1 WHERE boarder_code = :boarderCode`,
-//             [boarderCode]
-//         );
-//
-//
-//         // 데이터베이스에서 좋아요 수를 증가시키는 로직 호출
-//         // const likesCount = await increaseLikesInDatabase(boarderCode);
-//
-//         // 변경 사항을 커밋
-//         await connection.commit();
-//
-//         // 연결 종료
-//         await connection.close();
-//
-//         // 업데이트된 좋아요 수를 클라이언트에게 응답
-//         res.json({ likes: result.rowsAffected });
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).json({ error: 'Internal Server Error' });
-//     }
-// });
+
 
 
 
