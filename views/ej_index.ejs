@@ -163,6 +163,7 @@
 
             </div>
             <div class="home-projects__more-button text-center">
+                <div class="cust-btn arrow-icon">
                 <% if (currentPage > 1) { %>
                     <a href="/ej_boardMain/?page=<%= currentPage - 1 %>"></a>
                 <% } %>
@@ -174,9 +175,10 @@
                         <a href="/ej_boardMain/?page=<%= i %>"><%= i %></a>
                     <% } %>
                 <% } %>
-                <a href="/ej_boardMain/?page=<%= currentPage + 1 %>" class="cust-btn arrow-icon">More</a>
+                <a href="/ej_boardMain/?page=<%= currentPage + 1 %>" >more</a>
                 <% if ((totalPages - currentPage + 1) > maxPageNumber) { %>
                 <% } %>
+                </div>
             </div>
         </div>
     </section>
