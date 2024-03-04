@@ -36,11 +36,19 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
 
+        .chart_container {
+            flex-direction: row;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .Chart {
             /*margin-left: 50px;*/
+            flex-direction: row;
             display: flex;
-            /*position: absolute;*/
             justify-content: center;
+            align-items: center;
             top: 50%;
             left: 50%;
             transform: translate(70%, 0%);
@@ -126,6 +134,7 @@
         </div>
 
     </header>
+    <div class="chart_container">
     <div style="height: 100px"></div>
 
     <!-- 차트1: 인기산TOP7 -->
@@ -444,6 +453,7 @@
             }
         );
     </script>
+    </div>
 
 
 
