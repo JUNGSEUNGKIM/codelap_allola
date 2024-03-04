@@ -120,35 +120,33 @@
                 <% console.log(posts)%>
                 <article class="single-project">
                     <div>
-                        <div class="single-project__thumbnail" style="height:360px">
+                        <div class="single-project__thumbnail">
 
                             <% if (posts[i][6] && posts[i][5] !== '') { %>
                                 <% const FILE_ORIGINAL_NAME = posts[i][5].split(';'); %>
                                 <% const FILE_STORED_NAME = posts[i][6].split(';'); %>
-                                <img src="/uploads/<%= FILE_STORED_NAME[0] %>" alt="<%= FILE_ORIGINAL_NAME[0] %>" />
+                                <img style="width: 353px; height: 257px" src="/uploads/<%= FILE_STORED_NAME[0] %>" alt="<%= FILE_ORIGINAL_NAME[0] %>"  />
+
                              <%}else{%>
                                     <img src="/images/cat.jpg" alt="#" />
-
                                 <%}%>
-
-
-
 
 
                             <div class="single-project__thumbnail__overlay">
                                 <div class="single-project__meta">
 
-                                    <span class="sp__meta__category">WOTD</span>
+
+                                    <span class="sp__meta__category"></span>
                                     <span class="sp__meta__date">FEB 24</span>
                                 </div>
-                                <a href="/ej_detailPost/<%= posts[i][0] %>" class="sp__full-size-link" style="height:360px" ></a>
+                                <a href="/ej_detailPost/<%= posts[i][0] %>" class="sp__full-size-link" ></a>
                                 <a href="https://saporienatura.it/" target="_blank" class="sp__project-link" >
                                 <!--   <img src="imgs/link.svg" alt=" website"> -->
                                 </a>
                                 <span class="sp__view-info">View</span>
                             </div>
                         </div>
-                        <h3 class="single-project__title"><a href="/sites/sapori-e-natura/45027/"><%= posts[i][1] %> [<%= posts[i][8] %>]</a></h3>
+                        <h3 class="single-project__title"><a href="/ej_detailPost/<%= posts[i][0] %>"><%= posts[i][1] %> [<%= posts[i][8] %>]</a></h3>
                         <div class="single-project__scores">
                             <span class="sp__single-score active">조회수: <%= posts[i][4] %></span>
                             <span class="sp__single-score active">좋아요: <%= posts[i][7] %></span>
