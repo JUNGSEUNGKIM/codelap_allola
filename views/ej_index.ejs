@@ -82,7 +82,7 @@
                                     <li><a href="/mapPage" class="cust-btn">Top 100 mountain</a></li>
                                     <li><a href="/boarder_boardMain" class="cust-btn">Alloola Board</a></li>
                                     <li><a href="/ej_boardMain" class="cust-btn">Community Board</a></li>
-                                    <li><a href="/" class="cust-btn">Shop</a></li>
+                                    <li><a href="/customshop_boardMain" class="cust-btn">Shop</a></li>
                                     <!--                                    <li><a href="/judges" class="cust-btn">Judges</a></li>-->
                                     <!--                                    <li><a href="/blog" class="cust-btn">Blog</a></li>-->
                                     <!--                                    <li><a href="/contact" class="cust-btn">Contact</a></li>-->
@@ -113,14 +113,14 @@
     <section class="home-projects">
         <div class="container">
             <h2><a href="/ej_create" class="cust-btn arrow-icon">Previous WOTDS</a></h2>
-            <div class="home-projects__list projects__list">
+            <div class="home-projects__list projects__list" >
 
 
                 <% for (let i = 0; i < posts.length; i++) { %>
                 <% console.log(posts)%>
                 <article class="single-project">
                     <div>
-                        <div class="single-project__thumbnail">
+                        <div class="single-project__thumbnail" style="height:360px">
 
                             <% if (posts[i][6] && posts[i][5] !== '') { %>
                                 <% const FILE_ORIGINAL_NAME = posts[i][5].split(';'); %>
@@ -141,8 +141,8 @@
                                     <span class="sp__meta__category">WOTD</span>
                                     <span class="sp__meta__date">FEB 24</span>
                                 </div>
-                                <a href="/ej_detailPost/<%= posts[i][0] %>" class="sp__full-size-link"></a>
-                                <a href="https://saporienatura.it/" target="_blank" class="sp__project-link">
+                                <a href="/ej_detailPost/<%= posts[i][0] %>" class="sp__full-size-link" style="height:360px" ></a>
+                                <a href="https://saporienatura.it/" target="_blank" class="sp__project-link" >
                                 <!--   <img src="imgs/link.svg" alt=" website"> -->
                                 </a>
                                 <span class="sp__view-info">View</span>
