@@ -637,6 +637,7 @@
     <script type="text/javascript" src="/js/vendor/jcf.checkbox.js"></script>
     <script type="text/javascript" src="/js/vendor/jcf.file.js"></script>
     <script type="text/javascript" src="/js/script.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.js"></script>
 <!--    <script type="text/javascript" src="js/chatbot.js"></script>-->
 </div>
 <div class="cart">
@@ -686,7 +687,7 @@
         // 사용자 메시지 처리 및 응답
         function sendMessage(userMessage) {
             appendMessage('User', userMessage);
-            // CATEGORY_STATUS=parseInt(userMessage);
+            CATEGORY_STATUS=parseInt(userMessage);
             // var movieTitle = findMovieMessage(userMessage);
             var inputItem = [];
             var national = "";
@@ -713,125 +714,25 @@
                     }
                 } else if (CATEGORY_STATUS === 2) {
                     // 사용자가 하위 카테고리에 대해 물어보는 경우
-                    // const selectedCategory = userMessage.toLowerCase();
-                    // if (selectedCategory.includes('1') || selectedCategory.includes('2') ) {
-                    //     sendSubCategoryMessage(selectedCategory, ['운동화', '구두', '샌들']);
-                    //     showSubCategories(['운동화', '구두', '샌들']);
-                    // } else if (selectedCategory.includes('여성의류') || selectedCategory.includes('남성의류') || selectedCategory.includes('유아의류')) {
-                    //     sendSubCategoryMessage(selectedCategory, ['여성의류', '남성의류', '유아의류']);
-                    //     showSubCategories(['여성의류', '남성의류', '유아의류']);
-                    // } else if (userMessage === '0') {
-                    //     showWelcomeMessage();
-                    //     CATEGORY_STATUS = 1;
-                    // } else {
-                    //     // 다른 키워드에 대한 기본 응답
-                    //     appendMessage('<br>Chatbot', '<br>죄송합니다. 입력하신 정보로는 처리할 수 없습니다.<br>');
-                    // }
-                }
-
-
-            }else if(movieTitle !== "not found"){
-                appendMessage('Chatbot', '검색하신 영화를 보여드립니다.<br>');
-
-                setTimeout(function() {
-                    recentAction(parseInt(movieTitle));
-                    // appendMessage('Chatbot', '안녕하세요! 다른 도움이 필요하신가요?<br>');
-                    // showWelcomeMessage();
-                }, 1200);
-                // recentAction(parseInt(movieTitle));
-            }else if(movieTitle === "not found"){
-                if(userMessage.length !==1) {
-                    const searchItems = ["한국", "외국", "로멘스", "액션", "호러", "인기"];
-
-                    const sortedResults = searchItems
-                        .map(item => ({item, similarity: calculateSimilarity(item.toLowerCase(), userMessage)}))
-                        .sort((a, b) => b.similarity - a.similarity);
-
-
-
-                    for (var i = 0; i < sortedResults.length; i++) {
-                        if (sortedResults[i].similarity > 0) {
-                            if(sortedResults[i] === null || sortedResults[i] === undefined){
-                                break;
-                            }else if(sortedResults[i].item.toLowerCase().includes("한국")){
-                                // alert("들어오나?")
-                                national = "kor";
-                                inputItem.push("kor");
-                            }else if(sortedResults[i].item.toLowerCase().includes("외국")){
-                                // alert("들어오나?")
-                                national = "eng";
-                                inputItem.push("eng");
-                            }else if(sortedResults[i].item.toLowerCase().includes("로멘스")){
-                                // alert("들어오나?")
-                                genre = "rom";
-                                inputItem.push("rom");
-                            }else if(sortedResults[i].item.toLowerCase().includes("호러")){
-                                // alert("들어오나?")
-                                genre = "hor";
-                                inputItem.push("hor");
-                            }else if(sortedResults[i].item.toLowerCase().includes("액션")){
-                                // alert("들어오나?")
-                                genre = "act";
-                                inputItem.push("act");
-                            }                       // alert(sortedResults[i].item);
-                        }
+                    const selectedCategory = userMessage.toLowerCase();
+                    if (selectedCategory.includes('1') || selectedCategory.includes('2') ) {
+                        sendSubCategoryMessage(selectedCategory, ['운동화', '구두', '샌들']);
+                        showSubCategories(['운동화', '구두', '샌들']);
+                    } else if (selectedCategory.includes('여성의류') || selectedCategory.includes('남성의류') || selectedCategory.includes('유아의류')) {
+                        sendSubCategoryMessage(selectedCategory, ['여성의류', '남성의류', '유아의류']);
+                        showSubCategories(['여성의류', '남성의류', '유아의류']);
+                    } else if (userMessage === '0') {
+                        showWelcomeMessage();
+                        CATEGORY_STATUS = 1;
+                    } else {
+                        // 다른 키워드에 대한 기본 응답
+                        appendMessage('<br>Chatbot', '<br>죄송합니다. 입력하신 정보로는 처리할 수 없습니다.<br>');
                     }
-                    // alert(inputItem);
-
                 }
 
-                // alert(inputItem);
-                var sortedIndices1 = sortArrayUp();
-                var sortedNational;
-                var sortedGenre;
-                var sortedNAGE
-
-                if(national === "kor" || national === "eng"){
-                    // sortedIndices1 = sortArrayUp();
-                    if(genre !== ""){
-                        // alert("장르")
-                        sortedNAGE = textSortAreaNaGe(national,genre,sortedIndices1);
-                        appendMessage('Chatbot', '검색하신 영화를 보여드립니다.<br>');
-
-                        setTimeout(function() {
-                            sortChatBotView(sortedNAGE);
-                            // appendMessage('Chatbot', '안녕하세요! 다른 도움이 필요하신가요?<br>');
-                            // showWelcomeMessage();
-                        }, 1200);
-
-                        // alert("널 아님")
-                        var sortArrayGen ;
-                    }else{
-                        // alert("국가별")
-                        sortedNational=textSortAreaNational(national, sortedIndices1);
-                        appendMessage('Chatbot', '검색하신 영화를 보여드립니다.<br>');
-
-                        setTimeout(function() {
-
-                            sortChatBotView(sortedNational);
-                            // appendMessage('Chatbot', '안녕하세요! 다른 도움이 필요하신가요?<br>');
-                            // showWelcomeMessage();
-                        }, 1200);
-
-                    }
-                }else if(national === "" ){
-                    // alert("장르만!!")
-                    sortedGenre = textSortAreaGenre(genre, sortedIndices1);
-                    appendMessage('Chatbot', '검색하신 영화를 보여드립니다.<br>');
-
-                    setTimeout(function() {
-                        alert(sortedGenre);
-                        sortChatBotView(sortedGenre);
-                        // appendMessage('Chatbot', '안녕하세요! 다른 도움이 필요하신가요?<br>');
-                        // showWelcomeMessage();
-                    }, 1200);
-
-                }
-
-
-            }else{
 
             }
+
 
             userInput.val('');
 

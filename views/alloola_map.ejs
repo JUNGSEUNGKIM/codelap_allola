@@ -217,31 +217,34 @@
             mountImgPath.style.margin="10px"
             let hrefTag = document.createElement("div");
 
-            for(let i=0; i < data.mountImg.length; i++){
-                let divContainer = document.createElement("div");
-                divContainer.id=i+"Numcontainer";
+            if(data.mountImg ) {
 
-                console.log(data.mountImg);
-                let imgPathTag = document.createElement("img");
-                imgPathTag.src = "/uploads/"+data.mountImg[i][1];
-                imgPathTag.alt = "이미지 "+i+"번째";
-                imgPathTag.style.width = "300px";
-                imgPathTag.style.height = "300px";
-                if(i>0){
-                    divContainer.style.display="none";
+                for (let i = 0; i < data.mountImg.length; i++) {
+                    let divContainer = document.createElement("div");
+                    divContainer.id = i + "Numcontainer";
+
+                    console.log(data.mountImg);
+                    let imgPathTag = document.createElement("img");
+                    imgPathTag.src = "/uploads/" + data.mountImg[i][1];
+                    imgPathTag.alt = "이미지 " + i + "번째";
+                    imgPathTag.style.width = "300px";
+                    imgPathTag.style.height = "300px";
+                    if (i > 0) {
+                        divContainer.style.display = "none";
+                    }
+
+                    let result = document.createElement("p");
+                    result.innerHTML = "작성인 : " + data.mountImg[i][0] + "내용 :" + data.mountImg[i][3];
+                    result.name = "imgPathPTag";
+
+                    let hrefTagNum = document.createElement("a");
+                    hrefTagNum.href = "javascript:displayImg(" + (i + 1) + ")";
+                    hrefTagNum.innerHTML = "[" + (i + 1) + "]";
+                    divContainer.appendChild(imgPathTag);
+                    divContainer.appendChild(result);
+                    mountImgPath.appendChild(divContainer);
+                    hrefTag.appendChild(hrefTagNum);
                 }
-
-                let result = document.createElement("p");
-                result.innerHTML = "작성인 : "+data.mountImg[i][0]+"내용 :"+data.mountImg[i][3];
-                result.name="imgPathPTag";
-
-                let hrefTagNum = document.createElement("a");
-                hrefTagNum.href="javascript:displayImg("+(i+1)+")";
-                hrefTagNum.innerHTML="["+(i+1)+"]";
-                divContainer.appendChild(imgPathTag);
-                divContainer.appendChild(result);
-                mountImgPath.appendChild(divContainer);
-                hrefTag.appendChild(hrefTagNum);
             }
             mountImgPath.appendChild(hrefTag);
 
