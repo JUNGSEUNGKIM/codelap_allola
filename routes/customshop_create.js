@@ -6,7 +6,7 @@ const fs = require('fs');
 const multer = require('multer');
 const upload = multer({ dest: path.join(__dirname, 'temp'), encoding: 'utf8' });
 
-const WEB_SERVER_HOME = 'c:\\insu\\Utill\\nginx-1.24.0\\html';
+const WEB_SERVER_HOME = 'c:\\JSKim_ago\\Util\\nginx-1.24.0\\nginx-1.24.0\\html';
 const UPLOADS_FOLDER = path.join(WEB_SERVER_HOME, 'uploads');
 
 const router = express.Router();

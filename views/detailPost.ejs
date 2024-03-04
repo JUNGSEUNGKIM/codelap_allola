@@ -478,10 +478,11 @@
             await fetch(`/board_likes?boarderCode=<%=post.id%>`);
 
             let likesTag = document.getElementById("likesTag");
-            // let num = parseInt(likesTag.innerHTML);
-            // num = num+1;
 
-            // likesTag.innerHTML=num;
+            let num = parseInt(likesTag.innerHTML);
+            num = num+1;
+
+            likesTag.innerHTML=num;
 
         } catch (error) {
             console.error(error);
