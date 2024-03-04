@@ -475,14 +475,18 @@
     document.getElementById("likeButton").addEventListener("click", async function() {
         try {
             // 클라이언트에서 좋아요 수 증가 요청
-            await fetch(`/board_likes?boarderCode=<%=post.id%>`);
 
             let likesTag = document.getElementById("likesTag");
 
             let num = parseInt(likesTag.innerHTML);
+            alert(num);
             num = num+1;
 
             likesTag.innerHTML=num;
+            await fetch(`/board_likes?boarderCode=<%=post.id%>`);
+
+
+
 
         } catch (error) {
             console.error(error);

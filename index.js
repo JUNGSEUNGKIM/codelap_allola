@@ -60,6 +60,7 @@ app.use('/boarder_create', require('./routes/boarder_create'));
 app.use('/boarder_deletePost', require('./routes/boarder_deletePost'));
 app.use('/boarder_detailPost', require('./routes/boarder_detailPost'));
 app.use('/boarder_editPost', require('./routes/boarder_editPost'));
+app.use('/board_likes', require('./routes/board_likes'));
 
 
 app.use('/ej_addComment', require('./routes/ej_addComment'));
