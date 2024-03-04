@@ -131,7 +131,7 @@
 
     <section class="home-projects">
         <div class="container">
-            <h2><a href="/wotd-award-winners" class="cust-btn arrow-icon">주문제작 트로피샵</a></h2>
+            <h2><a href="https://www.byn.kr/blackyak" class="cust-btn arrow-icon">다른 등산용품도 만나보세요~!</a></h2>
             <div class="home-projects__list projects__list">
                 <% for (let i = 0; i < posts.length; i++) { %>
                 <article class="single-project">
@@ -151,7 +151,7 @@
 
                                 <div class="single-project__thumbnail__overlay">
                                     <div class="single-project__meta">
-                                        <span class="sp__meta__category">WOTD</span>
+                                        <span class="sp__meta__category"></span>
                                         <span class="sp__meta__date"></span>
                                     </div>
                                     <a href="/customshop_detailPost/<%= posts[i][0] %>" class="sp__full-size-link"></a>
@@ -162,11 +162,11 @@
                                 </div>
                         </div>
 
-                        <h3 class="single-project__title"><a href="/sites/sapori-e-natura/45027/"><%= posts[i][1] %> [<%= posts[i][6].toLocaleString() %>원]</a></h3>
+                        <h3 class="single-project__title"><a href="/customshop_detailPost/<%= posts[i][0] %>"><%= posts[i][1] %> [<%= posts[i][6].toLocaleString() %>원]</a></h3>
                         <div class="single-project__scores">
-                            <span class="sp__single-score active">댓글: <%= posts[i][7] %></span>
-                            <span class="sp__single-score active">추천: <%= posts[i][5] %></span>
-                            <span class="sp__single-score active"><%= posts[i][2] %></span>
+                            <span class="sp__single-score active">리뷰: <%= posts[i][7] %></span>
+                            <span class="sp__single-score active">찜: <%= posts[i][5] %></span>
+<!--                            <span class="sp__single-score active"><%= posts[i][2] %></span>-->
                             <span class="sp__single-score jpanel"></span>
                         </div>
                     </div>
