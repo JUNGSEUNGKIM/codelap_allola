@@ -70,7 +70,7 @@
             padding: 10px 20px;
             background-color:#ddd;
             color: #000;
-            border: 1px solid #888;
+            border: 1px solid #ccc;
             border-radius: 5px;
             cursor: pointer;
             margin-top: 10px;
@@ -78,7 +78,7 @@
         }
 
         input[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #D4C6E6;
         }
 
         .box{
@@ -88,7 +88,7 @@
             padding: 10px 20px;
             background-color: #ddd;
             color: #000;
-            border: 1px solid #888;
+            border: 1px solid #ccc;
             border-radius: 5px;
             text-decoration: none;
             float: left;
@@ -182,9 +182,11 @@
     <label for="title">제목:</label><br>
     <input type="text" id="title" name="title" value="<%= post.title %>"><br>
     <!-- 파일 업로드 인풋 추가 -->
+
     <label for="files">파일 첨부:</label><br>
     <!-- mulriple: 여러개의 파일 선택  -->
     <input type="file" id="files" name="files" multiple><br>
+
     <label for="content">내용:</label><br>
     <textarea id="content" name="content" rows="24" cols="50"><%= post.content %></textarea><br>
     <div class="box">

@@ -1,6 +1,8 @@
 const express = require('express');
 const oracledb = require('oracledb');
 const dbConfig = require('../dbConfig');
+const path = require("path");
+const fs = require("fs");
 
 const router = express.Router();
 
@@ -63,14 +65,28 @@ router.post('/:boarderCode', async (req, res) => {
 
         // 게시글 수정
         await conn.execute(
-            `UPDATE ej_boarder SET title = :title, content = :content WHERE boarder_code = :boarderCode`,
-            [title, content, boarderCode]
+            `UPDATE ej_boarder SET title = :title, content = :content  WHERE boarder_code = :boarderCode`,
+            [title, content, boarderCode ]
         );
+        // await conn.execute(
+        //     `UPDATE ej_boarder SET title = :title, content = :content ,image_name = :image_name, image_path= :image_path WHERE boarder_code = :boarderCode`,
+        //     [title, content, boarderCode, image_name, image_path ]
+        // );
 
         // 변경 사항 커밋
         await conn.commit();
 
-        // 수정 후 상세 페이지로 리다이렉트
+        // for (const file of req.files) {
+        //     const tempFilePath = file.path;
+        //     const targetFilePath = path.join(UPLOADS_FOLDER, file.filename);
+        //
+        //
+        //     // 임시폴더의 파일을 타겟 경로로 이동
+        //     fs.renameSync(tempFilePath, targetFilePath);
+        // }
+
+
+            // 수정 후 상세 페이지로 리다이렉트
         res.redirect(`/ej_detailPost/${boarderCode}?user_id=${req.session.loggedInUserCode}&username=${req.session.loggedInUserId}&user_realname=${req.session.loggedInUserNickName}`);
     } catch (err) {
         console.error('게시글 수정 중 오류 발생:', err);
