@@ -56,7 +56,7 @@ router.post('/',  upload.array('files', 5),async (req, res) => {
                 boarderCode: boarderCode,
                 userCode: userId,
                 title: title,
-                content: contentrep,
+                content: content,
                 image_name: files.map(file => file.imageName).join(';'), // 파일의 원본 이름을 세미콜론으로 구분하여 저장
                 image_path: files.map(file => file.imagePath).join(';') // 파일의 변환된 이름을 세미콜론으로 구분하여 저장
             }
