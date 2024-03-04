@@ -30,7 +30,7 @@ router.post('/', bodyParser.urlencoded({ extended: false }), async (req, res) =>
         res.redirect(`/mainPage`);
         // res.redirect('welcome', { WEB_SERVER_HOME, username });
     } else {
-        res.render('loginFail',{ id});
+        res.render('loginFail.ejs',{ id});
     }
 });
 

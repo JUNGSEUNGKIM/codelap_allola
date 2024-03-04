@@ -47,6 +47,7 @@ oracledb.autoCommit = true;
 
 app.use('/signUp', require('./routes/signUp'));
 app.use('/login', require('./routes/login'));
+
 app.use('/mainPage', require('./routes/mainPage'));
 app.use('/mapPage', require('./routes/mapPage'));
 app.use('/detailMountMap', require('./routes/detailMountMap'));
