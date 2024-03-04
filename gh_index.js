@@ -47,20 +47,21 @@ oracledb.autoCommit = true;
 
 app.use('/signUp', require('./routes/signUp'));
 app.use('/login', require('./routes/login'));
-
+app.use('/loginFail', require('./routes/loginFail'));
 app.use('/mainPage', require('./routes/mainPage'));
 app.use('/mapPage', require('./routes/mapPage'));
+app.use('/mapImg_create', require('./routes/mapImg_create'))
 app.use('/detailMountMap', require('./routes/detailMountMap'));
 app.use('/boarder_addComment', require('./routes/boarder_addComment'));
 app.use('/boarder_editComment', require('./routes/boarder_editComment'));
 app.use('/boarder_deleteComment', require('./routes/boarder_deleteComment'));
 app.use('/boarder_boardMain', require('./routes/boarder_boardMain'));
 app.use('/boarder_create', require('./routes/boarder_create'));
-app.use('/board_likes', require('./routes/board_likes'));
 app.use('/boarder_deletePost', require('./routes/boarder_deletePost'));
 app.use('/boarder_detailPost', require('./routes/boarder_detailPost'));
 app.use('/boarder_editPost', require('./routes/boarder_editPost'));
-app.use('/chart', require('./routes/gh_chart'));
+app.use('/board_likes', require('./routes/board_likes'));
+
 
 app.use('/ej_addComment', require('./routes/ej_addComment'));
 app.use('/ej_editComment', require('./routes/ej_editComment'));
@@ -70,6 +71,16 @@ app.use('/ej_create', require('./routes/ej_create'));
 app.use('/ej_deletePost', require('./routes/ej_deletePost'));
 app.use('/ej_detailPost', require('./routes/ej_detailPost'));
 app.use('/ej_editPost', require('./routes/ej_editPost'));
+
+app.use('/customshop_addComment', require('./routes/customshop_addComment'));
+app.use('/customshop_editComment', require('./routes/customshop_editComment'));
+app.use('/customshop_deleteComment', require('./routes/customshop_deleteComment'));
+app.use('/customshop_boardMain', require('./routes/customshop_boardMain'));
+app.use('/customshop_create', require('./routes/customshop_create'));
+app.use('/customshop_deletePost', require('./routes/customshop_deletePost'));
+app.use('/customshop_detailPost', require('./routes/customshop_detailPost'));
+app.use('/customshop_editPost', require('./routes/customshop_editPost'));
+app.use('/customshop_liks', require('./routes/customshop_liks'));
 
 
 

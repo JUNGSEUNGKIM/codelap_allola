@@ -55,6 +55,52 @@
             padding: 44px
         }
 
+        .loginfail-title{
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            margin: 0 0 30px;
+        }
+
+        .loginfail-content {
+            width: 420px;
+            height: 200px;
+            /*text-align: center;*/
+        }
+
+        .btn-loginfail {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            background-color: #38362f;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 16px;
+            padding: 0;
+            margin: 25px 0;
+            border: 0;
+            border-radius: 0;
+            outline: 0;
+            font-weight: 700;
+            letter-spacing: .06em;
+            overflow: hidden;
+            -webkit-transition: background-color .2s;
+            transition: background-color .2s
+        }
+
+
+        #loginfail {
+            height: 200px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: rgba(255, 255, 255, 0.47);
+            border-radius: 15px;
+            /*gap: 10px;*/
+        }
+
     </style>
     <link href="css/login-style.css" rel="stylesheet">
 </head>
@@ -125,23 +171,20 @@
 </header>
 <div class="loginfail-wrapper">
     <div class="loginfail-content">
-<!--        <h2 class="login-title">Log In </h2>-->
-<!--        <form class="login-form validated-form" id="login-form" name="login-form" method="post" action="/login">-->
-<!--            <div class="login-input-wrapper">-->
-<!--                <input class="login-email" id="id" name="id" type="text" placeholder="id" minlength="0" data-msg-required="This field is required"  data-msg-minlength="Please enter at least  characters" required>-->
+        <h2 class="loginfail-title"> Login Failed </h2>
+        <div id="loginfail-form">
+            <div id="loginfail">
+                <img src="/images/loginfail.png" alt="LoginFail Image"width="80" height="80">
+                <h3><%= id %>님, <br>가입정보가 일치하지 않습니다.</h3>
+                <p style="font-size: 15px">가입정보를 확인 후 다시 로그인 시도 해주세요.</p>
+            </div>
+                <a href="/login">
+                    <button class="btn-loginfail">Try Again to Log In</button>
+                </a>
 <!--            </div>-->
-<!--            <div class="login-input-wrapper">-->
-<!--                <input class="login-password" id="password" name="password" type="password" placeholder="Password" minlength="6" data-msg-required="This field is required" data-msg-minlength="Please enter at least 6 characters" required>-->
-<!--            </div>-->
-        <h2 class="loginfail-title">Login Failed </h2>
-            <h3><%= id %>님, 패스워드가 일치하지 않습니다.</h3>
-            <a href="/login">
-                <button class="btn-login">Try Again to Log In</button>
-            </a>
-
             <a class="login-link" href="forgot-password.php">Forgot password?</a>
             <a class="login-link" href="forgot-password.php">Sign Up</a>
-
+        </div>
 
     </div>
 </div>
