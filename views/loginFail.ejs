@@ -28,6 +28,33 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
+
+        .loginfail-wrapper{
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            position: absolute;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            top: 80px;
+            bottom: 80px;
+            left: 0;
+            right: 0;
+            padding: 44px
+        }
+
     </style>
     <link href="css/login-style.css" rel="stylesheet">
 </head>
@@ -106,13 +133,15 @@
 <!--            <div class="login-input-wrapper">-->
 <!--                <input class="login-password" id="password" name="password" type="password" placeholder="Password" minlength="6" data-msg-required="This field is required" data-msg-minlength="Please enter at least 6 characters" required>-->
 <!--            </div>-->
-        <div>
-             <%= id %>님, 패스워드가 일치하지 않습니다.
-        </div>
-            <button class="btn-login">Log In</button>
+        <h2 class="loginfail-title">Login Failed </h2>
+            <h3><%= id %>님, 패스워드가 일치하지 않습니다.</h3>
+            <a href="/login">
+                <button class="btn-login">Try Again to Log In</button>
+            </a>
+
             <a class="login-link" href="forgot-password.php">Forgot password?</a>
             <a class="login-link" href="forgot-password.php">Sign Up</a>
-        </form>
+
 
     </div>
 </div>
