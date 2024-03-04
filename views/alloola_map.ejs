@@ -213,6 +213,50 @@
 
             document.getElementById("mapDetail").previousElementSibling.innerHTML = data.mount_name
             document.getElementById("mapDetail").querySelector("p").innerHTML = "주소 : " + data.address + "<br/>높이 : " + data.mount_height + " <br>산 소개 : " + data.mount_description + "<br>교통 : "+ data.traffic;
+            let mountImgPath = document.getElementById("mountImgPath");
+            mountImgPath.style.margin="10px"
+            let hrefTag = document.createElement("div");
+
+            for(let i=0; i < data.mountImg.length; i++){
+                let divContainer = document.createElement("div");
+                divContainer.id=i+"Numcontainer";
+
+                console.log(data.mountImg);
+                let imgPathTag = document.createElement("img");
+                imgPathTag.src = "/uploads/"+data.mountImg[i][1];
+                imgPathTag.alt = "이미지 "+i+"번째";
+                imgPathTag.style.width = "300px";
+                imgPathTag.style.height = "300px";
+                if(i>0){
+                    divContainer.style.display="none";
+                }
+
+                let result = document.createElement("p");
+                result.innerHTML = "작성인 : "+data.mountImg[i][0]+"내용 :"+data.mountImg[i][3];
+                result.name="imgPathPTag";
+
+                let hrefTagNum = document.createElement("a");
+                hrefTagNum.href="javascript:displayImg("+(i+1)+")";
+                hrefTagNum.innerHTML="["+(i+1)+"]";
+                divContainer.appendChild(imgPathTag);
+                divContainer.appendChild(result);
+                mountImgPath.appendChild(divContainer);
+                hrefTag.appendChild(hrefTagNum);
+            }
+            mountImgPath.appendChild(hrefTag);
+
+            document.getElementById("imgpath").style.display="none";
+
+            let filesInput = document.getElementById("files");
+
+            let hiddenInput = document.createElement("input");
+            hiddenInput.type = "hidden";
+            hiddenInput.name = "mountCode";
+            hiddenInput.value = mountCode;
+
+            filesInput.parentNode.insertBefore(hiddenInput, filesInput.nextSibling);
+
+
 
 
         }
@@ -266,6 +310,22 @@
                 image : markerImage // 마커 이미지
             });
         }
+
+
+        function displayImg(num){
+            // alert(num);
+            var parentElement = document.getElementById("mountImgPath");
+
+// 자식 div 태그들 선택
+            var childDivs = parentElement.getElementsByTagName("div");
+
+// 모든 자식 div 태그의 디스플레이를 변경
+            for (var i = 0; i < childDivs.length-1; i++) {
+                childDivs[i].style.display = "none"; // 변경하고자 하는 디스플레이 값으로 설정
+            }
+
+            document.getElementById((num-1)+"Numcontainer").style.display = "block";
+        }
     </script>
     <!-- /.about -->
     <div class="page-modals">
@@ -285,16 +345,41 @@
                             </div>
                             <!-- /.about-modal__content -->
                         </div>
+                            <div id="mountImgPath" style="text-align: center; display: inline-block">
+                                <img id="imgpath" src="/images/header.png" alt="디폴트이미지" style="height: 300px; width: 300px">
+
+                            </div>
                             <div style="text-align: right; display: inline-block">
-                            <form>
+                                <img id="imagePreview" src="#" alt="이미지 미리보기" style="display:none;width: 300px; height: 300px;">
+                            <form action="/mapImg_create" method="post" enctype="multipart/form-data">
                             <label for="files">파일 첨부:</label><br>
                             <!-- mulriple: 여러개의 파일 선택  -->
                             <input type="file" id="files" name="files" multiple><br>
+                                <label for="content">내용:</label><br>
+                                <textarea id="content" name="content" rows="5" cols="50"></textarea><br>
+                               <input type="submit" value="작성하기">
                             </form>
                             </div>
                         </div>
                         <!-- /.faq -->
                     </div>
+                    <script>
+                        // 파일 입력 요소의 변경 이벤트를 감지하여 이미지 미리보기 업데이트
+                        document.getElementById('files').addEventListener('change', function(event) {
+                            // 파일이 선택되었는지 확인
+                            if (event.target.files && event.target.files[0]) {
+                                var reader = new FileReader();
+
+                                // 파일을 읽고 이미지를 미리보기로 표시
+                                reader.onload = function(e) {
+                                    document.getElementById('imagePreview').src = e.target.result;
+                                    document.getElementById('imagePreview').style.display='block';
+                                };
+
+                                reader.readAsDataURL(event.target.files[0]);
+                            }
+                        });
+                    </script>
                     <!-- /.modal-content -->
                 </div>
             </div>

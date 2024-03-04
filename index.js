@@ -49,6 +49,7 @@ app.use('/signUp', require('./routes/signUp'));
 app.use('/login', require('./routes/login'));
 app.use('/mainPage', require('./routes/mainPage'));
 app.use('/mapPage', require('./routes/mapPage'));
+app.use('/mapImg_create', require('./routes/mapImg_create'))
 app.use('/detailMountMap', require('./routes/detailMountMap'));
 app.use('/boarder_addComment', require('./routes/boarder_addComment'));
 app.use('/boarder_editComment', require('./routes/boarder_editComment'));

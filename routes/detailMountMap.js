@@ -16,12 +16,20 @@ router.get('/', async (req, res) => {
 
         // 아이디 중복 체크 쿼리 실행
         const result = await connection.execute(
-            `select m.mount_name, d.address, d.mount_height, d.mount_level, d.mount_description, d.traffic from mount m join mount_detail d on m.mount_code=d.mount_code where m.mount_code=:mount_code`
+            `select m.mount_name, d.address, d.mount_height, d.mount_level, d.mount_description, d.traffic from mount m join mount_detail d on m.mount_code=d.mount_code join mount_img p on m.mount_code=p.mount_code where m.mount_code=:mount_code`
             ,{mount_code},
             { fetchInfo: {
                     MOUNT_DESCRIPTION: { type: oracledb.STRING },
                     TRAFFIC: { type: oracledb.STRING }  } }
         );
+        const result2 = await  connection.execute(
+            `select u.nickname, m.image_path, m.likes, m.comments from mount_img m join user_table u on m.user_code = u.user_code where m.mount_code=:mount_code `,
+            {mount_code},
+            { fetchInfo: {
+                    COMMENTS: { type: oracledb.STRING },
+                     } }
+        );
+
         console.log("쿼리문:", result);
 
         res.json({
@@ -30,7 +38,12 @@ router.get('/', async (req, res) => {
             mount_height:result.rows[0][2],
             mount_level:result.rows[0][3],
             mount_description:result.rows[0][4],
-            traffic:result.rows[0][5]
+            traffic:result.rows[0][5],
+            mountImg:result2.rows
+            // img_path:result.rows[0][6],
+            // user_code:result.rows[0][7],
+            // likes:result.rows[0][8],
+            // comments:result.rows[0][9]
 
 
         })
