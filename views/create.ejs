@@ -36,13 +36,24 @@
     <style>
         /* 전체 페이지를 가운데 정렬 */
         .create_form {
+            font-weight: bold;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            /*height: 200vh;*/
-            margin: 0;
-            padding-top: 200px;
+            padding-top: 10px;
+            margin-bottom: 50px;
+        }
+
+        .create_container {
+            padding: 20px;
+            width: 900px;
+            background-color: rgba(211, 197, 229, 0.3);
+            border-radius: 7px;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            /*margin-bottom: 500px;*/
+            margin-top: 180px;
         }
 
         /* 폼 요소 스타일 */
@@ -59,22 +70,12 @@
             margin-bottom: 5px;
         }
 
-        input[type="file"] {
-            padding: 10px 20px;
-            background-color: #202121;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-            align-self: flex-end;
-        }
-
         input[type="text"],
         textarea {
             width: calc(100% - 20px);
             padding: 8px;
             margin-bottom: 10px;
+            border-radius: 5px;
         }
 
         input[type="submit"] {
@@ -104,6 +105,20 @@
 
         .button:hover {
             background-color: rgba(255, 255, 255, 0.68);
+        }
+
+        .footer_main {
+            margin-top: 100px;
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            /*flex-flow: row wrap;*/
+            padding: 5px 20px 30px;
+            flex-basis: 100%;
+            padding-bottom: 50px;
+            /*text-align: center;*/
         }
     </style>
 </head>
@@ -177,28 +192,25 @@
 
 </header>
 <div class="create_form">
-<!--    <div style="height: 100px"></div>-->
-<!-- 작성 폼 -->
-<form action="/boarder_create" method="post" enctype="multipart/form-data" >
-    <label for="title">Title</label>
-    <input type="text" id="title" name="title"><br>
-    <!-- 파일 업로드 인풋 추가 -->
-    <label for="files">
-        파일 첨부:&nbsp; <input type="file" id="files" name="files" multiple><br>
-    </label><br>
-    <label for="content">내용:</label><br>
-    <textarea id="content" name="content" rows="24" cols="50"></textarea><br>
-    <input type="submit" value="작성하기">
-    <a href="/boarder_boardMain?id=<%= userId %> &name=<%= userRealName %>" class="button" style="font-weight: bold">>back to Board</a>
-</form>
+    <div class="create_container">
+        <!-- 작성 폼 -->
+        <form action="/boarder_create" method="post" enctype="multipart/form-data">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title"><br>
 
+            <!-- 파일 업로드 인풋 추가 -->
+            <label for="files">파일 첨부:&nbsp; <input type="file" id="files" name="files" multiple></label><br>
 
-<!-- 이전 페이지로 돌아가기 버튼 -->
-<!--<div class="center">-->
-<!--    <a href="/boarder_boardMain?id=<%= userId %> &name=<%= userRealName %>" class="button" style="font-weight: bold">>back to Board</a>-->
-<!--</div>-->
+            <label for="content">Content:</label><br>
+            <textarea id="content" name="content" rows="24" cols="50"></textarea><br>
+
+            <input type="submit" value="작성하기">
+            <!-- 이전 페이지로 돌아가기 버튼 -->
+            <a href="/boarder_boardMain?id=<%= userId %>&name=<%= userRealName %>" class="button" style="font-weight: bold">>back to Board</a>
+        </form>
+    </div>
 </div>
-    <footer class="main light">
+    <footer class="footer_main">
         <div class="flex-grid">CSS DESIGN AWARDS &copy; 2009 - 2024</div>
         <div class="flex-grid text-center mobile-top">
             <ul class="social-icons">
@@ -210,6 +222,5 @@
         </div>
         <div class="flex-grid text-right mobile-hidden">BE INSPIRED. BE INSPIRING.</div>
     </footer>
-</div>
 </body>
 </html>

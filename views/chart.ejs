@@ -442,7 +442,7 @@
             }
         ];
         // Chart(ctx, [confing])
-        new Chart(ctx3,
+        const springChart = new Chart(ctx3,
             {
                 type: 'pie',
                 data: data3,
@@ -460,6 +460,16 @@
                 }
             }
         );
+
+        function updateData() {
+            // Assuming you want to update percentages randomly
+            const newData = data3.datasets[0].data.map(value => value + Math.floor(Math.random() * 20));
+            springChart.data.datasets[0].data = newData;
+            springChart.update(); // 차트 업데이트
+        }
+
+        // 2초마다 데이터 업데이트
+        setInterval(updateData, 2000);
     </script>
     </div>
 

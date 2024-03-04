@@ -34,14 +34,25 @@
     <title>게시글 수정</title>
     <style>
         /* 전체 페이지를 가운데 정렬 */
-        body {
+        .edit_form {
+            font-weight: bold;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* 상단부터 정렬 */
-            height: 100vh;
-            margin: 0;
-            padding-top: 80px; /* 상단 여백 추가 */
+            padding-top: 10px;
+            margin-bottom: 50px;
+        }
+
+        .edit_container {
+            padding: 20px;
+            width: 900px;
+            background-color: rgba(211, 197, 229, 0.3);
+            border-radius: 7px;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            /*margin-bottom: 500px;*/
+            margin-top: 180px;
         }
 
         /* 폼 요소 스타일 */
@@ -49,8 +60,9 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            width: 80%;
-            max-width: 600px;
+            width: 800px;
+            height: 100%;
+            /*max-width: 600px;*/
         }
 
         label {
@@ -62,6 +74,7 @@
             width: calc(100% - 20px);
             padding: 8px;
             margin-bottom: 10px;
+            border-radius: 5px;
         }
 
         input[type="submit"] {
@@ -79,18 +92,32 @@
             background-color: #515252;
         }
 
-        .back-button {
-            padding: 10px 20px;
-            background-color: #ddd;
-            color: #000;
-            border: 1px solid #888;
+        .button {
+            padding: 5px 10px;
+            /*background-color: #ddd;*/
+            /*color: #000;*/
+            /*border: 1px solid #888;*/
             border-radius: 5px;
             text-decoration: none;
             margin-bottom: 10px;
         }
 
-        .back-button:hover {
-            background-color: #ccc;
+        .button:hover {
+            background-color: rgba(255, 255, 255, 0.68);
+        }
+
+        .footer_main {
+            margin-top: 100px;
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            /*flex-flow: row wrap;*/
+            padding: 5px 20px 30px;
+            flex-basis: 100%;
+            padding-bottom: 50px;
+            /*text-align: center;*/
         }
     </style>
 </head>
@@ -163,23 +190,24 @@
     </div>
 
 </header>
-<div style="height: 100px"></div>
-<!-- 수정 폼 -->
-<form action="/boarder_editPost/<%= post.id %>" method="post">
-    <label for="title">제목:</label><br>
-    <input type="text" id="title" name="title" value="<%= post.title %>"><br>
-<!--    <label for="files">파일 첨부:</label><br>-->
-<!--    <input type="file" id="files" name="files" value="<%= post.image_name%>"multiple><br>-->
-    <label for="content">내용:</label><br>
-    <textarea id="content" name="content" rows="24" cols="50"><%= post.content %></textarea><br>
-    <input type="submit" value="Edit Post">
-</form>
+<div class="edit_form">
+    <div class="edit_container">
+        <!-- 수정 폼 -->
+        <form action="/boarder_editPost/<%= post.id %>" method="post">
+            <label for="title">Title</label><br>
+            <input type="text" id="title" name="title" value="<%= post.title %>"><br>
+            <!-- <label for="files">파일 첨부:</label><br>
+            <input type="file" id="files" name="files" value="<%= post.image_name%>" multiple><br> -->
+            <label for="content">Content:</label><br>
+            <textarea id="content" name="content" rows="24" cols="50"><%= post.content %></textarea><br>
+            <input type="submit" value="수정하기">
+        </form>
 
-<!-- 이전 페이지로 돌아가기 버튼 -->
-<div class="center">
-    <a href="/boarder_boardMain?id=<%= userId %>&username=<%= username %>&name=<%= userRealName %>" class="button">>back to Board</a>
+        <!-- 이전 페이지로 돌아가기 버튼 -->
+        <a href="/boarder_boardMain?id=<%= userId %>&username=<%= username %>&name=<%= userRealName %>" class="button">>back to Board</a>
+    </div>
 </div>
-<footer class="main light">
+<footer class="footer_main">
     <div class="flex-grid">CSS DESIGN AWARDS &copy; 2009 - 2024</div>
     <div class="flex-grid text-center mobile-top">
         <ul class="social-icons">

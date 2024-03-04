@@ -367,7 +367,7 @@
 </div>
 <div class="comment-form">
     <form action="/boarder_addComment" method="POST">
-        <textarea class="comment-input" name="content" rows="5" placeholder="'<%= username%>'님 댓글을 남겨보세요" required></textarea><br>
+        <textarea class="comment-input" name="content" rows="5" placeholder="'<%= userRealName%>'님 댓글을 남겨보세요" required></textarea><br>
         <input type="hidden" name="boarder_code" value="<%= post.id %>">
         <input type="hidden" name="user_code" value="<%= userId %>">
         <input type="submit" value="등록" class="submit-button">
@@ -441,35 +441,6 @@
     });
 
 
-    // 좋아요 버튼 클릭시 1씩 증가
-    // async function increaseLikesInDatabase(boarderCode) {
-    //     try {
-    //         const response = await fetch(`/like/${boarderCode}`, {
-    //             method: 'POST',
-    //         });
-    //
-    //         if (response.ok) {
-    //             const data = await response.json();
-    //             document.getElementById('likesCount').innerText = data.likes;
-    //         } else {
-    //             console.error('Failed to increase likes.');
-    //         }
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
-
-
-
-    // // 클라이언트에서 좋아요 버튼 클릭 시 실행되는 함수
-    // document.getElementById("likeButton").addEventListener("click", async function likePost(boarderCode) {
-    //     try {
-    //         // 클라이언트에서 좋아요 수 증가 요청
-    //         await increaseLikesInDatabase(boarderCode);
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // });
 
     // 클라이언트에서 좋아요 버튼 클릭 시 실행되는 함수
     document.getElementById("likeButton").addEventListener("click", async function() {
@@ -479,7 +450,7 @@
             let likesTag = document.getElementById("likesTag");
 
             let num = parseInt(likesTag.innerHTML);
-            alert(num);
+            // alert(num);
             num = num+1;
 
             likesTag.innerHTML=num;
