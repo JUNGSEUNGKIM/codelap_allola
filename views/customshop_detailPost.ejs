@@ -342,6 +342,12 @@
             // const data = await response.json();
             // alert(data);
             // console.log("json:::",data);
+            let likesTag = document.getElementById("likesTag");
+
+            let num = parseInt(likesTag.innerHTML);
+            num = num+1;
+
+            likesTag.innerHTML=num;
         });
         // function formatPrice(price) {
         //     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
