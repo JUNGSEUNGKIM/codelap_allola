@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 
+
+
 <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -33,9 +35,11 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,800" rel="stylesheet">
     <link rel="stylesheet" href="/css/vendor/jcf.css" type="text/css" media="all">
 
+
 </head>
 
 <body>
+
 <div id="page">
     <header class="main">
 
@@ -115,7 +119,7 @@
 
     <section class="home-projects">
         <div class="container">
-            <h2><a href="/ej_create" class="cust-btn arrow-icon">Previous WOTDS</a></h2>
+            <h2><a href="/ej_create" class="cust-btn arrow-icon">New Post</a></h2>
             <div class="home-projects__list projects__list" >
 
 
@@ -152,7 +156,8 @@
                         <h3 class="single-project__title"><a href="/ej_detailPost/<%= posts[i][0] %>"><%= posts[i][1] %> [<%= posts[i][8] %>]</a></h3>
                         <div class="single-project__scores">
                             <span class="sp__single-score active">조회수: <%= posts[i][4] %></span>
-                            <span class="sp__single-score active">좋아요: <%= posts[i][7] %></span>
+                            <span class="sp__single-score active"><%= posts[i][2] %></span>
+                            <span class="sp__single-score jpanel"><%= posts[i][3] %></span>
                         </div>
                     </div>
                 </article>
@@ -185,10 +190,10 @@
 
 
 
-    <div id="searchContainer" style="text-align: center">
+    <div id="searchContainer" style="text-align: center"    >
         <!-- 기존의 /boardMain이 get방식으로 처리되고 있어 편의상 GET 방식으로 호출   -->
         <form action="/ej_boardMain" method="GET">
-            <label for="searchType">검색 조건:</label>
+            <label for="searchType" style="cl">검색 조건:</label>
             <select id="searchType" name="searchType">
                 <option value="title" selected>제목</option>
                 <option value="content">게시글 내용</option>
