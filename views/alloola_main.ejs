@@ -547,10 +547,10 @@
         <div class="flex-grid">CSS DESIGN AWARDS &copy; 2009 - 2024</div>
         <div class="flex-grid text-center mobile-top">
             <ul class="social-icons">
-                <li><a href="https://www.facebook.com/CSSDesignAwards/" target="_blank" style="background-image: url(/imgs/social-icons/facebook.svg);"><img src="/imgs/social-icons/facebook.svg" alt="facebook"></a></li>
-                <li><a href="https://twitter.com/cssdesignawards" target="_blank" style="background-image: url(/imgs/social-icons/twitter.svg);"><img src="/imgs/social-icons/twitter.svg" alt="twitter"></a></li>
-                <li><a href="https://www.instagram.com/cssdesignaward/" target="_blank" style="background-image: url(/imgs/social-icons/instagram.svg);"><img src="/imgs/social-icons/instagram.svg" alt="instagram"></a></li>
-                <li><a href="https://www.linkedin.com/in/cssda/" target="_blank" style="background-image: url(/imgs/social-icons/linkedin.svg);"><img src="/imgs/social-icons/linkedin.svg" alt="linkedin"></a></li>
+                <li><a href="https://www.facebook.com/CSSDesignAwards/" target="_blank"><img src="/imgs/social-icons/facebook.svg" alt="facebook"></a></li>
+                <li><a href="https://twitter.com/cssdesignawards" target="_blank"><img src="/imgs/social-icons/twitter.svg" alt="twitter"></a></li>
+                <li><a href="https://www.instagram.com/cssdesignaward/" target="_blank"><img src="/imgs/social-icons/instagram.svg" alt="instagram"></a></li>
+                <li><a href="https://www.linkedin.com/in/cssda/" target="_blank" ><img src="/imgs/social-icons/linkedin.svg" alt="linkedin"></a></li>
             </ul>
         </div>
         <div class="flex-grid text-right mobile-hidden">BE INSPIRED. BE INSPIRING.</div>
@@ -588,6 +588,7 @@
         // const chatContainer = document.getElementById("cartContent");
             // $('#cartContent');
         let CATEGORY_STATUS = 1;
+        let NEXT_CATEGORY=0;
 
         // 메세지를 화면에 추가
         function appendMessage(sender, message) {
@@ -605,6 +606,7 @@
 
         // 초기 환영 메세지 출력
         function showWelcomeMessage() {
+            alert("여기 안와?");
             appendMessage('Chatbot', '<br>안녕하세요 ? 무엇을 도와드릴까요?' +
 
                 '<br>' +
@@ -615,7 +617,7 @@
         // 사용자 메시지 처리 및 응답
         function sendMessage(userMessage) {
             appendMessage('User', userMessage);
-            CATEGORY_STATUS=parseInt(userMessage);
+            // CATEGORY_STATUS=parseInt(userMessage);
             // var movieTitle = findMovieMessage(userMessage);
             var inputItem = [];
             var national = "";
@@ -628,12 +630,15 @@
                         showSubCategories(['지역', '산이름']);
 
                         CATEGORY_STATUS = 2;
+                        NEXT_CATEGORY=1;
                     } else if (userMessage.toLowerCase().includes('2') || userMessage.toLowerCase().includes('게시판검색')) {
                         showSubCategories(['allolla', 'comunity', 'shop']);
 
                         CATEGORY_STATUS = 2;
+                        NEXT_CATEGORY=2;
                     } else {
                         // 다른 키워드에 대한 기본 응답
+                        alert(userMessage)
                         setTimeout(function() {
                             appendMessage('Chatbot', '안녕하세요! 다른 도움이 필요하신가요?<br>');
                             showWelcomeMessage();
@@ -644,13 +649,17 @@
                 else if (CATEGORY_STATUS === 2) {
                     // 사용자가 하위 카테고리에 대해 물어보는 경우
                     const selectedCategory = userMessage.toLowerCase();
-                    if (selectedCategory.includes('1') || selectedCategory.includes('2') ) {
-                        sendSubCategoryMessage(selectedCategory, ['운동화', '구두', '샌들']);
-                        showSubCategories(['운동화', '구두', '샌들']);
+                    if(NEXT_CATEGORY === 1){
+                        // if (selectedCategory.includes('1') || selectedCategory.includes('2') ) {
+                        //    sendSubCategoryMessage(selectedCategory, ['운동화', '구두', '샌들']);
+                        //    showSubCategories(['운동화', '구두', '샌들']);
+                        // }
+                        alert(selectedCategory);
                     } else if (selectedCategory.includes('여성의류') || selectedCategory.includes('남성의류') || selectedCategory.includes('유아의류')) {
                         sendSubCategoryMessage(selectedCategory, ['여성의류', '남성의류', '유아의류']);
                         showSubCategories(['여성의류', '남성의류', '유아의류']);
                     } else if (userMessage === '0') {
+                        alert(userMessage)
                         showWelcomeMessage();
                         CATEGORY_STATUS = 1;
                     } else {

@@ -47,6 +47,7 @@ oracledb.autoCommit = true;
 
 app.use('/signUp', require('./routes/signUp'));
 app.use('/login', require('./routes/login'));
+app.use('/logout', require('./routes/logout'));
 app.use('/loginFail', require('./routes/loginFail'));
 app.use('/mainPage', require('./routes/mainPage'));
 app.use('/mapPage', require('./routes/mapPage'));
@@ -61,7 +62,7 @@ app.use('/boarder_deletePost', require('./routes/boarder_deletePost'));
 app.use('/boarder_detailPost', require('./routes/boarder_detailPost'));
 app.use('/boarder_editPost', require('./routes/boarder_editPost'));
 app.use('/board_likes', require('./routes/board_likes'));
-
+app.use('/chart', require('./routes/gh_chart'));
 
 app.use('/ej_addComment', require('./routes/ej_addComment'));
 app.use('/ej_editComment', require('./routes/ej_editComment'));
