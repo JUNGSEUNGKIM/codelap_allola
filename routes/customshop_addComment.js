@@ -1,3 +1,5 @@
+// 댓 글 추 가
+
 // routes/routeTemplate.js
 const express = require('express');
 const oracledb = require('oracledb');
@@ -9,9 +11,10 @@ const router = express.Router();
 router.get('/', (req, res) => {
     const boarderCode = req.query.boarderCode;  // boarder_code 가져오기
     const userId = req.session.loggedInUserId;
-    // const userName = req.session.loggedInUserName;
+    // const userName = req.session.loggedInUserName; // 사용안함.
     const userRealName = req.session.loggedInUserRealName;
-    res.render('customshop_addComment', { boarderCode: boarderCode, userId: userId, userName: userName, userRealName: userRealName });
+    res.render('customshop_addComment', { boarderCode: boarderCode, userId: userId, userRealName: userRealName });
+    // res.render('customshop_addComment', { boarderCode: boarderCode, userId: userId, userName: userName, userRealName: userRealName }); //사용안함.
 });
 
 // POST 요청 처리
@@ -32,6 +35,7 @@ router.post('/', async (req, res) => {
         conn = await oracledb.getConnection(dbConfig);
 
         // 댓글 추가
+        // customshop_comments에서 id, boarder_code, user_code, content, parent_comment_id
         await conn.execute(
             `INSERT INTO customshop_comments (id, boarder_code, user_code, content, parent_comment_id) 
              VALUES (customshop_comments_seq.nextval, :boarder_code, :user_code, :content, :parent_id)`,

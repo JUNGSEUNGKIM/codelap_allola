@@ -1,3 +1,6 @@
+// 댓 글 삭 제
+
+
 const express = require('express');
 const oracledb = require('oracledb');
 const dbConfig = require('../dbConfig');

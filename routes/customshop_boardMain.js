@@ -1,3 +1,5 @@
+// 게 시 판 메 인
+
 const express = require('express');
 const oracledb = require('oracledb');
 const dbConfig = require('../dbConfig');
@@ -51,7 +53,7 @@ router.get('/', async (req, res) => {
         }
 
 
-
+// 메인에 표현 할 테이블안에 컬럼들
         result = await conn.execute(
             `
                 SELECT

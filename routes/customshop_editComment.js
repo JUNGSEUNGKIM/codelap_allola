@@ -1,3 +1,5 @@
+// 댓 글 수 정
+
 // routes/routeTemplate.js
 const express = require('express');
 const oracledb = require('oracledb');
