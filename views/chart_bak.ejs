@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="CSS Design Awards" />
+    <meta name="referrer" content="origin-when-cross-origin" />
+
+    <title>CHART OF MOUNTAIN 100</title>
+    <meta name="description" content="CSS Design Awards. Be inspired, Be inspiring. Submit your website to the world's best CSS awards for a chance to win Site of the Day, UI awards UX awards and more from a panel of 200+ international web designers and developers." />
+    <meta name="keywords" content="best website awards, web design awards, web design inspiration, css awards, css winner, UI design, UX design" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-194x194.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="/images/favicons/android-chrome-192x192.png" sizes="192x192">
+    <link rel="shortcut icon" href="/images/favicons/favicon.ico">
+
+    <link rel="stylesheet" href="/css/style-main.min.css" type="text/css" media="all">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="/css/vendor/jcf.css" type="text/css" media="all">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+
+        .chart_container {
+            width: 100%;
+            height: 700px;
+            flex-direction: row;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .Chart {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #myChart1, #myChart2, #myChart3{
+            /*height: 500px;*/
+            /*background-color: rgba(255, 255, 255, 0.5);*/
+            /*border-radius: 10px;*/
+        }
+
+        #Chart1, #Chart2, #Chart3 {
+            height: 500px;
+            background-color: rgba(255, 255, 255, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+<div id="page">
+    <header class="main">
+
+        <nav class="header__main-wrapper">
+            <div class="flex-grid">
+                <a href="/mainPage" class="header__site-logo">
+                    <img  src="/imgs/logo.svg" alt="CSS Design Awards">
+                </a>
+            </div>
+            <div class="flex-grid text-center mobile-hidden">
+                <div class="header__fade-slider">
+                    <div class="header__fade-slider__slide active">
+                        <a href="/mainPage">
+                            <img src="/imgs/content/2024/readymag.svg" width="500" height="150" alt="Readymag">
+
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="flex-grid text-right">
+                <div class="header__side-elements">
+                    <a href="#" class="menu-hamburger" data-modal-open="header-main-menu"></a>
+                    <% if (false) { %>
+
+                        <a href="#" class="cust-btn mobile-hidden"><%= userRealName %> member</a>
+                        <a href="/logout" class="cust-btn mobile-hidden">LOGOUT</a>
+                    <% } else { %>
+                        <a href="/login" class="cust-btn mobile-hidden">LOGIN</a>
+                    <% } %>
+                </div>
+            </div>
+        </nav>
+        <div data-modal="header-main-menu" class="modal header-modal-menu">
+            <div class="modal__hide-scroll">
+                <div class="container">
+                    <div class="modal__content">
+
+                        <nav class="header__main-menu">
+                            <div class="header__main-menu__wrapper">
+                                <button class="modal__close">X</button>
+                                <!--                                *** link -->
+                                <ul class="header__main-menu__list">
+                                    <li><a href="/mainPage" class="cust-btn">Home</a></li>
+                                    <li><a href="/mapPage" class="cust-btn">Top 100 mountain</a></li>
+                                    <li><a href="/boarder_boardMain" class="cust-btn">Alloola Board</a></li>
+                                    <li><a href="/ej_boardMain" class="cust-btn">Community Board</a></li>
+                                    <li><a href="/" class="cust-btn">Shop</a></li>
+                                    <!--                                    <li><a href="/judges" class="cust-btn">Judges</a></li>-->
+                                    <!--                                    <li><a href="/blog" class="cust-btn">Blog</a></li>-->
+                                    <!--                                    <li><a href="/contact" class="cust-btn">Contact</a></li>-->
+                                    <!--                                    <li><a href="/terms" class="cust-btn">Terms / Privacy</a></li>-->
+                                </ul>
+                                <ul class="header__main-menu__add-on">
+                                    <!--                                    <li><a href="/submit" class="cust-btn special-button">SUBMIT</a></li>-->
+                                    <li><a href="/login" target="_blank">Login</a></li>
+                                    <li><a href="/signUp" target="_blank">SignUp</a></li>
+
+
+
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <div class="chart_container">
+    <div style="height: 100px"></div>
+
+    <!-- 차트1: 인기산TOP7 -->
+    <div style="width: 500px;" id="Chart1">
+        <canvas id="myChart1"class="Chart"></canvas>
+    </div>
+    <script type="text/javascript" src="/js/utils.js"></script>
+    <script>
+        const ctx1 = document.getElementById('myChart1');
+
+        const DATA_COUNT1 = 7;
+        const NUMBER_CFG1 = {count: DATA_COUNT1, min: 0, max: 100};
+
+        const labels = Samples.utils.months({count: 7});
+
+        const actions1 = [
+            {
+                name: 'Randomize',
+                handler(chart) {
+                    chart.data.datasets.forEach(dataset => {
+                        dataset.data = Samples.utils.numbers({count: chart.data.labels.length, min: 0, max: 100});
+                    });
+                    chart.update();
+                }
+            },
+            {
+                name: 'Add Dataset',
+                handler(chart) {
+                    const data = chart.data;
+                    const dsColor = Samples.utils.namedColor(chart.data.datasets.length);
+                    const newDataset = {
+                        label: 'Dataset ' + (data.datasets.length + 1),
+                        backgroundColor: Samples.utils.transparentize(dsColor, 0.5),
+                        borderColor: dsColor,
+                        borderWidth: 1,
+                        stack: 'combined',
+                        data: Samples.utils.numbers({count: data.labels.length, min: 0, max: 100}),
+                    };
+                    chart.data.datasets.push(newDataset);
+                    chart.update();
+                }
+            },
+            {
+                name: 'Add Data',
+                handler(chart) {
+                    const data = chart.data;
+                    if (data.datasets.length > 0) {
+                        data.labels = Samples.utils.months({count: data.labels.length + 1});
+
+                        for (let index = 0; index < data.datasets.length; ++index) {
+                            data.datasets[index].data.push(Samples.utils.rand(0, 100));
+                        }
+
+                        chart.update();
+                    }
+                }
+            },
+            {
+                name: 'Remove Dataset',
+                handler(chart) {
+                    chart.data.datasets.pop();
+                    chart.update();
+                }
+            },
+            {
+                name: 'Remove Data',
+                handler(chart) {
+                    chart.data.labels.splice(-1, 1); // remove the label first
+
+                    chart.data.datasets.forEach(dataset => {
+                        dataset.data.pop();
+                    });
+
+                    chart.update();
+                }
+            }
+        ];
+
+
+
+        new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: '산 인기도',
+                        data: Samples.utils.numbers(NUMBER_CFG1),
+                        borderColor:window.chartColors.red,
+                        backgroundColor: Samples.utils.transparentize(window.chartColors.red, 0.5),
+                        stack: 'combined',
+                        type: 'bar'
+                    },
+                    {
+                        label: '등산객수',
+                        data: Samples.utils.numbers(NUMBER_CFG1),
+                        borderColor:window.chartColors.blue,
+                        backgroundColor: Samples.utils.transparentize(window.chartColors.blue, 0.5),
+                        stack: 'combined'
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '인기산 TOP7 등산객 수'
+                    }
+                },
+                scales: {
+                    y: {
+                        stacked: true
+                    }
+                }
+            },
+        });
+    </script>
+
+
+    <!-- 차트2:신규회원가입(남/녀) Original -->
+    <div style="width: 500px;"  id="Chart2">
+        <canvas id="myChart2" class="Chart"></canvas>
+    </div>
+<!--    <script type="text/javascript" src="/js/utils.js"></script>-->
+    <script>
+        const ctx2 = document.getElementById('myChart2');
+
+        const data = [];
+        const data2 = [];
+        let prev = 100;
+        let prev2 = 80;
+        for (let i = 0; i < 1000; i++) {
+            prev += 5 - Math.random() * 10;
+            data.push({ x: i, y: prev });
+            prev2 += 5 - Math.random() * 10;
+            data2.push({ x: i, y: prev2 });
+        }
+
+        const totalDuration = 10000;
+        const delayBetweenPoints = totalDuration / data.length;
+        const previousY = (ctx2) => ctx2.index === 0 ? ctx2.chart.scales.y.getPixelForValue(100) : ctx2.chart.getDatasetMeta(ctx2.datasetIndex).data[ctx2.index - 1].getProps(['y'], true).y;
+
+        // Chart(ctx, [confing])
+        new Chart(ctx2, {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: '여성 회원',
+                    borderColor: "#f68686",
+                    borderWidth: 2,
+                    pointRadius: 0,
+                    data: data,
+                },
+                    {
+                        label: '남성 회원',
+                        borderColor: "#5eb8a7",
+                        borderWidth: 2,
+                        pointRadius: 0,        // 데이터 포인트의 반지름
+                        data: data2,
+                    }]
+            },
+            options: {
+                animation: {
+                    x: {
+                        type: 'number',
+                        easing: 'linear',
+                        duration: delayBetweenPoints,
+                        from: NaN,
+                        delay(ctx2) {
+                            if (ctx2.type !== 'data' || ctx2.xStarted) {
+                                return 0;
+                            }
+                            ctx2.xStarted = true;
+                            return ctx2.index * delayBetweenPoints;
+                        }
+                    },
+                    y: {
+                        type: 'number',
+                        easing: 'linear',
+                        duration: delayBetweenPoints,
+                        from: previousY,
+                        delay(ctx2) {
+                            if (ctx2.type !== 'data' || ctx2.yStarted) {
+                                return 0;
+                            }
+                            ctx2.yStarted = true;
+                            return ctx2.index * delayBetweenPoints;
+                        }
+                    },
+                },
+                interaction: {
+                    intersect: false
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'allola 회원수'
+                    },
+                    legend: false
+                },
+                scales: {
+                    x: {
+                        type: 'linear'
+                    }
+                }
+            }
+        });
+    </script>
+
+
+
+    <!-- 차트3: 계절별 인기산TOP4(봄) -->
+    <div style="width: 500px;"  id="Chart3">
+        <canvas id="myChart3" class="Chart"></canvas>
+    </div>
+        <script type="text/javascript" src="/js/utils.js"></script>
+    <script>
+        const DATA_COUNT3 = 4;
+        const NUMBER_CFG3 = {count: DATA_COUNT3, min: 0, max: 100};
+
+        const data3 = {
+            labels: ['지리산', '한라산', '북한산', '소백산'],
+            datasets: [
+                {
+                    label: '봄철 인기산',
+                    data: Samples.utils.numbers(NUMBER_CFG3),
+                    backgroundColor: ['#c1dddb', '#ebe4c6', '#ccc1ad', '#116a7b'],
+                }
+            ]
+        };
+
+        const ctx3 = document.getElementById('myChart3').getContext('2d');
+
+        const actions3 = [
+            {
+                name: 'Randomize',
+                handler(chart) {
+                    chart.data.datasets.forEach(dataset => {
+                        dataset.data = Samples.utils.numbers({count: chart.data.labels.length, min: 0, max: 100});
+                    });
+                    chart.update();
+                }
+            },
+            {
+                name: 'Add Dataset',
+                handler(chart) {
+                    const data3 = chart.data;
+                    const newDataset = {
+                        label: 'Dataset ' + (data3.datasets.length + 1),
+                        backgroundColor: [],
+                        data: [],
+                    };
+
+                    for (let i = 0; i < data3.labels.length; i++) {
+                        newDataset.data.push(Samples.utils.numbers({count: 1, min: 0, max: 100}));
+
+                        const colorIndex = i % Object.keys(Samples.utils.CHART_COLORS).length;
+                        newDataset.backgroundColor.push(Object.values(Samples.utils.CHART_COLORS)[colorIndex]);
+                    }
+
+                    chart.data.datasets.push(newDataset);
+                    chart.update();
+                }
+            },
+            {
+                name: 'Add Data',
+                handler(chart) {
+                    const data3 = chart.data;
+                    if (data3.datasets.length > 0) {
+                        data3.labels.push('data #' + (data3.labels.length + 1));
+
+                        for (let index = 0; index < data3.datasets.length; ++index) {
+                            data3.datasets[index].data.push(Samples.utils.rand(0, 100));
+                        }
+
+                        chart.update();
+                    }
+                }
+            },
+            {
+                name: 'Remove Dataset',
+                handler(chart) {
+                    chart.data.datasets.pop();
+                    chart.update();
+                }
+            },
+            {
+                name: 'Remove Data',
+                handler(chart) {
+                    chart.data.labels.splice(-1, 1); // remove the label first
+
+                    chart.data.datasets.forEach(dataset => {
+                        dataset.data.pop();
+                    });
+
+                    chart.update();
+                }
+            }
+        ];
+        // Chart(ctx, [confing])
+        const springChart = new Chart(ctx3,
+            {
+                type: 'pie',
+                data: data3,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: '봄 인기산 TOP4'
+                        }
+                    },
+                }
+            }
+        );
+
+        function updateData() {
+            // Assuming you want to update percentages randomly
+            const newData = data3.datasets[0].data.map(value => value + Math.floor(Math.random() * 30));
+            springChart.data.datasets[0].data = newData;
+            springChart.update(); // 차트 업데이트
+        }
+
+        // 2초마다 데이터 업데이트
+        setInterval(updateData, 2000);
+    </script>
+    </div>
+
+
+
+
+
+<!--    <div class="promo-sect">-->
+<!--        <div class="promo-sect__box">-->
+<!--            <a href="https://www.cssdesignawards.com/blog/2023-website-of-the-year-winners/394/"><img src="/imgs/content/2024/cssda-woty-2023-winners-h.jpg" width="716" height="150" alt="CSSDA WOTY 2023 Winners" /></a>-->
+<!--        </div>-->
+<!--    </div>-->
+    <div class="page-modals">
+    </div>
+<!--    <div class="container smsc-button-wrapper">-->
+<!--        <a class="smsc-button light" href="#">Go to Top</a>-->
+<!--    </div>-->
+
+    <footer class="main light">
+        <div class="flex-grid">CSS DESIGN AWARDS &copy; 2009 - 2024</div>
+        <div class="flex-grid text-center mobile-top">
+            <ul class="social-icons">
+                <li><a href="https://www.facebook.com/CSSDesignAwards/" target="_blank" style="background-image: url(/imgs/social-icons/facebook.svg);"><img src="/imgs/social-icons/facebook.svg" alt="facebook"></a></li>
+                <li><a href="https://twitter.com/cssdesignawards" target="_blank" style="background-image: url(/imgs/social-icons/twitter.svg);"><img src="/imgs/social-icons/twitter.svg" alt="twitter"></a></li>
+                <li><a href="https://www.instagram.com/cssdesignaward/" target="_blank" style="background-image: url(/imgs/social-icons/instagram.svg);"><img src="/imgs/social-icons/instagram.svg" alt="instagram"></a></li>
+                <li><a href="https://www.linkedin.com/in/cssda/" target="_blank" style="background-image: url(/imgs/social-icons/linkedin.svg);"><img src="/imgs/social-icons/linkedin.svg" alt="linkedin"></a></li>
+            </ul>
+        </div>
+        <div class="flex-grid text-right mobile-hidden">BE INSPIRED. BE INSPIRING.</div>
+    </footer>
+</div>
+
+<div id="scripts">
+    <script type="text/javascript" src="/js/vendor/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/js/vendor/jcf.js"></script>
+    <script type="text/javascript" src="/js/vendor/jcf.select.js"></script>
+    <script type="text/javascript" src="/js/vendor/jcf.checkbox.js"></script>
+    <script type="text/javascript" src="/js/vendor/jcf.file.js"></script>
+    <script type="text/javascript" src="/js/script.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</div>
+
+</body>
+
+</html>
+

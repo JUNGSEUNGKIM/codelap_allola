@@ -57,7 +57,7 @@ router.get('/', async (req, res) => {
                 startPage=1;
             }
             // console.log("startPage ::: " + startPage + "endPage:::"+endPage);
-            res.render('chart',{
+            res.render('alloola_map_ghedit',{
                 loggedInUserNickName: loggedInUserNickName,
                 totalPosts: totalPosts,
                 mountName: mountName,
@@ -99,7 +99,7 @@ router.get('/', async (req, res) => {
             const MAX_PAGE_LIMIT = 5;
             const startPage = (totalPages - currentPage) < MAX_PAGE_LIMIT ? totalPages - MAX_PAGE_LIMIT + 1 : currentPage;
             const endPage = Math.min(startPage + MAX_PAGE_LIMIT - 1, totalPages);
-            res.render('chart',{
+            res.render('alloola_map',{
                 loggedInUserNickName: loggedInUserNickName,
                 totalPosts: totalPosts,
                 mountName: mountName,
@@ -126,6 +126,8 @@ router.get('/', async (req, res) => {
     }
 
 
- res.render('chart');
+    // '/' 경로로의 요청은 Nginx에서 login.html을 처리하도록 리다이렉트
+
 });
+
 module.exports = router;

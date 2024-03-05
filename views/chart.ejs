@@ -1,4 +1,6 @@
+
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -8,10 +10,9 @@
     <meta name="robots" content="index, follow" />
     <meta name="author" content="CSS Design Awards" />
     <meta name="referrer" content="origin-when-cross-origin" />
-
-    <title>CHART OF MOUNTAIN 100</title>
-    <meta name="description" content="CSS Design Awards. Be inspired, Be inspiring. Submit your website to the world's best CSS awards for a chance to win Site of the Day, UI awards UX awards and more from a panel of 200+ international web designers and developers." />
-    <meta name="keywords" content="best website awards, web design awards, web design inspiration, css awards, css winner, UI design, UX design" />
+    <title>About CSS Design Awards - International Web Awards For Solo Designers, Studios &amp; Agencies</title>
+    <meta name="description" content="The CSS Design Awards honors and recognizes the best solo web designers, studios and agencies around the world for holistic web design that balances creativity, functionality and usability into a seamless user experience. " />
+    <meta name="keywords" content="css web design awards, css, cssda, gallery, showcase, promote, css awards, css gallery, css galleries, web award, web design award, website awards, css design" />
 
     <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-touch-icon-60x60.png">
@@ -67,7 +68,6 @@
         }
 
     </style>
-
 </head>
 
 <body>
@@ -83,7 +83,7 @@
             <div class="flex-grid text-center mobile-hidden">
                 <div class="header__fade-slider">
                     <div class="header__fade-slider__slide active">
-                        <a href="/mainPage">
+                        <a href="mainPage">
                             <img src="/imgs/content/2024/readymag.svg" width="500" height="150" alt="Readymag">
 
                         </a>
@@ -94,9 +94,8 @@
             <div class="flex-grid text-right">
                 <div class="header__side-elements">
                     <a href="#" class="menu-hamburger" data-modal-open="header-main-menu"></a>
-                    <% if (false) { %>
-
-                        <a href="#" class="cust-btn mobile-hidden"><%= userRealName %> member</a>
+                    <% if (loggedInUserNickName) { %>
+                        <a href="#" class="cust-btn mobile-hidden"><%= loggedInUserNickName %> member</a>
                         <a href="/logout" class="cust-btn mobile-hidden">LOGOUT</a>
                     <% } else { %>
                         <a href="/login" class="cust-btn mobile-hidden">LOGIN</a>
@@ -118,16 +117,20 @@
                                     <li><a href="/mapPage" class="cust-btn">Top 100 mountain</a></li>
                                     <li><a href="/boarder_boardMain" class="cust-btn">Alloola Board</a></li>
                                     <li><a href="/ej_boardMain" class="cust-btn">Community Board</a></li>
-                                    <li><a href="/" class="cust-btn">Shop</a></li>
-                                    <!--                                    <li><a href="/judges" class="cust-btn">Judges</a></li>-->
-                                    <!--                                    <li><a href="/blog" class="cust-btn">Blog</a></li>-->
-                                    <!--                                    <li><a href="/contact" class="cust-btn">Contact</a></li>-->
-                                    <!--                                    <li><a href="/terms" class="cust-btn">Terms / Privacy</a></li>-->
+                                    <li><a href="/customshop_boarderMain" class="cust-btn">Shop</a></li>
+<!--                                                                        <li><a href="/judges" class="cust-btn">Judges</a></li>-->
+<!--                                                                        <li><a href="/blog" class="cust-btn">Blog</a></li>-->
+<!--                                                                        <li><a href="/contact" class="cust-btn">Contact</a></li>-->
+<!--                                                                        <li><a href="/terms" class="cust-btn">Terms / Privacy</a></li>-->
                                 </ul>
                                 <ul class="header__main-menu__add-on">
                                     <!--                                    <li><a href="/submit" class="cust-btn special-button">SUBMIT</a></li>-->
-                                    <li><a href="/login" target="_blank">Login</a></li>
-                                    <li><a href="/signUp" target="_blank">SignUp</a></li>
+                                                                        <% if (false) { %>
+                                                                            <li><a href="/logout">LOGOUT</a></li>
+                                                                        <% } else { %>
+                                                                            <li><a href="/login" target="_blank">Login</a></li>
+                                                                            <li><a href="/signUp" target="_blank">SignUp</a></li>
+                                                                        <% } %>
 
 
 
@@ -141,365 +144,570 @@
         </div>
 
     </header>
-    <div class="chart_container">
-    <div style="height: 100px"></div>
+    <div class="about">
+        <div class="container" style="width:100%">
 
-    <!-- 차트1: 인기산TOP7 -->
-    <div style="width: 500px;" id="Chart1">
-        <canvas id="myChart1"class="Chart"></canvas>
-    </div>
-    <script type="text/javascript" src="/js/utils.js"></script>
-    <script>
-        const ctx1 = document.getElementById('myChart1');
+            <div class="about__wrapper" >
 
-        const DATA_COUNT1 = 7;
-        const NUMBER_CFG1 = {count: DATA_COUNT1, min: 0, max: 100};
+                <div class="about__content text-left" style="width:100%; max-width:80%; display:flex; justify-content: space-between;">
+                    <div style="width: 50%;  justify-content: space-between">
+                        <table>
+                            <thead>
+                            <tr>
+                                <ul class="about__list" style="display: inline-block" >
 
-        const labels = Samples.utils.months({count: 7});
+                                    <% for(let i = 0; i < totalPosts.length; i++){ %>
+                                    <%if(i % 7 === 0){%>
+                            </tr><tr>
 
-        const actions1 = [
-            {
-                name: 'Randomize',
-                handler(chart) {
-                    chart.data.datasets.forEach(dataset => {
-                        dataset.data = Samples.utils.numbers({count: chart.data.labels.length, min: 0, max: 100});
-                    });
-                    chart.update();
-                }
-            },
-            {
-                name: 'Add Dataset',
-                handler(chart) {
-                    const data = chart.data;
-                    const dsColor = Samples.utils.namedColor(chart.data.datasets.length);
-                    const newDataset = {
-                        label: 'Dataset ' + (data.datasets.length + 1),
-                        backgroundColor: Samples.utils.transparentize(dsColor, 0.5),
-                        borderColor: dsColor,
-                        borderWidth: 1,
-                        stack: 'combined',
-                        data: Samples.utils.numbers({count: data.labels.length, min: 0, max: 100}),
-                    };
-                    chart.data.datasets.push(newDataset);
-                    chart.update();
-                }
-            },
-            {
-                name: 'Add Data',
-                handler(chart) {
-                    const data = chart.data;
-                    if (data.datasets.length > 0) {
-                        data.labels = Samples.utils.months({count: data.labels.length + 1});
+                                <%}%>
 
-                        for (let index = 0; index < data.datasets.length; ++index) {
-                            data.datasets[index].data.push(Samples.utils.rand(0, 100));
-                        }
+                                <th>
+                                    <li class="about__list__item" style="list-style-type:none">
+                                        <a href="/mapPage?location=<%=totalPosts[i]%>" class="about__modal-trigger" ><%=totalPosts[i]%></a>
+                                    </li>
+                                </th>
 
-                        chart.update();
-                    }
-                }
-            },
-            {
-                name: 'Remove Dataset',
-                handler(chart) {
-                    chart.data.datasets.pop();
-                    chart.update();
-                }
-            },
-            {
-                name: 'Remove Data',
-                handler(chart) {
-                    chart.data.labels.splice(-1, 1); // remove the label first
-
-                    chart.data.datasets.forEach(dataset => {
-                        dataset.data.pop();
-                    });
-
-                    chart.update();
-                }
-            }
-        ];
+                                <%}%>
+                                </ul>
+                            </tr>
+                            </thead>
+                        </table>
+                        <div style="background-color:ivory; border-radius:5px; margin:5px; margin-top:30px; padding:10px; border:1px solid saddlebrown;">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <% for(let i = 0; i < mountName.length; i++){ %>
+                                    <%if(i % 7 === 0){%>
+                                </tr><tr>
+                                    <%}%>
+                                    <td>
+                                        <li class="about__list__item" style="list-style-type:none">
+                                            <a href="#/<%=mountName[i][1]%>" class="about__modal-trigger" id="<%=mountName[i][1]%>" data-modal-open="about-cssda"><%=mountName[i][0]%></a>
+                                        </li>
+                                    </td>
+                                    <%}%>
+                                </tr>
+                                </thead>
+                            </table>
 
 
+                        </div>
+                        <div style="margin-top:80px"></div>
+                        <div class=" home-projects__more-button text-center">
+                            <% if (currentPage > 1) { %>
+                                <a href="/mapPage/?page=<%= currentPage - 1 %>"></a>
+                            <% } %>
+                            <% for (let i = startPage; i <= endPage; i++) { %>
+                                <% if (i === currentPage) { %>
+                                    <span class="current-page" style="margin:20px"><%= i %></span>
+                                <% } else { %>
+                                    <a href="/mapPage?page=<%= i %>" style="margin:20px" class="cust-btn"><%= i %></a>
+                                <% } %>
+                            <% } %>
 
-        new Chart(ctx1, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [
-                    {
-                        label: '산 인기도',
-                        data: Samples.utils.numbers(NUMBER_CFG1),
-                        borderColor:window.chartColors.red,
-                        backgroundColor: Samples.utils.transparentize(window.chartColors.red, 0.5),
-                        stack: 'combined',
-                        type: 'bar'
-                    },
-                    {
-                        label: '등산객수',
-                        data: Samples.utils.numbers(NUMBER_CFG1),
-                        borderColor:window.chartColors.blue,
-                        backgroundColor: Samples.utils.transparentize(window.chartColors.blue, 0.5),
-                        stack: 'combined'
-                    }
-                ]
-            },
-            options: {
-                plugins: {
-                    title: {
-                        display: true,
-                        text: '인기산 TOP7 등산객 수'
-                    }
-                },
-                scales: {
-                    y: {
-                        stacked: true
-                    }
-                }
-            },
-        });
-    </script>
+                            <% if ((totalPages - currentPage + 1) > maxPageNumber) { %>
+                                <a href="/mapPage?page=<%= currentPage + 1 %>">다음</a>
+                            <% } %>
+                        </div>
+
+                    </div>
+                    <div id="data" style="display: none"><%= mountName %></div>
 
 
-    <!-- 차트2:신규회원가입(남/녀) Original -->
-    <div style="width: 500px;"  id="Chart2">
-        <canvas id="myChart2" class="Chart"></canvas>
-    </div>
-<!--    <script type="text/javascript" src="/js/utils.js"></script>-->
-    <script>
-        const ctx2 = document.getElementById('myChart2');
+                    <div style="width: 50%">
 
-        const data = [];
-        const data2 = [];
-        let prev = 100;
-        let prev2 = 80;
-        for (let i = 0; i < 1000; i++) {
-            prev += 5 - Math.random() * 10;
-            data.push({ x: i, y: prev });
-            prev2 += 5 - Math.random() * 10;
-            data2.push({ x: i, y: prev2 });
-        }
+                        <div id="map" style="width:90%;height:500px; "></div>
 
-        const totalDuration = 10000;
-        const delayBetweenPoints = totalDuration / data.length;
-        const previousY = (ctx2) => ctx2.index === 0 ? ctx2.chart.scales.y.getPixelForValue(100) : ctx2.chart.getDatasetMeta(ctx2.datasetIndex).data[ctx2.index - 1].getProps(['y'], true).y;
+                    </div>
 
-        // Chart(ctx, [confing])
-        new Chart(ctx2, {
-            type: 'line',
-            data: {
-                datasets: [{
-                    label: '여성 회원',
-                    borderColor: "#f68686",
-                    borderWidth: 2,
-                    pointRadius: 0,
-                    data: data,
-                },
-                    {
-                        label: '남성 회원',
-                        borderColor: "#5eb8a7",
-                        borderWidth: 2,
-                        pointRadius: 0,        // 데이터 포인트의 반지름
-                        data: data2,
-                    }]
-            },
-            options: {
-                animation: {
-                    x: {
-                        type: 'number',
-                        easing: 'linear',
-                        duration: delayBetweenPoints,
-                        from: NaN,
-                        delay(ctx2) {
-                            if (ctx2.type !== 'data' || ctx2.xStarted) {
-                                return 0;
-                            }
-                            ctx2.xStarted = true;
-                            return ctx2.index * delayBetweenPoints;
-                        }
-                    },
-                    y: {
-                        type: 'number',
-                        easing: 'linear',
-                        duration: delayBetweenPoints,
-                        from: previousY,
-                        delay(ctx2) {
-                            if (ctx2.type !== 'data' || ctx2.yStarted) {
-                                return 0;
-                            }
-                            ctx2.yStarted = true;
-                            return ctx2.index * delayBetweenPoints;
-                        }
-                    },
-                },
-                interaction: {
-                    intersect: false
-                },
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'allola 회원수'
-                    },
-                    legend: false
-                },
-                scales: {
-                    x: {
-                        type: 'linear'
-                    }
-                }
-            }
-        });
-    </script>
+                </div>
 
+            </div>
 
-
-    <!-- 차트3: 계절별 인기산TOP4(봄) -->
-    <div style="width: 500px;"  id="Chart3">
-        <canvas id="myChart3" class="Chart"></canvas>
-    </div>
-        <script type="text/javascript" src="/js/utils.js"></script>
-    <script>
-        const DATA_COUNT3 = 4;
-        const NUMBER_CFG3 = {count: DATA_COUNT3, min: 0, max: 100};
-
-        const data3 = {
-            labels: ['지리산', '한라산', '북한산', '소백산'],
-            datasets: [
-                {
-                    label: '봄철 인기산',
-                    data: Samples.utils.numbers(NUMBER_CFG3),
-                    backgroundColor: ['#c1dddb', '#ebe4c6', '#ccc1ad', '#116a7b'],
-                }
-            ]
-        };
-
-        const ctx3 = document.getElementById('myChart3').getContext('2d');
-
-        const actions3 = [
-            {
-                name: 'Randomize',
-                handler(chart) {
-                    chart.data.datasets.forEach(dataset => {
-                        dataset.data = Samples.utils.numbers({count: chart.data.labels.length, min: 0, max: 100});
-                    });
-                    chart.update();
-                }
-            },
-            {
-                name: 'Add Dataset',
-                handler(chart) {
-                    const data3 = chart.data;
-                    const newDataset = {
-                        label: 'Dataset ' + (data3.datasets.length + 1),
-                        backgroundColor: [],
-                        data: [],
-                    };
-
-                    for (let i = 0; i < data3.labels.length; i++) {
-                        newDataset.data.push(Samples.utils.numbers({count: 1, min: 0, max: 100}));
-
-                        const colorIndex = i % Object.keys(Samples.utils.CHART_COLORS).length;
-                        newDataset.backgroundColor.push(Object.values(Samples.utils.CHART_COLORS)[colorIndex]);
-                    }
-
-                    chart.data.datasets.push(newDataset);
-                    chart.update();
-                }
-            },
-            {
-                name: 'Add Data',
-                handler(chart) {
-                    const data3 = chart.data;
-                    if (data3.datasets.length > 0) {
-                        data3.labels.push('data #' + (data3.labels.length + 1));
-
-                        for (let index = 0; index < data3.datasets.length; ++index) {
-                            data3.datasets[index].data.push(Samples.utils.rand(0, 100));
-                        }
-
-                        chart.update();
-                    }
-                }
-            },
-            {
-                name: 'Remove Dataset',
-                handler(chart) {
-                    chart.data.datasets.pop();
-                    chart.update();
-                }
-            },
-            {
-                name: 'Remove Data',
-                handler(chart) {
-                    chart.data.labels.splice(-1, 1); // remove the label first
-
-                    chart.data.datasets.forEach(dataset => {
-                        dataset.data.pop();
-                    });
-
-                    chart.update();
-                }
-            }
-        ];
-        // Chart(ctx, [confing])
-        const springChart = new Chart(ctx3,
-            {
-                type: 'pie',
-                data: data3,
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                        },
-                        title: {
-                            display: true,
-                            text: '봄 인기산 TOP4'
-                        }
-                    },
-                }
-            }
-        );
-
-        function updateData() {
-            // Assuming you want to update percentages randomly
-            const newData = data3.datasets[0].data.map(value => value + Math.floor(Math.random() * 1));
-            springChart.data.datasets[0].data = newData;
-            springChart.update(); // 차트 업데이트
-        }
-
-        // 2초마다 데이터 업데이트
-        setInterval(updateData, 2000);
-    </script>
-    </div>
-
-
-
-
-
-<!--    <div class="promo-sect">-->
-<!--        <div class="promo-sect__box">-->
-<!--            <a href="https://www.cssdesignawards.com/blog/2023-website-of-the-year-winners/394/"><img src="/imgs/content/2024/cssda-woty-2023-winners-h.jpg" width="716" height="150" alt="CSSDA WOTY 2023 Winners" /></a>-->
-<!--        </div>-->
-<!--    </div>-->
-    <div class="page-modals">
-    </div>
-<!--    <div class="container smsc-button-wrapper">-->
-<!--        <a class="smsc-button light" href="#">Go to Top</a>-->
-<!--    </div>-->
-
-    <footer class="main light">
-        <div class="flex-grid">CSS DESIGN AWARDS &copy; 2009 - 2024</div>
-        <div class="flex-grid text-center mobile-top">
-            <ul class="social-icons">
-                <li><a href="https://www.facebook.com/CSSDesignAwards/" target="_blank" style="background-image: url(/imgs/social-icons/facebook.svg);"><img src="/imgs/social-icons/facebook.svg" alt="facebook"></a></li>
-                <li><a href="https://twitter.com/cssdesignawards" target="_blank" style="background-image: url(/imgs/social-icons/twitter.svg);"><img src="/imgs/social-icons/twitter.svg" alt="twitter"></a></li>
-                <li><a href="https://www.instagram.com/cssdesignaward/" target="_blank" style="background-image: url(/imgs/social-icons/instagram.svg);"><img src="/imgs/social-icons/instagram.svg" alt="instagram"></a></li>
-                <li><a href="https://www.linkedin.com/in/cssda/" target="_blank" style="background-image: url(/imgs/social-icons/linkedin.svg);"><img src="/imgs/social-icons/linkedin.svg" alt="linkedin"></a></li>
-            </ul>
         </div>
-        <div class="flex-grid text-right mobile-hidden">BE INSPIRED. BE INSPIRING.</div>
-    </footer>
+        <div class="chart_container">
+            <div style="height: 100px"></div>
+
+            <!-- 차트1: 인기산TOP7 -->
+            <div style="width: 500px;" id="Chart1">
+                <canvas id="myChart1"class="Chart"></canvas>
+            </div>
+            <script type="text/javascript" src="/js/utils.js"></script>
+            <script>
+                const ctx1 = document.getElementById('myChart1');
+
+                const DATA_COUNT1 = 7;
+                const NUMBER_CFG1 = {count: DATA_COUNT1, min: 0, max: 100};
+
+                const labels = Samples.utils.months({count: 7});
+
+                const actions1 = [
+                    {
+                        name: 'Randomize',
+                        handler(chart) {
+                            chart.data.datasets.forEach(dataset => {
+                                dataset.data = Samples.utils.numbers({count: chart.data.labels.length, min: 0, max: 100});
+                            });
+                            chart.update();
+                        }
+                    },
+                    {
+                        name: 'Add Dataset',
+                        handler(chart) {
+                            const data = chart.data;
+                            const dsColor = Samples.utils.namedColor(chart.data.datasets.length);
+                            const newDataset = {
+                                label: 'Dataset ' + (data.datasets.length + 1),
+                                backgroundColor: Samples.utils.transparentize(dsColor, 0.5),
+                                borderColor: dsColor,
+                                borderWidth: 1,
+                                stack: 'combined',
+                                data: Samples.utils.numbers({count: data.labels.length, min: 0, max: 100}),
+                            };
+                            chart.data.datasets.push(newDataset);
+                            chart.update();
+                        }
+                    },
+                    {
+                        name: 'Add Data',
+                        handler(chart) {
+                            const data = chart.data;
+                            if (data.datasets.length > 0) {
+                                data.labels = Samples.utils.months({count: data.labels.length + 1});
+
+                                for (let index = 0; index < data.datasets.length; ++index) {
+                                    data.datasets[index].data.push(Samples.utils.rand(0, 100));
+                                }
+
+                                chart.update();
+                            }
+                        }
+                    },
+                    {
+                        name: 'Remove Dataset',
+                        handler(chart) {
+                            chart.data.datasets.pop();
+                            chart.update();
+                        }
+                    },
+                    {
+                        name: 'Remove Data',
+                        handler(chart) {
+                            chart.data.labels.splice(-1, 1); // remove the label first
+
+                            chart.data.datasets.forEach(dataset => {
+                                dataset.data.pop();
+                            });
+
+                            chart.update();
+                        }
+                    }
+                ];
+
+
+
+                new Chart(ctx1, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: '산 인기도',
+                                data: Samples.utils.numbers(NUMBER_CFG1),
+                                borderColor:window.chartColors.red,
+                                backgroundColor: Samples.utils.transparentize(window.chartColors.red, 0.5),
+                                stack: 'combined',
+                                type: 'bar'
+                            },
+                            {
+                                label: '등산객수',
+                                data: Samples.utils.numbers(NUMBER_CFG1),
+                                borderColor:window.chartColors.blue,
+                                backgroundColor: Samples.utils.transparentize(window.chartColors.blue, 0.5),
+                                stack: 'combined'
+                            }
+                        ]
+                    },
+                    options: {
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: '인기산 TOP7 등산객 수'
+                            }
+                        },
+                        scales: {
+                            y: {
+                                stacked: true
+                            }
+                        }
+                    },
+                });
+            </script>
+
+
+            <!-- 차트2:신규회원가입(남/녀) Original -->
+            <div style="width: 500px;"  id="Chart2">
+                <canvas id="myChart2" class="Chart"></canvas>
+            </div>
+            <!--    <script type="text/javascript" src="/js/utils.js"></script>-->
+            <script>
+                const ctx2 = document.getElementById('myChart2');
+
+                const data = [];
+                const data2 = [];
+                let prev = 100;
+                let prev2 = 80;
+                for (let i = 0; i < 1000; i++) {
+                    prev += 5 - Math.random() * 10;
+                    data.push({ x: i, y: prev });
+                    prev2 += 5 - Math.random() * 10;
+                    data2.push({ x: i, y: prev2 });
+                }
+
+                const totalDuration = 10000;
+                const delayBetweenPoints = totalDuration / data.length;
+                const previousY = (ctx2) => ctx2.index === 0 ? ctx2.chart.scales.y.getPixelForValue(100) : ctx2.chart.getDatasetMeta(ctx2.datasetIndex).data[ctx2.index - 1].getProps(['y'], true).y;
+
+                // Chart(ctx, [confing])
+                new Chart(ctx2, {
+                    type: 'line',
+                    data: {
+                        datasets: [{
+                            label: '여성 회원',
+                            borderColor: "#f68686",
+                            borderWidth: 2,
+                            pointRadius: 0,
+                            data: data,
+                        },
+                            {
+                                label: '남성 회원',
+                                borderColor: "#5eb8a7",
+                                borderWidth: 2,
+                                pointRadius: 0,        // 데이터 포인트의 반지름
+                                data: data2,
+                            }]
+                    },
+                    options: {
+                        animation: {
+                            x: {
+                                type: 'number',
+                                easing: 'linear',
+                                duration: delayBetweenPoints,
+                                from: NaN,
+                                delay(ctx2) {
+                                    if (ctx2.type !== 'data' || ctx2.xStarted) {
+                                        return 0;
+                                    }
+                                    ctx2.xStarted = true;
+                                    return ctx2.index * delayBetweenPoints;
+                                }
+                            },
+                            y: {
+                                type: 'number',
+                                easing: 'linear',
+                                duration: delayBetweenPoints,
+                                from: previousY,
+                                delay(ctx2) {
+                                    if (ctx2.type !== 'data' || ctx2.yStarted) {
+                                        return 0;
+                                    }
+                                    ctx2.yStarted = true;
+                                    return ctx2.index * delayBetweenPoints;
+                                }
+                            },
+                        },
+                        interaction: {
+                            intersect: false
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'allola 회원수'
+                            },
+                            legend: false
+                        },
+                        scales: {
+                            x: {
+                                type: 'linear'
+                            }
+                        }
+                    }
+                });
+            </script>
+
+
+        <!-- 차트3: 계절별 인기산 TOP4(봄) -->
+            <div style="width: 500px;" id="Chart3">
+                <canvas id="myChart3" class="Chart"></canvas>
+            </div>
+            <script type="text/javascript" src="/js/utils.js"></script>
+            <script>
+                const DATA_COUNT3 = 4;
+                const NUMBER_CFG3 = { count: DATA_COUNT3, min: 0, max: 100 };
+
+                const data3 = {
+                    labels: ['지리산', '한라산', '북한산', '소백산'],
+                    datasets: [
+                        {
+                            label: '봄철 인기산',
+                            data: Samples.utils.numbers(NUMBER_CFG3),
+                            backgroundColor: ['#c1dddb', '#ebe4c6', '#ccc1ad', '#116a7b'],
+                        }
+                    ]
+                };
+
+                const ctx3 = document.getElementById('myChart3').getContext('2d');
+
+                const actions3 = [
+                    // 다양한 차트 액션들...
+                ];
+
+                const springChart = new Chart(ctx3,
+                    {
+                        type: 'pie',
+                        data: data3,
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                },
+                                title: {
+                                    display: true,
+                                    text: '봄 인기산 TOP4'
+                                }
+                            },
+                        }
+                    }
+                );
+
+                function updateData() {
+                    const newData = data3.datasets[0].data.map(value => value + Math.floor(Math.random() * 30));
+                    springChart.data.datasets[0].data = newData;
+                    springChart.update();
+                }
+
+                setInterval(updateData, 2000);
+            </script>
+        </div>
+
+    </div>
+    <script>
+
+
+        // for(let i = 0; mountName1.length; i++){
+        //     // console.log(mountName1[i][1]);
+        // }
+    </script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79f28a197b27ed1280bff7aaf5f8539f"></script>
+    <script type="text/javascript" src="/js/hello.js"></script>
+    <script>
+        async function detailMap(mount_code){
+            const mountCode = mount_code;
+            console.log("여기도 들어오니?");
+            const response = await fetch(`detailMountMap?mountcode=${mountCode}`);
+
+            const data = await response.json();
+            console.log("json:::",data);
+            // var parentElement = document.getElementById("mapDetail").parentNode;
+
+// 부모 요소의 다음 형제 요소를 선택하고, 그 안에 있는 <h2> 태그의 내용을 변경합니다.
+//             parentElement.nextElementSibling.querySelector("h2").innerHTML=data.mount_name;
+
+            document.getElementById("mapDetail").previousElementSibling.innerHTML = data.mount_name
+            document.getElementById("mapDetail").querySelector("p").innerHTML = "주소 : " + data.address + "<br/>높이 : " + data.mount_height + " <br>산 소개 : " + data.mount_description + "<br>교통 : "+ data.traffic;
+            let mountImgPath = document.getElementById("mountImgPath");
+            mountImgPath.style.margin="10px"
+            let hrefTag = document.createElement("div");
+
+            if(data.mountImg ) {
+
+                for (let i = 0; i < data.mountImg.length; i++) {
+                    let divContainer = document.createElement("div");
+                    divContainer.id = i + "Numcontainer";
+
+                    console.log(data.mountImg);
+                    let imgPathTag = document.createElement("img");
+                    imgPathTag.src = "/uploads/" + data.mountImg[i][1];
+                    imgPathTag.alt = "이미지 " + i + "번째";
+                    imgPathTag.style.width = "300px";
+                    imgPathTag.style.height = "300px";
+                    if (i > 0) {
+                        divContainer.style.display = "none";
+                    }
+
+                    let result = document.createElement("p");
+                    result.innerHTML = "작성인 : " + data.mountImg[i][0] + "내용 :" + data.mountImg[i][3];
+                    result.name = "imgPathPTag";
+
+                    let hrefTagNum = document.createElement("a");
+                    hrefTagNum.href = "javascript:displayImg(" + (i + 1) + ")";
+                    hrefTagNum.innerHTML = "[" + (i + 1) + "]";
+                    divContainer.appendChild(imgPathTag);
+                    divContainer.appendChild(result);
+                    mountImgPath.appendChild(divContainer);
+                    hrefTag.appendChild(hrefTagNum);
+                }
+                document.getElementById("imgpath").style.display="none";
+            }
+            mountImgPath.appendChild(hrefTag);
+
+
+
+            let filesInput = document.getElementById("files");
+
+            let hiddenInput = document.createElement("input");
+            hiddenInput.type = "hidden";
+            hiddenInput.name = "mountCode";
+            hiddenInput.value = mountCode;
+
+            filesInput.parentNode.insertBefore(hiddenInput, filesInput.nextSibling);
+
+
+
+
+        }
+
+        //
+        const mountName1 = '<%=mountName%>';
+        const mountXY = mountName1.split(',');
+        const mountXYarray = [];
+        for(let i = 0; i < mountXY.length; i=i+4 ){
+            mountXYarray.push([mountXY[i],mountXY[i+2],mountXY[i+3]]);
+        }
+        console.log("mountName :"+mountXYarray[4]);
+
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+            mapOption = {
+                center: new kakao.maps.LatLng(37.5729, 126.9794), // 지도의 중심좌표
+                level: 14 // 지도의 확대 레벨
+            };
+
+        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+
+        // 마커를 표시할 위치와 title 객체 배열입니다
+
+        var positions = [
+
+        ];
+
+        for(let i = 0; i < mountXYarray.length; i++){
+            positions.push({content: mountXYarray[i][0], title: mountXYarray[i][0], latlng: new kakao.maps.LatLng(mountXYarray[i][1],mountXYarray[i][2])});
+        }
+
+
+
+        // 마커 이미지의 이미지 주소입니다
+        var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+        for (var i = 0; i < positions.length; i ++) {
+
+            // 마커 이미지의 이미지 크기 입니다
+            var imageSize = new kakao.maps.Size(24, 35);
+
+            // 마커 이미지를 생성합니다
+            var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+            // 마커를 생성합니다
+            var marker = new kakao.maps.Marker({
+                map: map, // 마커를 표시할 지도
+                position: positions[i].latlng, // 마커를 표시할 위치
+                title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                image : markerImage // 마커 이미지
+            });
+        }
+
+
+        function displayImg(num){
+            // alert(num);
+            var parentElement = document.getElementById("mountImgPath");
+
+// 자식 div 태그들 선택
+            var childDivs = parentElement.getElementsByTagName("div");
+
+// 모든 자식 div 태그의 디스플레이를 변경
+            for (var i = 0; i < childDivs.length-1; i++) {
+                childDivs[i].style.display = "none"; // 변경하고자 하는 디스플레이 값으로 설정
+            }
+
+            document.getElementById((num-1)+"Numcontainer").style.display = "block";
+        }
+    </script>
+<!-- /.about -->
+<div class="page-modals">
+    <div data-modal="about-cssda" class="modal ">
+        <div class="modal__hide-scroll">
+            <div class="container">
+                <div class="modal__content">
+                    <button class="modal__close">X</button>
+                    <!-- /.modal__close -->
+                    <div class="container">
+
+                        <div id="mapName" class="about-modal text-left" style="text-align: left; display: inline-block">
+                            <h2 class="modal__title">ERROR</h2>
+
+                            <div id="mapDetail" class="about-modal__content">
+                                <p> 내용이 없습니다. </p>
+                            </div>
+                            <!-- /.about-modal__content -->
+                        </div>
+                        <div id="mountImgPath" style="text-align: center; display: inline-block">
+                            <img id="imgpath" src="/images/noimage.jpg" alt="디폴트이미지" style="height: 300px; width: 300px">
+
+                        </div>
+                        <div style="text-align: right; display: inline-block">
+                            <img id="imagePreview" src="#" alt="이미지 미리보기" style="display:none;width: 300px; height: 300px;">
+                            <form action="/mapImg_create" method="post" enctype="multipart/form-data">
+                                <label for="files">파일 첨부:</label><br>
+                                <!-- mulriple: 여러개의 파일 선택  -->
+                                <input type="file" id="files" name="files" multiple><br>
+                                <label for="content">내용:</label><br>
+                                <textarea id="content" name="content" rows="5" cols="50"></textarea><br>
+                                <input type="submit" value="작성하기">
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /.faq -->
+                </div>
+                <script>
+                    // 파일 입력 요소의 변경 이벤트를 감지하여 이미지 미리보기 업데이트
+                    document.getElementById('files').addEventListener('change', function(event) {
+                        // 파일이 선택되었는지 확인
+                        if (event.target.files && event.target.files[0]) {
+                            var reader = new FileReader();
+
+                            // 파일을 읽고 이미지를 미리보기로 표시
+                            reader.onload = function(e) {
+                                document.getElementById('imagePreview').src = e.target.result;
+                                document.getElementById('imagePreview').style.display='block';
+                            };
+
+                            reader.readAsDataURL(event.target.files[0]);
+                        }
+                    });
+                </script>
+                <!-- /.modal-content -->
+            </div>
+        </div>
+    </div>
+    <!-- /.modal -->
+
+    <!-- /.modal -->
+</div>
+<footer class="main light">
+    <div class="flex-grid">CSS DESIGN AWARDS &copy; 2009 - 2024</div>
+    <div class="flex-grid text-center mobile-top">
+        <ul class="social-icons">
+            <li><a href="https://www.facebook.com/CSSDesignAwards/" target="_blank" style="background-image: url(/imgs/social-icons/facebook.svg);"><img src="/imgs/social-icons/facebook.svg" alt="facebook"></a></li>
+            <li><a href="https://twitter.com/cssdesignawards" target="_blank" style="background-image: url(/imgs/social-icons/twitter.svg);"><img src="/imgs/social-icons/twitter.svg" alt="twitter"></a></li>
+            <li><a href="https://www.instagram.com/cssdesignaward/" target="_blank" style="background-image: url(/imgs/social-icons/instagram.svg);"><img src="/imgs/social-icons/instagram.svg" alt="instagram"></a></li>
+            <li><a href="https://www.linkedin.com/in/cssda/" target="_blank" style="background-image: url(/imgs/social-icons/linkedin.svg);"><img src="/imgs/social-icons/linkedin.svg" alt="linkedin"></a></li>
+        </ul>
+    </div>
+    <div class="flex-grid text-right mobile-hidden">BE INSPIRED. BE INSPIRING.</div>
+</footer>
 </div>
 
 <div id="scripts">
@@ -509,10 +717,8 @@
     <script type="text/javascript" src="/js/vendor/jcf.checkbox.js"></script>
     <script type="text/javascript" src="/js/vendor/jcf.file.js"></script>
     <script type="text/javascript" src="/js/script.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </div>
 
 </body>
 
 </html>
-
