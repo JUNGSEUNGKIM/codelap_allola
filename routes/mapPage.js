@@ -50,8 +50,13 @@ router.get('/', async (req, res) => {
             const mountName = result.rows;
 
             const MAX_PAGE_LIMIT = 5;
-            const startPage = (totalPages - currentPage) < MAX_PAGE_LIMIT ? totalPages - MAX_PAGE_LIMIT + 1 : currentPage;
+            let startPage = (totalPages - currentPage) < MAX_PAGE_LIMIT ? totalPages - MAX_PAGE_LIMIT + 1 : currentPage;
             const endPage = Math.min(startPage + MAX_PAGE_LIMIT - 1, totalPages);
+            const showPaging = totalPosts > postsPerPage;
+            if(startPage < endPage){
+                startPage=1;
+            }
+            // console.log("startPage ::: " + startPage + "endPage:::"+endPage);
             res.render('alloola_map',{
                 loggedInUserNickName: loggedInUserNickName,
                 totalPosts: totalPosts,
@@ -60,7 +65,8 @@ router.get('/', async (req, res) => {
                 currentPage: currentPage,
                 endPage: endPage,
                 totalPages: totalPages,
-                maxPageNumber: MAX_PAGE_LIMIT
+                maxPageNumber: MAX_PAGE_LIMIT,
+                showPaging: showPaging
             } );
         }else {
 
