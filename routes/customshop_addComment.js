@@ -11,10 +11,10 @@ const router = express.Router();
 router.get('/', (req, res) => {
     const boarderCode = req.query.boarderCode;  // boarder_code 가져오기
     const userId = req.session.loggedInUserId;
-    // const userName = req.session.loggedInUserName; // 사용안함.
+    const userName = req.session.loggedInUserName; // 사용안함.
     const userRealName = req.session.loggedInUserRealName;
-    res.render('customshop_addComment', { boarderCode: boarderCode, userId: userId, userRealName: userRealName });
-    // res.render('customshop_addComment', { boarderCode: boarderCode, userId: userId, userName: userName, userRealName: userRealName }); //사용안함.
+    // res.render('customshop_addComment', { boarderCode: boarderCode, userId: userId, userRealName: userRealName });
+    res.render('customshop_addComment', { boarderCode: boarderCode, userId: userId, userName: userName, userRealName: userRealName }); //사용안함.
 });
 
 // POST 요청 처리
