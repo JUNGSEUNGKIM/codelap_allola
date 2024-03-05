@@ -53,7 +53,7 @@
             <div class="flex-grid text-center mobile-hidden">
                 <div class="header__fade-slider">
                     <div class="header__fade-slider__slide active">
-                        <a href="mainPage">
+                        <a href="/mainPage">
                             <img src="/imgs/content/2024/readymag.svg" width="500" height="150" alt="Readymag">
 
                         </a>
@@ -88,7 +88,7 @@
                                     <li><a href="/mapPage" class="cust-btn">Top 100 mountain</a></li>
                                     <li><a href="/boarder_boardMain" class="cust-btn">Alloola Board</a></li>
                                     <li><a href="/ej_boardMain" class="cust-btn">Community Board</a></li>
-                                    <li><a href="/" class="cust-btn">Shop</a></li>
+                                    <li><a href="/customshop_boardMain" class="cust-btn">Shop</a></li>
                                     <!--                                    <li><a href="/judges" class="cust-btn">Judges</a></li>-->
                                     <!--                                    <li><a href="/blog" class="cust-btn">Blog</a></li>-->
                                     <!--                                    <li><a href="/contact" class="cust-btn">Contact</a></li>-->
@@ -96,10 +96,12 @@
                                 </ul>
                                 <ul class="header__main-menu__add-on">
                                     <!--                                    <li><a href="/submit" class="cust-btn special-button">SUBMIT</a></li>-->
-                                    <li><a href="/login" target="_blank">Login</a></li>
-                                    <li><a href="/signUp" target="_blank">SignUp</a></li>
-
-
+                                    <% if (loggedInUserNickName) { %>
+                                        <li><a href="/logout" target="_blank">LOGOUT</a></li>
+                                    <% } else { %>
+                                        <li><a href="/login" target="_blank">LOGIN</a></li>
+                                        <li><a href="/signUp" target="_blank">SignUp</a></li>
+                                    <% } %>
 
                                 </ul>
                             </div>
