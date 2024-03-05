@@ -245,10 +245,11 @@
                     mountImgPath.appendChild(divContainer);
                     hrefTag.appendChild(hrefTagNum);
                 }
+                document.getElementById("imgpath").style.display="none";
             }
             mountImgPath.appendChild(hrefTag);
 
-            document.getElementById("imgpath").style.display="none";
+
 
             let filesInput = document.getElementById("files");
 
@@ -349,7 +350,7 @@
                             <!-- /.about-modal__content -->
                         </div>
                             <div id="mountImgPath" style="text-align: center; display: inline-block">
-                                <img id="imgpath" src="/images/header.png" alt="디폴트이미지" style="height: 300px; width: 300px">
+                                <img id="imgpath" src="/images/noimage.jpg" alt="디폴트이미지" style="height: 300px; width: 300px">
 
                             </div>
                             <div style="text-align: right; display: inline-block">

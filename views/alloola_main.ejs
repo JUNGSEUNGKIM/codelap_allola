@@ -606,7 +606,7 @@
 
         // 초기 환영 메세지 출력
         function showWelcomeMessage() {
-            alert("여기 안와?");
+            // alert("여기 안와?");
             appendMessage('Chatbot', '<br>안녕하세요 ? 무엇을 도와드릴까요?' +
 
                 '<br>' +
@@ -638,7 +638,7 @@
                         NEXT_CATEGORY=2;
                     } else {
                         // 다른 키워드에 대한 기본 응답
-                        alert(userMessage)
+                        // alert(userMessage)
                         setTimeout(function() {
                             appendMessage('Chatbot', '안녕하세요! 다른 도움이 필요하신가요?<br>');
                             showWelcomeMessage();
@@ -654,18 +654,26 @@
                         //    sendSubCategoryMessage(selectedCategory, ['운동화', '구두', '샌들']);
                         //    showSubCategories(['운동화', '구두', '샌들']);
                         // }
-                        alert(selectedCategory);
+                        // alert(selectedCategory);
+                        if (selectedCategory.includes('1')){
+                            appendMessage('Chatbot', '지역을 입력하세요(ex: 강원특별자치도, 경기도, 부산광역시 등<br>');
+                        }else if(selectedCategory.includes('2')){
+
+                        }
+                        CATEGORY_STATUS = 3;
                     } else if (selectedCategory.includes('여성의류') || selectedCategory.includes('남성의류') || selectedCategory.includes('유아의류')) {
                         sendSubCategoryMessage(selectedCategory, ['여성의류', '남성의류', '유아의류']);
                         showSubCategories(['여성의류', '남성의류', '유아의류']);
                     } else if (userMessage === '0') {
-                        alert(userMessage)
+                        // alert(userMessage)
                         showWelcomeMessage();
                         CATEGORY_STATUS = 1;
                     } else {
                         // 다른 키워드에 대한 기본 응답
                         appendMessage('<br>Chatbot', '<br>죄송합니다. 입력하신 정보로는 처리할 수 없습니다.<br>');
                     }
+                }else if(CATEGORY_STATUS === 3){
+                    appendMessage('<br>Chatbot', '<br><a style="color: red" href="/mapPage?location='+userMessage.toLowerCase()+'">'+userMessage+ ' 검색으로 이동</a> <-클릭해주세요 <br>');
                 }
 
 
