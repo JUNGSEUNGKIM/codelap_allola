@@ -658,22 +658,33 @@
                         if (selectedCategory.includes('1')){
                             appendMessage('Chatbot', '지역을 입력하세요(ex: 강원특별자치도, 경기도, 부산광역시 등<br>');
                             NEXT_CATEGORY = 3;
+                            CATEGORY_STATUS = 3;
                         }else if(selectedCategory.includes('2')){
                             appendMessage('Chatbot', '산 이름을 입력하세요(ex: 한라산, 북악산 등<br>');
                             NEXT_CATEGORY = 4;
+                            CATEGORY_STATUS = 3;
 
+                        }else if (selectedCategory.includes('0')) {
+                            // alert(userMessage)
+                            showWelcomeMessage();
+                            CATEGORY_STATUS = 1;
                         }
-                        CATEGORY_STATUS = 3;
-                    } else if (selectedCategory.includes('여성의류') || selectedCategory.includes('남성의류') || selectedCategory.includes('유아의류')) {
-                        sendSubCategoryMessage(selectedCategory, ['여성의류', '남성의류', '유아의류']);
-                        showSubCategories(['여성의류', '남성의류', '유아의류']);
-                    } else if (userMessage === '0') {
-                        // alert(userMessage)
-                        showWelcomeMessage();
-                        CATEGORY_STATUS = 1;
-                    } else {
-                        // 다른 키워드에 대한 기본 응답
-                        appendMessage('<br>Chatbot', '<br>죄송합니다. 입력하신 정보로는 처리할 수 없습니다.<br>');
+
+                    } else if (NEXT_CATEGORY === 2) {
+                        if (selectedCategory.includes('1')){
+                            appendMessage('<br>Chatbot', '<br><a style="color: red" href="/mapPage?location=' + userMessage.toLowerCase() + '">' + userMessage + ' 검색으로 이동</a> <-클릭해주세요 <br>');
+                            NEXT_CATEGORY = 1;
+                            CATEGORY_STATUS = 1;
+                        }else if(selectedCategory.includes('2')){
+                            appendMessage('<br>Chatbot', '<br><a style="color: red" href="/mapPage?location=' + userMessage.toLowerCase() + '">' + userMessage + ' 검색으로 이동</a> <-클릭해주세요 <br>');
+                            NEXT_CATEGORY = 1;
+                            CATEGORY_STATUS = 1;
+
+                        }else if (selectedCategory.includes('0')) {
+                            // alert(userMessage)
+                            appendMessage('<br>Chatbot', '<br><a style="color: red" href="/mapPage?location=' + userMessage.toLowerCase() + '">' + userMessage + ' 검색으로 이동</a> <-클릭해주세요 <br>');
+                            CATEGORY_STATUS = 1;
+                        }
                     }
                 }else if(CATEGORY_STATUS === 3){
                     if(NEXT_CATEGORY===3) {
@@ -681,72 +692,13 @@
                     }else if(NEXT_CATEGORY === 4){
                         const mountName = userMessage.toLowerCase();
                         const mountCodeFind = await fetch(`mountCodeFind?mountname=${mountName}`);
-                        detailMap(mountCodeFind);
-                        async function detailMap(mount_code){
-                            const mountCode = mount_code;
-                            // console.log("여기도 들어오니?");
-                            const response = await fetch(`detailMountMap?mountcode=${mountCode}`);
+                        const mountCodeNum = await mountCodeFind.json();
+                        appendMessage( '<br>Chatbot', '<br><li class="about__list__item" style="list-style-type:none"><a href="#/'+mountCodeNum.mount_code+'" class="about__modal-trigger" id="'+mountCodeNum.mount_code+'" data-modal-open="about-cssda">'+mountName+'</a></li>');
+                        // console.log("너는 어디니?::::"+mountCodeNum.mount_code);
+                        // detailMap(mountCodeNum.mount_code);
 
-                            const data = await response.json();
-                            // console.log("json:::",data);
-                            // var parentElement = document.getElementById("mapDetail").parentNode;
+                    }else if(NEXT_CATEGORY === 5){
 
-// 부모 요소의 다음 형제 요소를 선택하고, 그 안에 있는 <h2> 태그의 내용을 변경합니다.
-//             parentElement.nextElementSibling.querySelector("h2").innerHTML=data.mount_name;
-
-                            document.getElementById("mapDetail").previousElementSibling.innerHTML = data.mount_name
-                            document.getElementById("mapDetail").querySelector("p").innerHTML = "주소 : " + data.address + "<br/>높이 : " + data.mount_height + " <br>산 소개 : " + data.mount_description + "<br>교통 : "+ data.traffic;
-                            let mountImgPath = document.getElementById("mountImgPath");
-                            mountImgPath.style.margin="10px"
-                            let hrefTag = document.createElement("div");
-
-                            if(data.mountImg ) {
-
-                                for (let i = 0; i < data.mountImg.length; i++) {
-                                    let divContainer = document.createElement("div");
-                                    divContainer.id = i + "Numcontainer";
-
-                                    console.log(data.mountImg);
-                                    let imgPathTag = document.createElement("img");
-                                    imgPathTag.src = "/uploads/" + data.mountImg[i][1];
-                                    imgPathTag.alt = "이미지 " + i + "번째";
-                                    imgPathTag.style.width = "300px";
-                                    imgPathTag.style.height = "300px";
-                                    if (i > 0) {
-                                        divContainer.style.display = "none";
-                                    }
-
-                                    let result = document.createElement("p");
-                                    result.innerHTML = "작성인 : " + data.mountImg[i][0] + "내용 :" + data.mountImg[i][3];
-                                    result.name = "imgPathPTag";
-
-                                    let hrefTagNum = document.createElement("a");
-                                    hrefTagNum.href = "javascript:displayImg(" + (i + 1) + ")";
-                                    hrefTagNum.innerHTML = "[" + (i + 1) + "]";
-                                    divContainer.appendChild(imgPathTag);
-                                    divContainer.appendChild(result);
-                                    mountImgPath.appendChild(divContainer);
-                                    hrefTag.appendChild(hrefTagNum);
-                                }
-                                document.getElementById("imgpath").style.display="none";
-                            }
-                            mountImgPath.appendChild(hrefTag);
-
-
-
-                            let filesInput = document.getElementById("files");
-
-                            let hiddenInput = document.createElement("input");
-                            hiddenInput.type = "hidden";
-                            hiddenInput.name = "mountCode";
-                            hiddenInput.value = mountCode;
-
-                            filesInput.parentNode.insertBefore(hiddenInput, filesInput.nextSibling);
-
-
-
-
-                        }
                     }
 
                 }

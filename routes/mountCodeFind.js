@@ -16,12 +16,13 @@ router.get('/', async (req, res) => {
 
         // 아이디 중복 체크 쿼리 실행
         const result = await connection.execute(
-            `select mount_code from mount where mount_name=:mountname`
+            `select mount_code from mount where mount_name=:mount_name`
             ,{mount_name}
 
         );
+        console.log("mountCodeFind::: "+ result.rows[0])
         res.json({
-            mountcode: result.rows[0][0]
+            mount_code: result.rows[0]
         })
 
 
