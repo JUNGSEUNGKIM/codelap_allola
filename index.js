@@ -51,7 +51,9 @@ app.use('/logout', require('./routes/logout'));
 app.use('/loginFail', require('./routes/loginFail'));
 app.use('/mainPage', require('./routes/mainPage'));
 app.use('/mapPage', require('./routes/mapPage'));
-app.use('/mapImg_create', require('./routes/mapImg_create'))
+app.use('/mapImg_create', require('./routes/mapImg_create'));mountCodeFind
+app.use('/mountCodeFind', require('./routes/mountCodeFind'));
+
 app.use('/detailMountMap', require('./routes/detailMountMap'));
 app.use('/boarder_addComment', require('./routes/boarder_addComment'));
 app.use('/boarder_editComment', require('./routes/boarder_editComment'));

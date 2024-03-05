@@ -201,11 +201,11 @@
     <script>
         async function detailMap(mount_code){
             const mountCode = mount_code;
-            console.log("여기도 들어오니?");
+            // console.log("여기도 들어오니?");
             const response = await fetch(`detailMountMap?mountcode=${mountCode}`);
 
             const data = await response.json();
-            console.log("json:::",data);
+            // console.log("json:::",data);
             // var parentElement = document.getElementById("mapDetail").parentNode;
 
 // 부모 요소의 다음 형제 요소를 선택하고, 그 안에 있는 <h2> 태그의 내용을 변경합니다.

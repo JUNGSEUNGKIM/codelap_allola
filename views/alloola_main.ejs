@@ -615,7 +615,7 @@
 
 
         // 사용자 메시지 처리 및 응답
-        function sendMessage(userMessage) {
+        async function sendMessage (userMessage) {
             appendMessage('User', userMessage);
             // CATEGORY_STATUS=parseInt(userMessage);
             // var movieTitle = findMovieMessage(userMessage);
@@ -657,7 +657,10 @@
                         // alert(selectedCategory);
                         if (selectedCategory.includes('1')){
                             appendMessage('Chatbot', '지역을 입력하세요(ex: 강원특별자치도, 경기도, 부산광역시 등<br>');
+                            NEXT_CATEGORY = 3;
                         }else if(selectedCategory.includes('2')){
+                            appendMessage('Chatbot', '산 이름을 입력하세요(ex: 한라산, 북악산 등<br>');
+                            NEXT_CATEGORY = 4;
 
                         }
                         CATEGORY_STATUS = 3;
@@ -673,7 +676,79 @@
                         appendMessage('<br>Chatbot', '<br>죄송합니다. 입력하신 정보로는 처리할 수 없습니다.<br>');
                     }
                 }else if(CATEGORY_STATUS === 3){
-                    appendMessage('<br>Chatbot', '<br><a style="color: red" href="/mapPage?location='+userMessage.toLowerCase()+'">'+userMessage+ ' 검색으로 이동</a> <-클릭해주세요 <br>');
+                    if(NEXT_CATEGORY===3) {
+                        appendMessage('<br>Chatbot', '<br><a style="color: red" href="/mapPage?location=' + userMessage.toLowerCase() + '">' + userMessage + ' 검색으로 이동</a> <-클릭해주세요 <br>');
+                    }else if(NEXT_CATEGORY === 4){
+                        const mountName = userMessage.toLowerCase();
+                        const mountCodeFind = await fetch(`mountCodeFind?mountname=${mountName}`);
+                        detailMap(mountCodeFind);
+                        async function detailMap(mount_code){
+                            const mountCode = mount_code;
+                            // console.log("여기도 들어오니?");
+                            const response = await fetch(`detailMountMap?mountcode=${mountCode}`);
+
+                            const data = await response.json();
+                            // console.log("json:::",data);
+                            // var parentElement = document.getElementById("mapDetail").parentNode;
+
+// 부모 요소의 다음 형제 요소를 선택하고, 그 안에 있는 <h2> 태그의 내용을 변경합니다.
+//             parentElement.nextElementSibling.querySelector("h2").innerHTML=data.mount_name;
+
+                            document.getElementById("mapDetail").previousElementSibling.innerHTML = data.mount_name
+                            document.getElementById("mapDetail").querySelector("p").innerHTML = "주소 : " + data.address + "<br/>높이 : " + data.mount_height + " <br>산 소개 : " + data.mount_description + "<br>교통 : "+ data.traffic;
+                            let mountImgPath = document.getElementById("mountImgPath");
+                            mountImgPath.style.margin="10px"
+                            let hrefTag = document.createElement("div");
+
+                            if(data.mountImg ) {
+
+                                for (let i = 0; i < data.mountImg.length; i++) {
+                                    let divContainer = document.createElement("div");
+                                    divContainer.id = i + "Numcontainer";
+
+                                    console.log(data.mountImg);
+                                    let imgPathTag = document.createElement("img");
+                                    imgPathTag.src = "/uploads/" + data.mountImg[i][1];
+                                    imgPathTag.alt = "이미지 " + i + "번째";
+                                    imgPathTag.style.width = "300px";
+                                    imgPathTag.style.height = "300px";
+                                    if (i > 0) {
+                                        divContainer.style.display = "none";
+                                    }
+
+                                    let result = document.createElement("p");
+                                    result.innerHTML = "작성인 : " + data.mountImg[i][0] + "내용 :" + data.mountImg[i][3];
+                                    result.name = "imgPathPTag";
+
+                                    let hrefTagNum = document.createElement("a");
+                                    hrefTagNum.href = "javascript:displayImg(" + (i + 1) + ")";
+                                    hrefTagNum.innerHTML = "[" + (i + 1) + "]";
+                                    divContainer.appendChild(imgPathTag);
+                                    divContainer.appendChild(result);
+                                    mountImgPath.appendChild(divContainer);
+                                    hrefTag.appendChild(hrefTagNum);
+                                }
+                                document.getElementById("imgpath").style.display="none";
+                            }
+                            mountImgPath.appendChild(hrefTag);
+
+
+
+                            let filesInput = document.getElementById("files");
+
+                            let hiddenInput = document.createElement("input");
+                            hiddenInput.type = "hidden";
+                            hiddenInput.name = "mountCode";
+                            hiddenInput.value = mountCode;
+
+                            filesInput.parentNode.insertBefore(hiddenInput, filesInput.nextSibling);
+
+
+
+
+                        }
+                    }
+
                 }
 
 
@@ -741,6 +816,66 @@
         });
     });
 </script>
+<div class="page-modals">
+    <div data-modal="about-cssda" class="modal ">
+        <div class="modal__hide-scroll">
+            <div class="container">
+                <div class="modal__content">
+                    <button class="modal__close">X</button>
+                    <!-- /.modal__close -->
+                    <div class="container">
+
+                        <div id="mapName" class="about-modal text-left" style="text-align: left; display: inline-block">
+                            <h2 class="modal__title">ERROR</h2>
+
+                            <div id="mapDetail" class="about-modal__content">
+                                <p> 내용이 없습니다. </p>
+                            </div>
+                            <!-- /.about-modal__content -->
+                        </div>
+                        <div id="mountImgPath" style="text-align: center; display: inline-block">
+                            <img id="imgpath" src="/images/noimage.jpg" alt="디폴트이미지" style="height: 300px; width: 300px">
+
+                        </div>
+                        <div style="text-align: right; display: inline-block">
+                            <img id="imagePreview" src="#" alt="이미지 미리보기" style="display:none;width: 300px; height: 300px;">
+                            <form action="/mapImg_create" method="post" enctype="multipart/form-data">
+                                <label for="files">파일 첨부:</label><br>
+                                <!-- mulriple: 여러개의 파일 선택  -->
+                                <input type="file" id="files" name="files" multiple><br>
+                                <label for="content">내용:</label><br>
+                                <textarea id="content" name="content" rows="5" cols="50"></textarea><br>
+                                <input type="submit" value="작성하기">
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /.faq -->
+                </div>
+                <script>
+                    // 파일 입력 요소의 변경 이벤트를 감지하여 이미지 미리보기 업데이트
+                    document.getElementById('files').addEventListener('change', function(event) {
+                        // 파일이 선택되었는지 확인
+                        if (event.target.files && event.target.files[0]) {
+                            var reader = new FileReader();
+
+                            // 파일을 읽고 이미지를 미리보기로 표시
+                            reader.onload = function(e) {
+                                document.getElementById('imagePreview').src = e.target.result;
+                                document.getElementById('imagePreview').style.display='block';
+                            };
+
+                            reader.readAsDataURL(event.target.files[0]);
+                        }
+                    });
+                </script>
+                <!-- /.modal-content -->
+            </div>
+        </div>
+    </div>
+    <!-- /.modal -->
+
+    <!-- /.modal -->
+</div>
 </body>
 
 </html>
