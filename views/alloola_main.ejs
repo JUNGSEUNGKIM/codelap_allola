@@ -63,6 +63,25 @@
             font-size: 20px;
             cursor: pointer;
         }
+
+        #cartContent{
+            width: 300px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 300px;
+            overflow-y: scroll;
+        }
+
+        #input-container {
+            width: 300px;
+            margin: 10px auto;
+            display: flex;
+            flex-direction: row;
+            position: fixed;
+            bottom:10px;
+
+        }
     </style>
 
 </head>
@@ -115,10 +134,7 @@
                                     <li><a href="/boarder_boardMain" class="cust-btn">Alloola Board</a></li>
                                     <li><a href="/ej_boardMain" class="cust-btn">Community Board</a></li>
                                     <li><a href="/customshop_boardMain" class="cust-btn">Shop</a></li>
-<!--                                    <li><a href="/judges" class="cust-btn">Judges</a></li>-->
-<!--                                    <li><a href="/blog" class="cust-btn">Blog</a></li>-->
-<!--                                    <li><a href="/contact" class="cust-btn">Contact</a></li>-->
-<!--                                    <li><a href="/terms" class="cust-btn">Terms / Privacy</a></li>-->
+
                                 </ul>
                                 <ul class="header__main-menu__add-on">
 <!--                                    <li><a href="/submit" class="cust-btn special-button">SUBMIT</a></li>-->
@@ -137,13 +153,7 @@
         </div>
 
     </header>
-<!--    <nav class="thumbnail-nav">-->
-<!--        <a href="/sites/astra-nova/45222/" class="thumbnail-nav__link prev">-->
-<!--            <img src="/cdasites/2024/202402/20240224060919.jpg" width="160" alt="Astra Nova"             class="thumbnail-nav__thumb prev" />-->
-<!--            <span class="thumbnail-nav__label">Prev</span>-->
-<!--        </a>-->
-<!--    </nav>-->
-    <!-- /.thumbnail-nav -->
+
     <section class="single-website single-nominee">
         <div class="container">
             <div class="single-website__wrapper">
@@ -161,22 +171,7 @@
 
                         </div>
 
-<!--                        <div class="single-nominee__header__right">-->
-<!--                            <div class="single-nominee__timer">-->
-<!--                                <div class="single-nominee__time" data-timer="51:54:47">-->
-<!--                                    <span class="timer-js__hours">&ndash;&ndash;</span>-->
-<!--                                    <span class="single-nominee__time__sep">:</span>-->
-<!--                                    <span class="timer-js__minutes">&ndash;&ndash;</span>-->
-<!--                                    <span class="single-nominee__time__sep">:</span>-->
-<!--                                    <span class="timer-js__seconds">&ndash;&ndash;</span>-->
-<!--                                </div>-->
-<!--                                <div class="single-nominee__timer__labels">-->
-<!--                                    <span class="single-nominee__hrs">DD</span>-->
-<!--                                    <span class="single-nominee__min">HH</span>-->
-<!--                                    <span class="single-nominee__sec">MM</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
+
                     </div>
 
                 </header>
@@ -206,27 +201,15 @@
 
                             <div class="single-website__desc__meta">
 <!--                                <p><strong>ABOUT: </strong>Few and Far are a creative studio helping charities make our world a better place.</p>&ndash;&gt;-->
-                                <div style="height: 300px" id="weekly-forecast">
+                                <div style="height: 300px; width:500px" id="weekly-forecast">
                                     여기에 날씨
+
 
 
                                 </div>
                             </div>
                         </div>
-<!--                        <script>-->
-<!--                            // OpenWeatherMap API에서 날씨 정보 가져오기-->
-<!--                            function getWeather() {-->
-<!--                                fetch('https://api.openweathermap.org/data/2.5/weather?q=Seoul&id=524901&appid=e4da173a465467c2fe1afdf007ebb1f8&units=metric')-->
-<!--                                    .then(response => response.json())-->
-<!--                                    .then(data => {-->
-<!--                                        // 가져온 데이터를 화면에 표시-->
-<!--                                        document.getElementById('weather-info').innerText = `현재 온도: ${data.main.temp}℃, 날씨: ${data.weather[0].description}`;-->
-<!--                                    })-->
-<!--                                    .catch(error => console.error('날씨 정보를 가져오는 동안 오류가 발생했습니다.', error));-->
-<!--                            }-->
-<!--                            // 페이지 로드 시 날씨 정보 가져오기-->
-<!--                            window.onload = getWeather;-->
-<!--                        </script>-->
+
                         <script>
                             const weatherIcons = {
                                 '01d': 'clear-sky-day.png',
@@ -260,9 +243,13 @@
                                 const weeklyForecast = document.getElementById('weekly-forecast');
                                 const dailyForecasts = data.list.filter((item, index) => index % 4 === 0); // 각 날짜의 첫번째 예보만 선택
 
-                                dailyForecasts.forEach(forecast => {
+                                // dailyForecasts.forEach(forecast => {
+                                for(let i = 0; i < dailyForecasts.length; i++){
+
+                                    let forecast = dailyForecasts[i];
                                     const date = new Date(forecast.dt * 1000);
                                     const hours = date.getHours(); // 시간 가져오기
+
                                     const timeOfDay = hours >= 12 ? '오후' : '오전'; // 오전과 오후 구분
                                     const weather = forecast.weather[0].description;
                                     const temperatureFahrenheit = forecast.main.temp;
@@ -272,15 +259,28 @@
 
                                     const forecastItem = document.createElement('div');
                                     forecastItem.classList.add('forecast-item');
-                                    forecastItem.innerHTML = `<strong>${date.toLocaleDateString()} ${timeOfDay}</strong>: 온도: ${temperatureCelsius.toFixed(1)}℃`;
 
+
+                                    if(hours>=12) {
+                                        if(i === 0){
+                                            forecastItem.innerHTML = `<strong>${date.toLocaleDateString()}</strong> ${timeOfDay}: 온도: ${temperatureCelsius.toFixed(1)}℃`;
+                                        }else{
+                                            forecastItem.innerHTML = `<strong> ${timeOfDay}</strong>: 온도: ${temperatureCelsius.toFixed(1)}℃`;
+                                            forecastItem.style.display="inline-block";
+                                        }
+
+                                    }else{
+
+                                        forecastItem.innerHTML = `<strong>${date.toLocaleDateString()}</strong> ${timeOfDay}: 온도: ${temperatureCelsius.toFixed(1)}℃`;
+                                        forecastItem.style.display="inline-block";
+                                    }
                                     const weatherIcon = document.createElement('img');
                                     weatherIcon.src = iconUrl;
                                     weatherIcon.alt = '날씨 아이콘';
                                     forecastItem.appendChild(weatherIcon);
 
                                     weeklyForecast.appendChild(forecastItem);
-                                });
+                                }
                             }
 
                             // OpenWeatherMap API로부터 날씨 정보를 가져오는 함수
@@ -295,79 +295,6 @@
 
                             // 페이지 로드 시 일주일 동안의 날씨 정보를 가져오기
                             window.onload = getWeeklyForecast;
-
-
-
-                            // function displayWeeklyWeather(data) {
-                            //     const weeklyForecast = document.getElementById('weekly-forecast');
-                            //     const dailyForecasts = data.list.filter((item, index) => index % 8 === 0); // 각 날짜의 첫번째 예보만 선택
-                            //
-                            //     dailyForecasts.forEach(forecast => {
-                            //         const date = new Date(forecast.dt * 1000);
-                            //         const weather = forecast.weather[0].description;
-                            //         const temperature = forecast.main.temp;
-                            //         const iconCode = forecast.weather[0].icon;
-                            //
-                            //         const iconFileName = weatherIcons[iconCode];
-                            //         const iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`;
-                            //
-                            //         const forecastItem = document.createElement('div');
-                            //         forecastItem.classList.add('forecast-item');
-                            //         forecastItem.innerHTML = `<strong>${date.toLocaleDateString()}</strong>: ${weather}, 온도: ${temperature}℃`;
-                            //
-                            //         const weatherIcon = document.createElement('img');
-                            //         weatherIcon.src = iconUrl; // 아이콘 이미지 파일 이름을 사용하여 이미지를 로드
-                            //         weatherIcon.alt = '날씨 아이콘';
-                            //         forecastItem.appendChild(weatherIcon);
-                            //
-                            //         weeklyForecast.appendChild(forecastItem);
-                            //     });
-                            // }
-                            //
-                            // // OpenWeatherMap API로부터 날씨 정보를 가져오는 함수
-                            // function getWeeklyForecast() {
-                            //     fetch('https://api.openweathermap.org/data/2.5/forecast?q=Seoul&id=524901&appid=e4da173a465467c2fe1afdf007ebb1f8&units=metricc')
-                            //         .then(response => response.json())
-                            //         .then(data => {
-                            //             displayWeeklyWeather(data);
-                            //         })
-                            //         .catch(error => console.error('날씨 정보를 가져오는 동안 오류가 발생했습니다.', error));
-                            // }
-                            //
-                            // // 페이지 로드 시 일주일 동안의 날씨 정보를 가져오기
-                            // window.onload = getWeeklyForecast;
-
-
-
-
-                            //     window.onload = getWeeklyForecast;
-                            //         .then(response => response.json())
-                            //         .then(data => {
-                            //             const weeklyWeather = data.list;
-                            //             console.log(data.list);
-                            //             const weatherInfo = document.getElementById('weather-info');
-                            //             weatherInfo.innerHTML = ''; // 이전 내용을 지우고 새로운 정보를 추가합니다.
-                            //
-                            //             weeklyWeather.forEach(day => {
-                            //                 const date = new Date(day.dt * 1000); // Unix 타임스탬프를 JavaScript 날짜 객체로 변환
-                            //                 const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' });
-                            //                 const tempMax = day.temp.max;
-                            //                 const tempMin = day.temp.min;
-                            //                 const weatherDescription = day.weather[0].description;
-                            //
-                            //                 // 각 날짜의 날씨 정보를 화면에 추가합니다.
-                            //                 weatherInfo.innerHTML += `<div>
-                            //           <p><strong>${dayOfWeek}</strong></p>
-                            //           <p>최고 기온: ${tempMax}℃</p>
-                            //           <p>최저 기온: ${tempMin}℃</p>
-                            //           <p>날씨: ${weatherDescription}</p>
-                            //        </div>`;
-                            //             });
-                            //         })
-                            //         .catch(error => console.error('날씨 정보를 가져오는 동안 오류가 발생했습니다.', error));
-                            // }
-                            //
-                            // window.onload = getWeeklyWeather;
                         </script>
 
 
@@ -640,7 +567,7 @@
     <script type="text/javascript" src="/js/jquery.js"></script>
 <!--    <script type="text/javascript" src="js/chatbot.js"></script>-->
 </div>
-<div class="cart">
+<div class="cart" >
     <button id="toggleCartBtn"><img src="css/images/chatBot.jpg" alt="chat-bot" width="50px" height="50px"></button>
     <div id="cartContent" class="cart-content">
         <span class="close" id="closeCartBtn">&times;</span>
@@ -656,7 +583,146 @@
         document.getElementById('cartContent').style.display = 'none';
     });
 
+    $(document).ready(function() {
+        const chatContainer = $('#cartContent');
+        // const chatContainer = document.getElementById("cartContent");
+            // $('#cartContent');
+        let CATEGORY_STATUS = 1;
 
+        // 메세지를 화면에 추가
+        function appendMessage(sender, message) {
+            // alert(sender);
+            var messageElement="";
+            if(sender == "User") {
+                messageElement = $('<div style="border:1px solid yellow; background:yellow; width:180px; float:right; text-align: left; color:black;"></div>').html(`<strong>${sender}:</strong> ${message}`);
+
+            }else{
+                messageElement = $('<div style="border:1px solid gray; background:lightslategray; width:200px; float:left; text-align: left; color:black"></div>').html(`<strong>${sender}:</strong> ${message}`);
+            }
+            chatContainer.append(messageElement);
+            chatContainer.scrollTop(chatContainer.prop('scrollHeight'));
+        }
+
+        // 초기 환영 메세지 출력
+        function showWelcomeMessage() {
+            appendMessage('Chatbot', '<br>안녕하세요 ? 무엇을 도와드릴까요?' +
+
+                '<br>' +
+                '<p> 1. 산검색 2.  게시판 검색 <br>');
+        }
+
+
+        // 사용자 메시지 처리 및 응답
+        function sendMessage(userMessage) {
+            appendMessage('User', userMessage);
+            CATEGORY_STATUS=parseInt(userMessage);
+            // var movieTitle = findMovieMessage(userMessage);
+            var inputItem = [];
+            var national = "";
+            var genre = "";
+            // if(parseInt(userMessage) >= 0 || parseInt(userMessage) <= 5){
+                if (CATEGORY_STATUS === 1) {
+                    // 상위 카테고리에 따른 응답 추가
+                    // alert(userMessage.toLowerCase().includes('2'));
+                    if (userMessage.toLowerCase().includes('1') || userMessage.toLowerCase().includes('산검색')) {
+                        showSubCategories(['지역', '산이름']);
+
+                        CATEGORY_STATUS = 2;
+                    } else if (userMessage.toLowerCase().includes('2') || userMessage.toLowerCase().includes('게시판검색')) {
+                        showSubCategories(['allolla', 'comunity', 'shop']);
+
+                        CATEGORY_STATUS = 2;
+                    } else {
+                        // 다른 키워드에 대한 기본 응답
+                        setTimeout(function() {
+                            appendMessage('Chatbot', '안녕하세요! 다른 도움이 필요하신가요?<br>');
+                            showWelcomeMessage();
+                        }, 500);
+                        // showWelcomeMessage();
+                    }
+                }
+                else if (CATEGORY_STATUS === 2) {
+                    // 사용자가 하위 카테고리에 대해 물어보는 경우
+                    const selectedCategory = userMessage.toLowerCase();
+                    if (selectedCategory.includes('1') || selectedCategory.includes('2') ) {
+                        sendSubCategoryMessage(selectedCategory, ['운동화', '구두', '샌들']);
+                        showSubCategories(['운동화', '구두', '샌들']);
+                    } else if (selectedCategory.includes('여성의류') || selectedCategory.includes('남성의류') || selectedCategory.includes('유아의류')) {
+                        sendSubCategoryMessage(selectedCategory, ['여성의류', '남성의류', '유아의류']);
+                        showSubCategories(['여성의류', '남성의류', '유아의류']);
+                    } else if (userMessage === '0') {
+                        showWelcomeMessage();
+                        CATEGORY_STATUS = 1;
+                    } else {
+                        // 다른 키워드에 대한 기본 응답
+                        appendMessage('<br>Chatbot', '<br>죄송합니다. 입력하신 정보로는 처리할 수 없습니다.<br>');
+                    }
+                }
+
+
+            // }
+        //
+        //
+        //     userInput.val('');
+        //
+        //
+        //
+        }
+        //
+        // // 하위 카테고리 출력
+        function showSubCategories(subCategories) {
+            var chatString ="";
+            setTimeout(function() {
+                // appendMessage('<br>Chatbot', '<br>아래에서 주제를 선택해주세요:<p>');
+                for (let i = 0; i < subCategories.length; i++) {
+                    // chatContainer.append(`${i + 1}. ${subCategories[i]}<br>`);
+                    chatString =chatString + `${i + 1}. ${subCategories[i]}<br>`;
+                }
+                chatString += '0. 상위 메뉴<br>';
+                // alert(chatString);
+                appendMessage('<br>Chatbot', '<br>아래에서 주제를 선택해주세요:<p>'+chatString);
+                chatContainer.append('0. 상위 메뉴<br>');
+                chatContainer.scrollTop(chatContainer.prop('scrollHeight'));
+            }, 500);
+        }
+        //
+        // // 하위 카테고리에 대한 응답 메세지
+        // function sendSubCategoryMessage(selectedCategory, subCategories) {
+        //     const selectedSubCategory = subCategories.find(sub => selectedCategory.includes(sub.toLowerCase()));
+        //     if (selectedSubCategory) {
+        //         setTimeout(function() {
+        //             appendMessage('<br>Chatbot', `<br>${selectedSubCategory}에 대한 정보를 제공합니다.`);
+        //         }, 500);
+        //     } else {
+        //         appendMessage('Chatbot', '죄송합니다. 입력하신 정보로는 처리할 수 없습니다.');
+        //     }
+        // }
+        //
+        // // 초기 환영 메시지 출력
+        showWelcomeMessage();
+        //
+        // // 입력창과 전송 버튼 생성
+        // // let inputContainer = $('<div id="input-container"></div>').appendTo('body');
+        let inputContainer = $('<div id="input-container"></div>').appendTo(document.getElementById('cartContent'));
+        let userInput = $('<input type="text"  id="user-input" placeholder="메시지를 입력하세요">').appendTo(inputContainer);
+        let sendBtn = $('<button id="send-btn">전송</button>').appendTo(inputContainer);
+        //
+        // // 전송 버튼 클릭 이벤트
+        sendBtn.click(function() {
+            const userMessage = userInput.val();
+            sendMessage(userMessage);
+            userInput.val('');
+        });
+        //
+        // // 엔터 키 입력 이벤트
+        userInput.keypress(function(event) {
+            if (event.which === 13) {
+                const userMessage = userInput.val();
+                sendMessage(userMessage);
+                userInput.val('');
+            }
+        });
+    });
 </script>
 </body>
 

@@ -37,7 +37,9 @@ router.get('/', async (req, res) => {
 
             let currentPage = req.query.page ? parseInt(req.query.page) : 1; // 현재 페이지 번호
             const startRow = (currentPage - 1) * postsPerPage + 1;
+            console.log("startRow:::"+startRow)
             const endRow = currentPage * postsPerPage;
+            console.log("startRow:::"+endRow)
 
             let searchCondition = ''; // 기본적으로 검색 조건 없음
 
@@ -72,8 +74,12 @@ router.get('/', async (req, res) => {
             const totalPages = Math.ceil(totalMaps / postsPerPage); // 총 페이지 수 계산
 
             let currentPage = req.query.page ? parseInt(req.query.page) : 1; // 현재 페이지 번호
+            if(currentPage===0){currentPage=1}
+
             const startRow = (currentPage - 1) * postsPerPage + 1;
+            console.log("startRow:::"+startRow)
             const endRow = currentPage * postsPerPage;
+            console.log("startRow:::"+endRow)
 
             // 검색 조건에 따른 SQL 쿼리 작성
             let searchCondition = ''; // 기본적으로 검색 조건 없음
