@@ -14,6 +14,10 @@
   <img src="https://contrib.rocks/image?repo=JUNGSEUNGKIM/codelap_allola" />
 </a>
 
+<a href="http://3.143.252.195:3000/mainPage">
+    <img src="./main.png"/>
+</a>
+
 [AWS 실행환경](http://3.143.252.195:3000/mainPage)
 
 ---
