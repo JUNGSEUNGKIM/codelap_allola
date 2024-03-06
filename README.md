@@ -10,8 +10,8 @@
 | 김인수 |    HTML, javascript, css, nodejs, jquery, oracle    |    IntelliJ IDEA , vim      |  
 | 배은지 |    HTML, javascript, css, nodejs, jquery, oracle    |    IntelliJ IDEA , vim      |   
 
-<a href="https://github.com/JUNGSEUNGKIM/codelap_movie/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=JUNGSEUNGKIM/codelap_movie" />
+<a href="https://github.com/JUNGSEUNGKIM/codelap_allola/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=JUNGSEUNGKIM/codelap_allola" />
 </a>
 
 [AWS 실행환경](http://3.143.252.195:3000/mainPage)
