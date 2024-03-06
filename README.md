@@ -3,12 +3,12 @@
 
 ### -팀원소개
     
- |  이름  | 보유기술 | 개발환경 | 
-|--------|----------------------------------------------------|-----------------------------|
-| 김정승 |    HTML, javascript, css, nodejs, jquery, oracle    |    IntelliJ IDEA , vim      | 
-| 노가현 |    HTML, javascript, css, nodejs, jquery, oracle    |    IntelliJ IDEA , vim      |  
-| 김인수 |    HTML, javascript, css, nodejs, jquery, oracle    |    IntelliJ IDEA , vim      |  
-| 배은지 |    HTML, javascript, css, nodejs, jquery, oracle    |    IntelliJ IDEA , vim      |   
+ |  이름  | 백엔드(주요 프레임워크) | 개발환경 | DataBase | 프론트엔드 
+|--------|---------------------|-------------------------------|-----------------------------|-----------------------------|
+| 김정승 |    nodejs, Nginx, ejs    |    IntelliJ IDEA , vim      | oracle 11g | HTML, javascript, css, jquery|
+| 노가현 |    nodejs, Nginx, ejs    |    IntelliJ IDEA , vim      | oracle 11g | HTML, javascript, css, jquery|
+| 김인수 |    nodejs, Nginx, ejs    |    IntelliJ IDEA , vim      | oracle 11g | HTML, javascript, css, jquery|
+| 배은지 |    nodejs, Nginx, ejs    |    IntelliJ IDEA , vim      | oracle 11g | HTML, javascript, css, jquery|
 
 <a href="https://github.com/JUNGSEUNGKIM/codelap_allola/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=JUNGSEUNGKIM/codelap_allola" />
