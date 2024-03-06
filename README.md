@@ -14,7 +14,6 @@
   <img src="https://contrib.rocks/image?repo=JUNGSEUNGKIM/codelap_allola" />
 </a>
 
-Made with [contrib.rocks](https://contrib.rocks).
 [AWS 실행환경](http://3.143.252.195:3000/mainPage)
 
 ---
