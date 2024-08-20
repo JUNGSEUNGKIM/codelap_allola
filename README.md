@@ -1,4 +1,4 @@
-## 프로젝트 페이지로 이동 = > &nbsp;&nbsp;&nbsp;&nbsp; [[Project GARAGE]](http://3.143.252.195:3001/mainPage)  
+## 프로젝트 페이지로 이동 = > &nbsp;&nbsp;&nbsp;&nbsp; [[Project CODELAP_ALLOOLA]](http://3.143.252.195:3001/mainPage)  
 &nbsp;&nbsp;&nbsp;&nbsp; **[id:user1 / password:password1]**
 
 # codelap_alloola
